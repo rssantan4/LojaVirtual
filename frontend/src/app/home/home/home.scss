@@ -1,0 +1,21 @@
+body{
+  background-color: #f28444;
+}
+
+.imagens-container {
+  display: flex;
+  width: 100vw;          /* ocupa toda a largura da tela */
+  height: 300px;         /* altura fixa, não muito alta */
+}
+
+.imagem1,
+.imagem2 {
+  flex: 1;               /* cada div ocupa metade da tela */
+}
+
+.imagem1 img,
+.imagem2 img {
+  width: 100%;           /* ocupa toda a largura da div */
+  height: 160%;          /* ocupa toda a altura da div */
+  object-fit: cover;     /* mantém proporção e corta se necessário */
+}

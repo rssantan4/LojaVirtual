@@ -1,0 +1,30 @@
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.title{
+  font-family: 'Arial', sans-serif; /* muda a fonte */
+  font-size: 30px;                  /* tamanho da letra */
+  color: #f28444;                   /* cor da letra */
+  font-weight: bold;                 /* negrito */
+  letter-spacing: 2px;               /* espaço entre letras */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* sombra */
+}
+
+.toolbar{
+  background-color: black;
+}
+
+.button-escolha button {
+  background: none;
+  border: none;
+  margin-right: 200px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+
+.button-escolha button span:hover{
+  color: #f28444;
+}
