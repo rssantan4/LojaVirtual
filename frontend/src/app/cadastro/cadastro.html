@@ -1,1 +1,62 @@
-<p>cadastro works!</p>
+<div class="body">
+<div class = "cadastro-container">
+  <h1>Cadastro</h1>
+  <form class = "cadastro-form" [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="outline" class="nome">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome"
+      placeholder="Ex. Maria Eduarda">
+        <mat-error *ngIf="cadastroForm.get('nome')?.hasError('required')">
+      Nome é <strong>obrigatório</strong>
+    </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="sobrenome">
+      <mat-label>Sobrenome</mat-label>
+      <input matInput formControlName="sobrenome"
+      placeholder="Ex. Costa Souza">
+      <mat-error *ngIf="cadastroForm.get('sobrenome')?.hasError('required')">
+      Sobrenome é <strong>obrigatório</strong>
+    </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="email">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email"
+       placeholder="Ex. maria@gmail.com" type="email">
+       <mat-error *ngIf="cadastroForm.get('email')?.hasError('required')">
+      Email é <strong>obrigatório</strong>
+    </mat-error>
+    <mat-error *ngIf="cadastroForm.get('email')?.hasError('email') && !cadastroForm.get('email')?.hasError('required')">
+      Por favor, escreva um email válido
+    </mat-error>
+    </mat-form-field>
+
+   <mat-form-field appearance="outline" class="senha">
+  <mat-label>Senha</mat-label>
+  <input matInput formControlName="senha"  [type]="hide() ? 'password' : 'text'">
+  <span class="icone-senha" matSuffix (click)="clickEvent($event)">
+    <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+  </span>
+<mat-error *ngIf="cadastroForm.get('senha')?.hasError('required')">
+  Senha é <strong>obrigatória</strong>
+</mat-error>
+<mat-error *ngIf="cadastroForm.get('senha')?.hasError('minlength') && !cadastroForm.get('senha')?.hasError('required')">
+  Senha deve ter no <strong>mínimo 8 caracteres</strong>
+</mat-error>
+<mat-error *ngIf="cadastroForm.get('senha')?.hasError('maxlength') && !cadastroForm.get('senha')?.hasError('required') && !cadastroForm.get('senha')?.hasError('minlength')">
+  Senha deve ter no <strong>máximo 16 caracteres</strong>
+</mat-error>
+</mat-form-field>
+
+<button class = "button-cadastro" type="submit"> Cadastre-se</button>
+
+  </form>
+
+  <p class="login-link">
+    Já tem conta? <a routerLink="/login">Faça login</a>
+  </p>
+</div>
+</div>

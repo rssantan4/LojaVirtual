@@ -1,0 +1,102 @@
+.body{
+   background-color: #f28444; /* fundo laranja só no cadastro */
+  min-height: 100vh; /* cobre a tela inteira */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+/* Container principal */
+.cadastro-container {
+  max-width: 500px;
+  width: 100%;
+  padding: 25px;
+  background-color: #000; /* fundo preto do form */
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #f2844477;
+}
+
+/* Título */
+.cadastro-container h1 {
+  text-align: center;
+  color: #f28444;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+/* Form */
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cadastro-form input{
+  color: white;
+}
+
+
+/* Link de login */
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+.login-link a {
+  color: #f28444;
+  font-weight: bold;
+  text-decoration: none;
+}
+.login-link a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Ícone do botão de senha */
+.icone-senha {
+  margin-right: 20px;
+  cursor: pointer;
+  color: #f28444;
+}
+
+
+/* none, sobrenome, email, senha */
+mat-label{
+  color:white;
+}
+
+.button-cadastro {
+  background-color: #f28444;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none; /* remove borda padrão */
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease; /* animação ao passar o mouse */
+}
+
+.button-cadastro:hover {
+  background-color: #e56b1a; /* laranja mais escuro */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+
+
+/* Mensagens de sucesso e erro */
+.sucesso-snackbar {
+  background-color: #4caf50; // verde
+  color: white;
+  font-weight: bold;
+}
+
+.erro-snackbar {
+  background-color: #f44336; // vermelho
+  color: white;
+  font-weight: bold;
+}
