@@ -11,4 +11,6 @@ import { LojaRoutingModule } from './loja-routing-module';
     LojaRoutingModule
   ]
 })
-export class LojaModule { }
+export class LojaModule {
+  
+}

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProdutoCard } from '../../produto-card/produto-card';
+import { Produto, ProdutosService } from '../../home/services/produtos';
 
 @Component({
   selector: 'app-loja',
-  imports: [],
+  imports: [ProdutoCard],
   templateUrl: './loja.html',
   styleUrl: './loja.scss',
 })

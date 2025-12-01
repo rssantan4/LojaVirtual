@@ -13,6 +13,6 @@ export class CadastroService {
 
   cadastrar(dados: any): Observable<any> {
   return this.http.post<any>(this.API, dados).pipe(first());
-}
+} 
 
 }

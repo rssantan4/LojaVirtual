@@ -1,0 +1,92 @@
+/* Fundo da página */
+.login-container {
+  background-color: #f28444; /* fundo laranja */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-form-container {
+  max-width: 800px;
+  width: 100%;
+  min-height: 400px; /* aumenta a altura mínima do fundo preto */
+  padding: 25px;
+  background-color: #000; /* fundo preto */
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #f2844477;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center; /* centraliza verticalmente os inputs */
+}
+
+
+/* Título */
+.login-form-container h1 {
+  text-align: center;
+  color: #f28444;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+/* Inputs */
+.login-form-container input {
+  width: 70%;               /* ocupa 70% do fundo preto */
+  max-width: 400px;         /* largura máxima */
+  margin: 0 auto 15px auto; /* 15px de espaço abaixo de cada input, centralizado horizontalmente */
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #f28444;
+  background-color: #111;
+  color: white;
+  font-size: 16px;
+  display: block;           /* necessário para o margin auto funcionar */
+}
+
+
+
+/* Botão com largura menor e espaçamento */
+.login-form-container button {
+  width: 50%;           /* ocupa metade da largura do container */
+  max-width: 300px;     /* largura máxima */
+  margin: 20px auto 0;  /* 20px de espaço acima, centralizado horizontalmente */
+  display: block;
+  background-color: #f28444;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-form-container button:hover {
+  background-color: #e56b1a;
+  transform: translateY(-2px);
+}
+
+
+
+/* Link de cadastro */
+.login-form-container .cadastro-link {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.login-form-container .cadastro-link a {
+  color: #f28444;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-form-container .cadastro-link a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
