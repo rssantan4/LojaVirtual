@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { LojaRoutingModule } from "../loja/loja-routing-module";
+import { ProdutosService, Produto } from './services/produtos';
+import { CommonModule } from '@angular/common';
+import { ProdutoCard } from '../produto-card/produto-card';
+
+
 
 @Component({
   selector: 'app-home',
-  imports: [MatIconModule, LojaRoutingModule],
+  standalone: true,
+  imports: [MatIconModule, LojaRoutingModule, CommonModule, ProdutoCard],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
+  produtos: Produto[] = [];
 
+  constructor(private produtosService: ProdutosService) { }
+
+  ngOnInit(): void {
+    this.produtos = this.produtosService.getProdutosMaisVendidos();
+  }
 }
