@@ -1,98 +1,141 @@
+/* === Estilo geral da página === */
 .body{
-  background-color: #f28444;
+  background-color: #f28444; /* cor de fundo da página */
 }
 
+/* === Banner de imagens (cabeçalho principal) === */
 .imagens-container {
-  display: flex;
-  width: 100vw;          /* ocupa toda a largura da tela */
-  height: 300px;         /* altura fixa, não muito alta */
+  display: flex;            /* organiza imagens lado a lado */
+  width: 100vw;             /* ocupa toda a largura da tela */
+  height: 300px;            /* altura fixa do banner */
 }
 
 .imagem1, .imagem2 {
-  flex: 1;               /* cada div ocupa metade da tela */
+  flex: 1;                  /* cada div ocupa metade do container */
 }
 
 .imagem1 img, .imagem2 img {
-  width: 100%;           /* ocupa toda a largura da div */
-  height: 160%;          /* ocupa toda a altura da div */
-  object-fit: cover;     /* mantém proporção e corta se necessário */
+  width: 100%;              /* imagem ocupa toda a largura da div */
+  height: 160%;             /* altura da imagem */
+  object-fit: cover;        /* mantém proporção e corta partes se necessário */
+  opacity: 0.7;
 }
 
+/* === Seção de recursos ou funcionalidades (features) === */
 .features {
   display: flex;
-  justify-content: space-around;
-  margin-top: 200px;
+  justify-content: space-around; /* distribui uniformemente os elementos */
+  margin-top: 200px;             /* distância do topo */
 }
 
 .feature {
-  text-align: center;
+  text-align: center;            /* centraliza o conteúdo dentro da feature */
 }
 
+/* === Banner de destaque com texto sobreposto === */
 .banner {
-  position: relative;
+  position: relative;             /* necessário para posicionar texto dentro */
   width: 100%;
-  max-width: 600px; /* ajuste conforme necessidade */
+  max-width: 600px;               /* largura máxima do banner */
 }
 
 .banner img {
-  width: 100%;
+  width: 100%;                    /* ocupa toda a largura do banner */
   height: auto;
   display: block;
 }
 
 .banner-text {
   position: absolute;
-  top: 60%;
-  left: 20%;
+  top: 40%;
+  left: 50%;        /* mantém o texto no lado esquerdo */
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
+
+  /* fundo semi-transparente atrás do texto */
+  background-color: rgba(0, 0, 0, 0.5); /* preto 50% transparente */
+  padding: 20px 30px;                  /* espaço interno do quadrado */
+  border-radius: 10px;                  /* cantos arredondados */
 }
 
+
+
+
 .banner-text h1 {
-  margin: 20px 0;      /* espaço entre os “parágrafos” (cada h1) */
+  margin: 20px 0;                 /* espaço entre linhas de texto */
   font-family: 'Arial Black';
-  text-shadow: 2px 2px 4px #000;
-  letter-spacing: 7px;  /* aumenta o espaço entre letras */
+  text-shadow: 2px 2px 4px #000;  /* sombra para contraste sobre a imagem */
+  letter-spacing: 7px;            /* espaçamento entre letras */
 }
 
 .banner-button{
   border: none;
-  border-bottom: 2px solid white;  /* a linha branca embaixo */
+  border-bottom: 2px solid white; /* linha embaixo do botão */
   cursor: pointer;
   background: none;
   color: white;
   font-size: 16px;
   text-shadow: 1px 1px 4px #000;
-
 }
 
-
+/* === Seção de produtos === */
 .produtos, h1{
-  text-align: center;
+  text-align: center;           /* centraliza títulos e seções */
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-
 .produtos {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
+  max-width: 1200px;            /* largura máxima da seção */
+  margin: 0 auto;               /* centraliza horizontalmente */
+  padding: 40px 20px;           /* espaçamento interno */
   text-align: center;
 }
 
+/* === Lista de produtos dentro da seção === */
 .produtos-lista {
   display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 40px;                     /* espaço entre os cards */
+  flex-wrap: wrap;                /* permite quebra de linha se necessário */
+  justify-content: center;        /* centraliza os cards */
   margin-top: 20px;
 }
 
+/* === Cards individuais de produtos === */
 .produto-card {
   width: 200px;
-  height: 300px; /* cor de placeholder */
-  border: 1px solid;
-  border-radius: 8px;
+  height: 300px;                 /* altura do card */
+  border: 1px solid;             /* borda simples */
+  border-radius: 8px;            /* cantos arredondados */
 }
+
+/* === Faixa de serviços/destaques === */
+.features {
+  display: flex;
+  justify-content: space-around;   /* distribui os itens igualmente */
+  align-items: center;             /* alinha verticalmente ícone e texto */
+  background-color: #000;          /* fundo preto da faixa */
+  color: white;                    /* texto branco */
+  padding: 20px 0;                 /* altura da faixa */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.feature {
+  text-align: center;
+  display: flex;
+  flex-direction: column;          /* ícone em cima, texto embaixo */
+  align-items: center;             /* centraliza horizontalmente */
+}
+
+.feature span {
+  display: block;
+  font-weight: bold;
+  line-height: 1.2;
+  font-size: 14px;
+}
+
+
+
+

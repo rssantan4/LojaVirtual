@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   padding: 0 20px;
-  gap: 20px;
+  gap: 10px;
 }
 
 //Título//
@@ -95,6 +95,18 @@
 
 .payment-icons {
   margin-left: 40px;
+}
+
+/* logo*/
+.logo {
+  height: 50px;         /* ajuste do tamanho da logo */
+  width: auto;          /* mantém proporção */
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color:  #f28444;         /* ou a cor que quiser */
 }
 
 
