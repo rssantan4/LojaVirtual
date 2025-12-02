@@ -14,6 +14,7 @@ import { AreaCliente } from './Area-Cliente/area-cliente/area-cliente';
 
 import { ProdutoInfo } from './produto-info/produto-info/produto-info';
 import { CarrinhoCompras } from './Carrinho-compras/carrinho-compras/carrinho-compras';
+import { LoginAdm } from './login-Adm/login-adm/login-adm';
 
 
 
@@ -30,5 +31,6 @@ export const routes: Routes = [
   {path: 'areaCliente', component: AreaCliente},
   {path: 'areaAdm', component: AreaAdm},
   {path: 'produto-info', component: ProdutoInfo},
-  {path: 'carrinhoCompras', component: CarrinhoCompras}
+  {path: 'carrinhoCompras', component: CarrinhoCompras},
+  {path: 'loginAdm', component: LoginAdm}
 ];
