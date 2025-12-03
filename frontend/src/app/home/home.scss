@@ -10,11 +10,11 @@
   height: 300px;            /* altura fixa do banner */
 }
 
-.imagem1, .imagem2 {
+.imagem1{
   flex: 1;                  /* cada div ocupa metade do container */
 }
 
-.imagem1 img, .imagem2 img {
+.imagem1 img{
   width: 100%;              /* imagem ocupa toda a largura da div */
   height: 160%;             /* altura da imagem */
   object-fit: cover;        /* mantém proporção e corta partes se necessário */
@@ -59,9 +59,6 @@
   border-radius: 10px;                  /* cantos arredondados */
 }
 
-
-
-
 .banner-text h1 {
   margin: 20px 0;                 /* espaço entre linhas de texto */
   font-family: 'Arial Black';
@@ -84,6 +81,7 @@
   text-align: center;           /* centraliza títulos e seções */
   margin-top: 30px;
   margin-bottom: 30px;
+
 }
 
 .produtos {
@@ -130,8 +128,11 @@
 }
 
 
-
-
-
+.title2 {
+  font-family: 'Arial Black';
+  font-size: 32px;
+  color: black;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
 
 
