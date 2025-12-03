@@ -6,7 +6,7 @@ import { Contato } from './contato/contato'
 
 import { Login } from './login/login';
 import { Cadastro } from './cadastro/cadastro';
-import { AreaAdm } from './Area-Adm/area-adm/area-adm';
+import { AreaAdm } from './area-adm/area-adm/area-adm';
 import { AreaCliente } from './Area-Cliente/area-cliente/area-cliente';
 
 import { ProdutoInfo } from './produto-info/produto-info/produto-info';

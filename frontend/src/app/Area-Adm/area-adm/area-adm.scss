@@ -1,0 +1,9 @@
+.adm-body{
+  background-color: #f28444; /* fundo laranja só no cadastro */
+  min-height: 100vh; /* cobre a tela inteira */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
