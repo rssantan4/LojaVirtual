@@ -18,13 +18,13 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="campo">
-      <mat-label>Categoria</mat-label>
-      <mat-select>
-        <mat-option value="eletronicos">Eletrônicos</mat-option>
-        <mat-option value="roupas">Roupas</mat-option>
-        <mat-option value="acessorios">Acessórios</mat-option>
-      </mat-select>
-    </mat-form-field>
+  <mat-label>Categoria</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let genero of generos$ | async" [value]="genero.id">
+      {{ genero.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
     <mat-form-field appearance="outline" class="campo">
       <mat-label>Estoque</mat-label>

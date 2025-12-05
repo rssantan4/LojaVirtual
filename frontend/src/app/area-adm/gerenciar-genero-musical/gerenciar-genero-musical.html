@@ -1,2 +1,49 @@
+<div class="container">
+  <h1>Gerenciar Gêneros Musicais</h1>
+
+  <!-- Formulário de Adicionar / Editar -->
+  <form class="form" (ngSubmit)="onSave()">
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Nome do gênero</mat-label>
+      <input matInput [(ngModel)]="generoForm.name" name="name" required>
+    </mat-form-field>
+
+    <div class="actions-form">
+      <button mat-raised-button color="primary" type="submit">
+        {{ generoForm.id ? 'Salvar Alterações' : 'Adicionar Gênero' }}
+      </button>
+      <button mat-stroked-button color="warn" type="button" (click)="onCancel()" *ngIf="generoForm.id">
+        Cancelar
+      </button>
+    </div>
+  </form>
+
+  <!-- Tabela de Gêneros -->
+  <table mat-table *ngIf="generos$ | async as generos" [dataSource]="generos" class="full-width-table">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let genero"> {{ genero.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let genero">
+        <button mat-icon-button color="primary" (click)="onEdit(genero)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="onRemove(genero.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['name','acoes']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['name','acoes'];"></tr>
+  </table>
+</div>
+
+
+
 
 

@@ -18,6 +18,15 @@ const routes: Routes = [
   {path: 'visualizarDetalhesPedido', component:VisualizarDetalhesPedido},
   {path: 'atualizarStatusPedido', component:AtualizarStatusPedido},
   {path: 'gerenciarGeneroMusical', component:GerenciarGeneroMusical},
+/*
+  path: 'gerenciarGeneroMusical/new',
+    component: GerenciarGeneroMusical
+  },
+  {
+    path: 'gerenciarGeneroMusical/edit/:id',
+    component: GerenciarGeneroMusical,
+    resolve: { genero: GeneroResolver }  // Aqui o resolver é usado
+  } */
 
 ];
 
