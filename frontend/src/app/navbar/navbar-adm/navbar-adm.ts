@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 })
 export class NavbarAdm {
 
-
    constructor(private router: Router) {}
 
   logout() {
@@ -23,12 +22,4 @@ export class NavbarAdm {
     // Redirecionar para a página home
     this.router.navigate(['/']);
   }
-
-  scrollTo(sectionId: string) {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-}
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe, NgFor, CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -8,12 +8,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProdutoService } from '../services/produto-service';
 import { Produto } from '../model/produto-model';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
 
 @Component({
   selector: 'app-remover-produto',
-  imports: [ MatFormFieldModule, MatInputModule, MatSelectModule,
-    MatButtonModule, MatIconModule, AsyncPipe, NgFor, FormsModule, CommonModule ],
+  imports: [MatFormFieldModule, MatInputModule, MatSelectModule,
+    MatButtonModule, MatIconModule, AsyncPipe, NgFor, FormsModule, CommonModule, NavbarInternoAdm],
   templateUrl: './remover-produto.html',
   styleUrl: './remover-produto.scss',
 })

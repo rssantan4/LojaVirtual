@@ -36,3 +36,52 @@
 .persson-item{
   color: black;
 }
+
+
+
+
+
+/* botão voltar */
+.btn-voltar mat-icon {
+  font-size: 28px;
+  color: #f28444;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.btn-voltar:hover mat-icon {
+  transform: scale(1.2);
+  color: #ff9e5d;
+}
+
+/* título interno */
+.titulo-interna {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 16px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* botão sair */
+.btn-sair mat-icon {
+  font-size: 28px;
+  color: #f28444;
+  transition: transform 0.2s, color 0.2s;
+}
+
+
+.btn-voltar{
+  background-color: black;
+  border: none;
+  margin-left: 140px;
+}
+
+.btn-sair:hover mat-icon {
+  transform: scale(1.2);
+  color: #ff9e5d;
+}
+
+/* espaçador flex */
+.spacer {
+  flex: 1 1 auto;
+}

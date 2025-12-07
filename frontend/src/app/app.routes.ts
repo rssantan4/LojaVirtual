@@ -17,7 +17,7 @@ import { CarrinhoCompras } from './Carrinho-compras/carrinho-compras';
 
 import { LayoutPublico } from './layout-publico/layout-publico';
 import { LayoutCliente } from './layout-cliente/layout-cliente';
-import { LayoutAdm } from './layout-adm/layout-adm';
+
 
 export const routes: Routes = [
 
@@ -50,15 +50,11 @@ export const routes: Routes = [
 
   // 🔹 ROTAS ADM (navbar adm)
   {
-    path: 'areaAdm',
-    component: LayoutAdm,
-    children: [
-      {
-        path: '',
-        loadChildren: () =>
-          import('./area-adm/area-adm-module').then(m => m.AreaAdmModule)
-      }
-    ]
+
+  path: 'areaAdm',
+  loadChildren: () =>
+    import('./area-adm/area-adm-module').then(m => m.AreaAdmModule)
+
   },
 
   // 🔹 ROTAS SEM LAYOUT ALGUM

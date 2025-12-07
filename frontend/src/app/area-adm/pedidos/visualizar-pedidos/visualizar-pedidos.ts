@@ -1,11 +1,52 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Pedido } from '../model/pedido-model';
+import { PedidoService } from '../services/pedido-service';
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { MatOption, MatSelect } from "@angular/material/select";
+import { CommonModule, NgIf, NgFor, DecimalPipe, DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-visualizar-pedidos',
-  imports: [],
+  imports: [MatFormField, MatOption, MatLabel, MatSelect,
+     FormsModule, MatFormFieldModule, MatSelectModule, CommonModule,
+      NgIf, NgFor, DecimalPipe, DatePipe, MatCardModule, MatButtonModule   ],
   templateUrl: './visualizar-pedidos.html',
   styleUrl: './visualizar-pedidos.scss',
 })
-export class VisualizarPedidos {
+export class VisualizarPedidos implements OnInit{
 
+  pedidos: Pedido[] = [];
+  pedidosFiltrados: Pedido[] = [];
+  statusSelecionado: string = 'todos';
+
+  constructor(private pedidoService: PedidoService) {}
+
+  ngOnInit(): void {
+    this.carregarPedidos();
+  }
+
+  carregarPedidos(): void {
+    this.pedidoService.getPedidos().subscribe({
+      next: (lista) => {
+        this.pedidos = lista;
+        this.filtrarStatus();
+      },
+      error: (err) => console.error(err)
+    });
+  }
+
+  filtrarStatus(): void {
+    if (this.statusSelecionado === 'todos') {
+      this.pedidosFiltrados = this.pedidos;
+    } else {
+      this.pedidosFiltrados = this.pedidos.filter(
+        p => p.status === this.statusSelecionado
+      );
+    }
+  }
 }
