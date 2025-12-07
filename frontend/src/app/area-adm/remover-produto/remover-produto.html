@@ -1,1 +1,52 @@
-<p>remover-produto works!</p>
+<div class="container-remover">
+
+  <h2>Remover Produto</h2>
+
+  <!-- Campo para buscar produto -->
+  <mat-form-field  appearance="outline" class="campo-busca">
+    <mat-label>Buscar produto</mat-label>
+    <input matInput placeholder="Digite o nome do produto" [(ngModel)]="buscaProduto"
+      (input)="filtrarProdutos()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <!-- Lista de resultados -->
+  <div class="lista-produtos" *ngIf="produtosFiltrados.length > 0">
+    <div class="produto-item" *ngFor="let produto of produtosFiltrados">
+
+      <img [src]="produto.imagemUrl" alt="Imagem" class="produto-img">
+
+      <div class="produto-info">
+        <h3>{{ produto.nome }}</h3>
+        <p><strong>Preço:</strong> R$ {{ produto.preco | number:'1.2-2' }}</p>
+        <p><strong>Gênero Musical:</strong> {{ produto.generoMusical }}</p>
+        <p><strong>Estoque:</strong> {{ produto.estoque}}</p>
+      </div>
+
+      <button mat-raised-button color="warn" class = "button-color" (click)="abrirConfirmacao(produto)">
+        Remover
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Nenhum resultado -->
+  <p class="nenhum" *ngIf="buscaProduto && produtosFiltrados.length === 0">
+    Nenhum produto encontrado.
+  </p>
+
+  <!-- Modal de confirmação -->
+  <div class="modal-bg" *ngIf="produtoSelecionado">
+    <div class="modal">
+      <h3>Confirmar Remoção</h3>
+      <p>Tem certeza que deseja remover o produto <strong>{{ produtoSelecionado.nome }}</strong>?</p>
+
+      <div class="botoes-modal">
+        <button class = "button-color" mat-button (click)="produtoSelecionado = null">Cancelar</button>
+        <button class = "button-color" mat-raised-button color="#f28444" (click)="removerProduto()">Remover</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+

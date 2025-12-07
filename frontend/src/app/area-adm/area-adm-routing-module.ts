@@ -8,6 +8,7 @@ import { VisualizarDetalhesPedido } from './visualizar-detalhes-pedido/visualiza
 import { AtualizarStatusPedido } from './atualizar-status-pedido/atualizar-status-pedido';
 import { GerenciarGeneroMusical } from './gerenciar-genero-musical/gerenciar-genero-musical';
 import { AreaAdm } from './area-adm/area-adm';
+import { VisualizarPedidos } from './visualizar-pedidos/visualizar-pedidos';
 
 const routes: Routes = [
   { path: '', component: AreaAdm },
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'visualizarDetalhesPedido', component:VisualizarDetalhesPedido},
   {path: 'atualizarStatusPedido', component:AtualizarStatusPedido},
   {path: 'gerenciarGeneroMusical', component:GerenciarGeneroMusical},
+  {path: 'visualizarPedidos', component: VisualizarPedidos},
 /*
   path: 'gerenciarGeneroMusical/new',
     component: GerenciarGeneroMusical

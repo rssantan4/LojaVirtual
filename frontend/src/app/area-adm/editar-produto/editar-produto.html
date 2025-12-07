@@ -1,1 +1,70 @@
-<p>editar-produto works!</p>
+<div class="container-editar">
+
+  <h2>Editar Produto</h2>
+
+  <!-- Campo para buscar produto -->
+  <mat-form-field appearance="outline" class="campo-busca">
+    <mat-label>Buscar produto</mat-label>
+    <input matInput placeholder="Digite o nome do produto" [(ngModel)]="buscaProduto"
+      (input)="filtrarProdutos()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <!-- Lista de produtos filtrados -->
+  <div class="lista-produtos" *ngIf="produtosFiltrados.length > 0">
+    <div class="produto-item" *ngFor="let produto of produtosFiltrados">
+
+      <img [src]="produto.imagemUrl" alt="Imagem" class="produto-img">
+
+      <div class="produto-info">
+        <h3>{{ produto.nome }}</h3>
+        <p><strong>Preço:</strong> R$ {{ produto.preco | number:'1.2-2' }}</p>
+        <p><strong>Gênero Musical:</strong> {{ produto.generoMusical }}</p>
+        <p><strong>Estoque:</strong> {{ produto.estoque }}</p>
+      </div>
+
+      <button mat-raised-button color="primary" class="button-color" (click)="abrirConfirmacao(produto)">
+        Editar
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Nenhum resultado -->
+  <p class="nenhum" *ngIf="buscaProduto && produtosFiltrados.length === 0">
+    Nenhum produto encontrado.
+  </p>
+
+  <!-- Modal de edição -->
+  <div class="modal-bg" *ngIf="produtoSelecionado">
+    <div class="modal">
+      <h3>Editar Produto</h3>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="produtoSelecionado!.nome">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Preço</mat-label>
+        <input matInput type="number" [(ngModel)]="produtoSelecionado!.preco">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Gênero Musical</mat-label>
+        <input matInput [(ngModel)]="produtoSelecionado!.generoMusical">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Estoque</mat-label>
+        <input matInput type="number" [(ngModel)]="produtoSelecionado!.estoque">
+      </mat-form-field>
+
+      <div class="botoes-modal">
+        <button mat-button (click)="produtoSelecionado = null">Cancelar</button>
+        <button mat-raised-button color="primary" (click)="EditarProduto()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+</div>

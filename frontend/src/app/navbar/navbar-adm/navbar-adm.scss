@@ -1,0 +1,84 @@
+/* Toolbar */
+.toolbar {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo/título à esquerda, ícone à direita */
+  padding: 10px 20px;
+  flex-wrap: wrap; /* permite que os botões do meio quebrem linha */
+  height: 100px;
+}
+
+/* Container da esquerda: logo + título */
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0; /* não encolhe */
+}
+
+/* Logo */
+.logo {
+  width: 70px;
+  height: auto;
+}
+
+/* Título */
+.title {
+  font-family: 'Arial', sans-serif;
+  font-size: 30px;
+  color: #f28444;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Container central: botões do admin */
+.button-escolha {
+  display: flex;
+  flex-wrap: wrap; /* botões que não cabem vão para baixo */
+  gap: 15px;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+/* Cada botão não quebra internamente */
+.button-escolha button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.button-escolha button span:hover {
+  color: #f28444;
+  transition: color 0.3s;
+}
+
+/* Container da direita: ícone logout/perfil */
+.icones-escolha {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0; /* não encolhe */
+}
+
+.persson, .cart {
+  color: white;
+  cursor: pointer;
+  font-size: 26px;
+}
+
+.persson:hover, .persson-item:hover, .cart:hover {
+  color: #f28444;
+}
+
+.persson-item {
+  color: black;
+}
+
+
+

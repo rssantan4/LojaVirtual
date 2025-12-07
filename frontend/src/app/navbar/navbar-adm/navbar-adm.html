@@ -1,1 +1,42 @@
-<p>navbar-adm works!</p>
+<mat-toolbar class = toolbar>
+  <!-- Logo da loja -->
+
+  <img src="assets/img/fotos-do-site/logo.png" alt="Mix&Play Logo" class="logo">
+  <!-- Nome da loja -->
+  <span class="title">Onda</span>
+  <span class="spacer"></span>
+  <div class = "button-escolha">
+  <button mat-button (click)="scrollTo('cadastrarProduto')">
+    <span>Cadastrar Produto</span>
+  </button>
+  <button mat-button (click)="scrollTo('editarProduto')">
+    <span>Editar Produto</span>
+  </button>
+  <button mat-button (click)="scrollTo('removerProduto')">
+    <span>Remover Produto</span>
+  </button>
+  <button mat-button (click)="scrollTo('gerenciarGeneroMusical')">
+    <span>Gerenciar Gênero Musical</span>
+  </button>
+  <button mat-button (click)="scrollTo('visualizarPedidos')">
+    <span>Visualizar Pedidos</span>
+  </button>
+  <button mat-button (click)="scrollTo('atualizarStatusPedido')">
+    <span>Atualizar Status</span>
+  </button>
+  <button mat-button (click)="scrollTo('visualizarDetalhesProdutos')">
+    <span>Visualizar Datalhes do Pedidos</span>
+  </button>
+</div>
+
+<div class = "icones-escolha">
+<button class = "persson-button" mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon class = "persson">account_circle</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <button class="persson-item" mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
+
+</div>
+</mat-toolbar>

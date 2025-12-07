@@ -1,0 +1,119 @@
+/* Container principal */
+.container-listaProdutos {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Título */
+.container-listaProdutos h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Campo de busca */
+.campo-busca {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.campo-busca mat-icon {
+  color: #f28444; /* ícone laranja */
+}
+
+.campo-busca input {
+  color: #f28444; /* texto laranja */
+}
+
+/* Lista de produtos */
+.lista-produtos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Item de produto */
+.produto-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fafafa;
+}
+
+.produto-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.produto-info {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.produto-info h3 {
+  margin: 0 0 5px 0;
+}
+
+.produto-info p {
+  margin: 2px 0;
+}
+
+/* Botão de editar */
+.button-color {
+  color: #f28444;
+}
+
+/* Nenhum resultado */
+.nenhum {
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
+}
+
+/* Modal de edição */
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Campos dentro do modal */
+.modal mat-form-field {
+  width: 100%;
+}
+
+/* Botões do modal */
+.botoes-modal {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.botoes-modal button {
+  min-width: 100px;
+}
