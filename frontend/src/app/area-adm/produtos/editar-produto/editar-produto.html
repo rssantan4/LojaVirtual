@@ -1,3 +1,4 @@
+<app-navbar-interno-adm></app-navbar-interno-adm>
 <div class="container-editar">
 
   <h2>Editar Produto</h2>
@@ -21,6 +22,7 @@
         <p><strong>Preço:</strong> R$ {{ produto.preco | number:'1.2-2' }}</p>
         <p><strong>Gênero Musical:</strong> {{ produto.generoMusical }}</p>
         <p><strong>Estoque:</strong> {{ produto.estoque }}</p>
+        <p><strong>Descrição: </strong>{{produto.descricao}}</p>
       </div>
 
       <button mat-raised-button color="primary" class="button-color" (click)="abrirConfirmacao(produto)">
@@ -60,9 +62,15 @@
         <input matInput type="number" [(ngModel)]="produtoSelecionado!.estoque">
       </mat-form-field>
 
+      <mat-form-field appearance="outline">
+        <mat-label>Descrição</mat-label>
+        <input matInput [(ngModel)]="produtoSelecionado!.descricao">
+      </mat-form-field>
+
+
       <div class="botoes-modal">
-        <button mat-button (click)="produtoSelecionado = null">Cancelar</button>
-        <button mat-raised-button color="primary" (click)="EditarProduto()">Salvar</button>
+        <button class="button-color" mat-raised-button (click)="produtoSelecionado = null">Cancelar</button>
+        <button class="button-color" mat-raised-button color="primary" (click)="EditarProduto()">Salvar</button>
       </div>
     </div>
   </div>

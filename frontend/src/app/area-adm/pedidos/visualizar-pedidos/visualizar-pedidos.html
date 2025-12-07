@@ -1,3 +1,4 @@
+<app-navbar-interno-adm></app-navbar-interno-adm>
 <div class="container-pedidos">
 
   <h2>Visualizar Pedidos</h2>
@@ -29,8 +30,18 @@
         </p>
       </div>
 
+<button class = "button-color" mat-button color="primary" (click)="abrirDetalhes(p)">
+        Ver Detalhes
+      </button>
     </mat-card>
   </div>
+
+  <!-- Modal -->
+  <app-visualizar-detalhes-pedido
+    *ngIf="pedidoSelecionado"
+    [pedido]="pedidoSelecionado"
+    (fecharModal)="fecharModal()">
+  </app-visualizar-detalhes-pedido>
 
   <!-- Caso não haja pedidos -->
   <p class="nenhum" *ngIf="pedidosFiltrados.length === 0">

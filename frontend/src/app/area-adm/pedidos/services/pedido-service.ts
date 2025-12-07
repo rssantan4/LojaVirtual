@@ -23,16 +23,58 @@ export class PedidoService {
     {
       id: '1',
       clienteId: '101',
-      total: 199.90,
       data: new Date(),
-      status: 'pendente'
+      status: 'pendente',
+      itens:[
+        {
+          produto:{
+            id: 'A1',
+            nome: "Hamilton",
+            preco: 99.95,
+            descricao: 'Muito bom',
+            estoque: 10,
+            generoMusical: "Clássica",
+            imagemUrl : 'assets/img/fotos-produtos/produto1.jpeg'
+          },
+          quantidadeComprada: 2
+        },
+
+        {
+          produto:{
+            id: 'A2',
+            nome: "Madona",
+            preco: 99.95,
+            descricao: 'Muito bom',
+            estoque: 30,
+            generoMusical: "MPB",
+            imagemUrl : 'assets/img/fotos-produtos/produto3.jpeg'
+          },
+          quantidadeComprada: 2
+        }
+      ],
+      total: 399.80,
     },
-    {
+
+     {
       id: '2',
       clienteId: '102',
-      total: 349.50,
       data: new Date(),
-      status: 'enviado'
+      status: 'enviado',
+      itens:[
+        {
+          produto:{
+            id: 'A2',
+            nome: "Chico Buarque",
+            preco: 99.95,
+            descricao: 'Muito bom',
+            estoque: 30,
+            generoMusical: "MPB",
+            imagemUrl : 'assets/img/fotos-produtos/produto2.jpeg'
+          },
+          quantidadeComprada: 1
+        }
+      ],
+      total: 99.95,
     }
   ];
 

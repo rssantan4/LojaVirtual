@@ -7,10 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
 
 @Component({
   selector: 'app-visualizar-produtos',
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, FormsModule, CommonModule ],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, FormsModule, CommonModule, NavbarInternoAdm],
   templateUrl: './visualizar-produtos.html',
   styleUrl: './visualizar-produtos.scss',
 })

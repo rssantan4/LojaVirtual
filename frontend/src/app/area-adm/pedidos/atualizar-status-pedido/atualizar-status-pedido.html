@@ -1,6 +1,7 @@
+<app-navbar-interno-adm></app-navbar-interno-adm>
 <div class="container-pedidos">
 
-  <h2>Visualizar Pedidos</h2>
+  <h2>Atualizar Status do Pedido</h2>
 
   <!-- Filtro de Status -->
   <mat-form-field appearance="outline" class="filtro-status">
@@ -31,19 +32,19 @@
 
       <!-- Ações conforme o status -->
       <div class="acoes">
-        <button mat-raised-button color="accent"
+        <button  class="button-color" mat-raised-button color="accent"
           *ngIf="p.status === 'pendente'"
           (click)="atualizarStatus(p, 'processando')">
           Processar
         </button>
 
-        <button mat-raised-button color="primary"
+        <button class="button-color" mat-raised-button color="primary"
           *ngIf="p.status === 'processando'"
           (click)="atualizarStatus(p, 'enviado')">
           Enviar
         </button>
 
-        <button mat-raised-button color="warn"
+        <button class="button-color" mat-raised-button color="warn"
           *ngIf="p.status !== 'enviado' && p.status !== 'cancelado'"
           (click)="atualizarStatus(p, 'cancelado')">
           Cancelar

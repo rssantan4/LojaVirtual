@@ -10,11 +10,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
+import { VisualizarDetalhesPedido } from "../visualizar-detalhes-pedido/visualizar-detalhes-pedido";
 @Component({
   selector: 'app-visualizar-pedidos',
   imports: [MatFormField, MatOption, MatLabel, MatSelect,
-     FormsModule, MatFormFieldModule, MatSelectModule, CommonModule,
-      NgIf, NgFor, DecimalPipe, DatePipe, MatCardModule, MatButtonModule   ],
+    FormsModule, MatFormFieldModule, MatSelectModule, CommonModule,
+    NgIf, NgFor, DecimalPipe, DatePipe, MatCardModule, MatButtonModule, NavbarInternoAdm, VisualizarDetalhesPedido],
   templateUrl: './visualizar-pedidos.html',
   styleUrl: './visualizar-pedidos.scss',
 })
@@ -23,6 +25,7 @@ export class VisualizarPedidos implements OnInit{
   pedidos: Pedido[] = [];
   pedidosFiltrados: Pedido[] = [];
   statusSelecionado: string = 'todos';
+  pedidoSelecionado?: Pedido;  // para abrir o modal
 
   constructor(private pedidoService: PedidoService) {}
 
@@ -48,5 +51,13 @@ export class VisualizarPedidos implements OnInit{
         p => p.status === this.statusSelecionado
       );
     }
+  }
+
+   abrirDetalhes(pedido: Pedido) {
+    this.pedidoSelecionado = pedido;
+  }
+
+  fecharModal() {
+    this.pedidoSelecionado = undefined;
   }
 }

@@ -7,12 +7,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
 
 
 @Component({
   selector: 'app-editar-produto',
-  imports: [ MatFormFieldModule, FormsModule, MatButtonModule,
-    CommonModule,  MatInputModule, MatIconModule ],
+  imports: [MatFormFieldModule, FormsModule, MatButtonModule,
+    CommonModule, MatInputModule, MatIconModule, NavbarInternoAdm],
   templateUrl: './editar-produto.html',
   styleUrl: './editar-produto.scss',
 })

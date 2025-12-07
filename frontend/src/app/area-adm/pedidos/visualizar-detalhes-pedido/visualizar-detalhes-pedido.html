@@ -1,1 +1,30 @@
-<p>visualizar-detalhes-pedido works!</p>
+
+<div class="modal-bg" *ngIf="pedido">
+  <div class="modal">
+    <h3>Detalhes do Pedido #{{ pedido.id }}</h3>
+
+    <p><strong>Cliente:</strong> {{ pedido.clienteId }}</p>
+    <p><strong>Status: </strong> <span class="status {{ pedido.status }}">{{ pedido.status }}</span></p>
+    <p><strong>Data:</strong> {{ pedido.data | date:'dd/MM/yyyy HH:mm' }}</p>
+
+    <h4>Itens do Pedido: </h4>
+    <div class="itens-pedido">
+      <div class="item" *ngFor="let item of pedido.itens">
+        <img [src]="item.produto.imagemUrl" alt="{{ item.produto.nome }}" class="produto-img">
+        <div class="info-item">
+          <p><strong>Produto:</strong> {{ item.produto.nome }}</p>
+          <p><strong>Preço:</strong> R$ {{ item.produto.preco | number:'1.2-2' }}</p>
+          <p><strong>Quantidade Comprada:</strong> {{ item.quantidadeComprada }}</p>
+          <p><strong>Subtotal:</strong> R$ {{ item.produto.preco * item.quantidadeComprada | number:'1.2-2' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Total: R$ {{ pedido.total | number:'1.2-2' }}</h4>
+
+    <div class="botoes-modal">
+      <button mat-button color="primary" (click)="fechar()">Fechar</button>
+    </div>
+  </div>
+</div>
+

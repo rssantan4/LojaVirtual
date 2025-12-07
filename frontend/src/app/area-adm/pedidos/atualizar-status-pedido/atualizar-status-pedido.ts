@@ -10,10 +10,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
 
 @Component({
   selector: 'app-atualizar-status-pedido',
-  imports: [MatFormField, MatLabel, MatButtonModule,  MatOption, MatSelect, CommonModule,  MatCardModule, FormsModule],
+  imports: [MatFormField, MatLabel, MatButtonModule, MatOption, MatSelect, CommonModule, MatCardModule, FormsModule, NavbarInternoAdm],
   templateUrl: './atualizar-status-pedido.html',
   styleUrl: './atualizar-status-pedido.scss',
 })
