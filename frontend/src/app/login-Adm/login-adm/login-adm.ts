@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ValidarService } from '../services/validar-service';
 
 @Component({
   selector: 'app-login-adm',
@@ -25,8 +26,6 @@ export class LoginAdm {
   // Controle da visibilidade da senha
   hideSenha = signal(true);
 
-  constructor(private router: Router) { }
-
   // Função para alternar visibilidade da senha
   hide() {
     return this.hideSenha();
@@ -36,22 +35,29 @@ export class LoginAdm {
     event.preventDefault();
     this.hideSenha.set(!this.hideSenha());
   }
+  constructor(private router: Router, private adminService: ValidarService) { }
 
-  // Função chamada ao submeter o formulário
-  onSubmit() {
-    if (this.loginForm.valid) {
-      const email = this.loginForm.value.email;
-      const senha = this.loginForm.value.senha;
+onSubmit() {
+  if (this.loginForm.valid) {
+    const email = this.loginForm.value.email;
+    const senha = this.loginForm.value.senha;
 
-      console.log('Login solicitado com:', email, senha);
+    const valido = this.adminService.validarLogin(email, senha);
 
-      // Exemplo: navegar para outra página
-      // this.router.navigate(['/areaAdm']);
+    if (valido) {
+      console.log('Login feito com sucesso!');
+      this.loginForm.reset();      // 🔹 limpa o formulário
+      this.hideSenha.set(true);    // 🔹 reset visibilidade da senha
+      this.router.navigateByUrl('/areaAdm', { replaceUrl: true });
     } else {
-      console.log('Formulário inválido');
-      this.loginForm.markAllAsTouched();
+      console.log('Email ou senha incorretos');
     }
+
+  } else {
+    console.log('Formulário inválido');
+    this.loginForm.markAllAsTouched();
   }
+}
 
 
 }
