@@ -5,8 +5,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { GeneroMusical } from '../gerenciar-genero-musical/model/genero-musical';
-import { GerenciarGeneroMusicalService } from '../gerenciar-genero-musical/services/gerenciar-genero-musical-service';
+import { GeneroMusical } from '../../genero-musical/model/genero-musical';
+import { GeneroMusicalService } from '../../genero-musical/services/genero-musical-service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -30,7 +30,7 @@ export class CadastrarProduto implements OnInit{
     estoque: 0
   };
 
-  constructor(private generoService: GerenciarGeneroMusicalService) {}
+  constructor(private generoService: GeneroMusicalService) {}
 
   ngOnInit(): void {
     // usa o método do service — se o método não existir, chame this.generoService.generos$

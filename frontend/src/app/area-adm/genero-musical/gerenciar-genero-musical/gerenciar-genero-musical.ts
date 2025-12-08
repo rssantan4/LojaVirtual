@@ -6,8 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { GeneroMusical } from './model/genero-musical';
-import { GerenciarGeneroMusicalService } from './services/gerenciar-genero-musical-service';
+import { GeneroMusical } from '../model/genero-musical';
+import { GeneroMusicalService } from '../services/genero-musical-service';
 
 import { ErrorDialog } from '../../shared/components/error-dialog/error-dialog';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,59 +17,49 @@ import { catchError } from 'rxjs/operators';
 import { ConfirmationDialog } from '../../shared/components/confirmation-dialog/confirmation-dialog';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
+import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
 @Component({
   selector: 'app-gerenciar-genero-musical',
   imports: [FormsModule, MatFormFieldModule, MatInputModule,
-            MatButtonModule, MatIconModule, MatListModule,
-            MatTableModule,AsyncPipe,
+    MatButtonModule, MatIconModule, MatListModule,
+    MatTableModule, AsyncPipe,
     NgFor,
-    NgIf,],
+    NgIf, NavbarInternoAdm],
     standalone: true,
   templateUrl: './gerenciar-genero-musical.html',
   styleUrl: './gerenciar-genero-musical.scss',
 })
-export class GerenciarGeneroMusical /*implements OnInit*/ {
+export class GerenciarGeneroMusical implements OnInit {
 
+  generos$!: Observable<GeneroMusical[]>;
+  generoForm: GeneroMusical = { id: '', name: '' };
 
-private generos: GeneroMusical[] = [
-    { id: '1', name: 'Pop' },
-    { id: '2', name: 'Rock' },
-    { id: '3', name: 'Axé' },
-  ];
+  constructor(private generoService: GeneroMusicalService) {}
 
-  generos$ = new BehaviorSubject<GeneroMusical[]>(this.generos);
+  ngOnInit() {
+    this.generos$ = this.generoService.getAll();
+  }
 
-  generoForm: GeneroMusical = { id: '', name: '' }; // formulário de adicionar/editar
-
-  /** Adicionar ou editar */
   onSave() {
+    if (!this.generoForm.name.trim()) return;
+
     if (this.generoForm.id) {
-      // editar
-      const index = this.generos.findIndex(g => g.id === this.generoForm.id);
-      if (index > -1) {
-        this.generos[index] = { ...this.generoForm };
-      }
+      this.generoService.update(this.generoForm.id, this.generoForm.name);
     } else {
-      // adicionar
-      const novoId = (Math.max(...this.generos.map(g => +g.id)) + 1).toString();
-      this.generos.push({ ...this.generoForm, id: novoId });
+      this.generoService.add(this.generoForm.name);
     }
-    this.generos$.next([...this.generos]);
     this.onCancel();
   }
 
-  /** Editar */
   onEdit(genero: GeneroMusical) {
     this.generoForm = { ...genero };
   }
 
-  /** Remover */
-  onRemove(id: string) {
-    this.generos = this.generos.filter(g => g.id !== id);
-    this.generos$.next([...this.generos]);
+  onRemove(id: string | undefined) {
+    if (!id) return;
+    this.generoService.delete(id);
   }
 
-  /** Cancelar edição */
   onCancel() {
     this.generoForm = { id: '', name: '' };
   }

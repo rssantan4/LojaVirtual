@@ -33,7 +33,7 @@ export class PedidoService {
             preco: 99.95,
             descricao: 'Muito bom',
             estoque: 10,
-            generoMusical: "Clássica",
+            generoMusical: { id: '1', name: 'Pop' },
             imagemUrl : 'assets/img/fotos-produtos/produto1.jpeg'
           },
           quantidadeComprada: 2
@@ -46,7 +46,7 @@ export class PedidoService {
             preco: 99.95,
             descricao: 'Muito bom',
             estoque: 30,
-            generoMusical: "MPB",
+            generoMusical: { id: '2', name: 'MPB' },
             imagemUrl : 'assets/img/fotos-produtos/produto3.jpeg'
           },
           quantidadeComprada: 2
@@ -68,7 +68,7 @@ export class PedidoService {
             preco: 99.95,
             descricao: 'Muito bom',
             estoque: 30,
-            generoMusical: "MPB",
+            generoMusical: { id: '2', name: 'MPB' },
             imagemUrl : 'assets/img/fotos-produtos/produto2.jpeg'
           },
           quantidadeComprada: 1

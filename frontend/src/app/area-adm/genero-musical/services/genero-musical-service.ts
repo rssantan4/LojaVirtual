@@ -2,43 +2,46 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, delay, first, tap } from 'rxjs';
 import { GeneroMusical } from '../model/genero-musical';
+
 @Injectable({
   providedIn: 'root',
 })
-export class GerenciarGeneroMusicalService {
+export class GeneroMusicalService {
 
 private generos: GeneroMusical[] = [
     { id: "1", name: 'Pop' },
-    { id: "2", name: 'Eletronico' },
+    { id: "2", name: 'Eletrônico' },
     { id: "3", name: 'Axé' }
   ];
 
+  private generosSubject = new BehaviorSubject<GeneroMusical[]>(this.generos);
 
-generos$ = new BehaviorSubject<GeneroMusical[]>(this.generos);
+  constructor() {}
 
-getGeneros(): Observable<GeneroMusical[]> {
-  return this.generos$.asObservable();
-}
-
-add(genero: GeneroMusical) {
-  const novoId = (Math.max(...this.generos.map(g => +g.id)) + 1).toString();
-  genero.id = novoId;
-  this.generos.push(genero);
-  this.generos$.next(this.generos);
-}
-
-edit(genero: GeneroMusical) {
-  const index = this.generos.findIndex(g => g.id === genero.id);
-  if (index > -1) {
-    this.generos[index] = genero;
-    this.generos$.next(this.generos);
+  getAll(): Observable<GeneroMusical[]> {
+    return this.generosSubject.asObservable();
   }
-}
 
-remove(id: string) {
-  this.generos = this.generos.filter(g => g.id !== id);
-  this.generos$.next(this.generos);
-}
+  add(name: string) {
+    const novoId = (Math.max(...this.generos.map(g => +g.id)) + 1).toString();
+    const novoGenero: GeneroMusical = { id: novoId, name };
+    this.generos.push(novoGenero);
+    this.generosSubject.next(this.generos);
+  }
+
+  update(id: string, name: string) {
+    const index = this.generos.findIndex(g => g.id === id);
+    if (index > -1) {
+      this.generos[index] = { id, name };
+      this.generosSubject.next(this.generos);
+    }
+  }
+
+  delete(id: string) {
+    this.generos = this.generos.filter(g => g.id !== id);
+    this.generosSubject.next(this.generos);
+  }
+
   /*  ############ LIBERAR QUANDO TIVER O BANCO ESSA PARTE ########################
   private readonly API = '/api/generos';
 
@@ -74,4 +77,12 @@ remove(id: string) {
   remove(id: string){
  return this.httpClient.delete(`${this.API}/${id}`);
  } */
+
+ /*
+
+trocar com backend:
+ getGeneros(): Observable<GeneroMusical[]> {
+    return this.httpCliente.get<GeneroMusical[]>(this.API);
+  } */
+
 }

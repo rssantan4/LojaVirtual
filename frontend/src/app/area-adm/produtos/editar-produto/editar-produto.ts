@@ -8,12 +8,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
-
-
+import { GeneroMusicalService } from '../../genero-musical/services/genero-musical-service';
+import { GeneroMusical } from '../../genero-musical/model/genero-musical';
+import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-editar-produto',
   imports: [MatFormFieldModule, FormsModule, MatButtonModule,
-    CommonModule, MatInputModule, MatIconModule, NavbarInternoAdm],
+    CommonModule, MatSelectModule, MatInputModule, MatIconModule, NavbarInternoAdm,],
   templateUrl: './editar-produto.html',
   styleUrl: './editar-produto.scss',
 })
@@ -23,14 +24,24 @@ export class EditarProduto {
     produtosFiltrados: Produto[] = [];  // Produtos filtrados pela busca
     buscaProduto: string = '';          // Valor do input de busca
     produtoSelecionado: Produto | null = null; // Produto selecionado para confirmar remoção
+    generosMusicais: GeneroMusical[] = [];  // Lista de gêneros do service
 
-    constructor(private produtoService: ProdutoService) { }
+    constructor(
+    private produtoService: ProdutoService,
+    private generoService: GeneroMusicalService
+  ) {}
 
     ngOnInit(): void {
+      // Carrega produtos
       this.produtoService.getProdutos().subscribe(produtos => {
         this.produtos = produtos;
         this.produtosFiltrados = produtos;
       });
+
+      // Carrega gêneros musicais
+    this.generoService.getGeneros().subscribe(generos => {
+      this.generosMusicais = generos;
+    });
     }
 
     // Filtra os produtos conforme o input
@@ -50,7 +61,7 @@ export class EditarProduto {
   if (this.produtoSelecionado) {
     this.produtoService.updateProduto(this.produtoSelecionado); // atualiza a lista local
     this.filtrarProdutos(); // atualiza produtosFiltrados
-    this.produtoSelecionado = null; // fecha modal
+this.produtoSelecionado.nome = this.capitalizeFirstLetter(this.produtoSelecionado.nome);
   }
 }
 
@@ -60,4 +71,21 @@ capitalizeFirstLetter(value: string): string {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
+
+carregarGeneros() {
+    this.generoService.getGeneros().subscribe({
+      next: (lista) => this.generosMusicais = lista,
+      error: (err) => console.error('Erro ao carregar gêneros', err)
+    });
+
+
+
+/*
+
+trocar com backend:
+ getGeneros(): Observable<GeneroMusical[]> {
+    return this.httpCliente.get<GeneroMusical[]>(this.API);
+  } */
+
+}
 }

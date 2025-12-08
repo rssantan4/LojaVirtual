@@ -12,8 +12,24 @@ export class ProdutoService {
   constructor(private httpClient: HttpClient) {}
 
    private produtos: Produto[] = [
-    { id: "1", nome: 'Hamilton', preco: 99.9, descricao: 'Musica otima', estoque: 100, generoMusical: 'Pop', imagemUrl: 'assets/img/fotos-produtos/produto1.jpeg' },
-    { id: "2", nome: 'Arlindo Cruz', preco: 199.9, descricao: 'Musica otima', estoque: 300, generoMusical: 'MPB', imagemUrl: 'assets/img/fotos-produtos/produto10.jpeg' }
+     {
+    id: "1",
+    nome: 'Hamilton',
+    preco: 99.9,
+    descricao: 'Musica ótima',
+    estoque: 100,
+    generoMusical: { id: '1', name: 'Pop' },
+    imagemUrl: 'assets/img/fotos-produtos/produto1.jpeg'
+  },
+  {
+    id: "2",
+    nome: 'Arlindo Cruz',
+    preco: 199.9,
+    descricao: 'Musica ótima',
+    estoque: 300,
+    generoMusical: { id: '2', name: 'MPB' },
+    imagemUrl: 'assets/img/fotos-produtos/produto10.jpeg'
+  }
   ];
 
 
@@ -74,5 +90,6 @@ export class ProdutoService {
   /* deleteProduto(id: string){
  return this.httpClient.delete(`${this.API}/${id}`);
  } */
+
 }
 
