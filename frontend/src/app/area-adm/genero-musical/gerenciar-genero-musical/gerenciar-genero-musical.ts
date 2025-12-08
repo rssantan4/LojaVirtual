@@ -6,7 +6,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { GeneroMusical } from '../model/genero-musical';
 import { GeneroMusicalService } from '../services/genero-musical-service';
 
 import { ErrorDialog } from '../../shared/components/error-dialog/error-dialog';
@@ -18,6 +17,7 @@ import { ConfirmationDialog } from '../../shared/components/confirmation-dialog/
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
+import { GeneroMusical } from '../../../models/generoMusical-models';
 @Component({
   selector: 'app-gerenciar-genero-musical',
   imports: [FormsModule, MatFormFieldModule, MatInputModule,
@@ -32,7 +32,7 @@ import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-inte
 export class GerenciarGeneroMusical implements OnInit {
 
   generos$!: Observable<GeneroMusical[]>;
-  generoForm: GeneroMusical = { id: '', name: '' };
+  generoForm: GeneroMusical = { id: 0, nome: '' };
 
   constructor(private generoService: GeneroMusicalService) {}
 
@@ -41,7 +41,7 @@ export class GerenciarGeneroMusical implements OnInit {
   }
 
   onSave() {
-    const nome = this.generoForm.name?.trim();
+    const nome = this.generoForm.nome?.trim();
     if (!nome) return;
 
     if (this.generoForm.id) {
@@ -62,7 +62,7 @@ export class GerenciarGeneroMusical implements OnInit {
   }
 
   onCancel() {
-    this.generoForm = { id: '', name: '' };
+    this.generoForm = { id: 0, nome: '' };
   }
 
 

@@ -6,8 +6,8 @@
   <form class="form" (ngSubmit)="onSave()">
     <mat-form-field appearance="outline" class="campo">
       <mat-label>Nome do gênero</mat-label>
-      <input matInput [(ngModel)]="generoForm.name" name="name" required
-      (ngModelChange)="generoForm.name = capitalizeFirstLetter(generoForm.name)">
+      <input matInput [(ngModel)]="generoForm.nome" name="name" required
+      (ngModelChange)="generoForm.nome = capitalizeFirstLetter(generoForm.nome)">
     </mat-form-field>
 
     <div class="actions-form">
