@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, delay, first, tap } from 'rxjs';
-import { GeneroMusical } from '../model/genero-musical';
+import { GeneroMusical } from '../../../models/generoMusical-models';
+
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +10,9 @@ import { GeneroMusical } from '../model/genero-musical';
 export class GeneroMusicalService {
 
 private generos: GeneroMusical[] = [
-    { id: "1", name: 'Pop' },
-    { id: "2", name: 'Eletrônico' },
-    { id: "3", name: 'Axé' }
+    { id: 1, nome: 'Pop' },
+    { id: 2, nome: 'Eletrônico' },
+    { id: 3, nome: 'Axé' }
   ];
 
   private generosSubject = new BehaviorSubject<GeneroMusical[]>([...this.generos]);
@@ -23,8 +24,9 @@ private generos: GeneroMusical[] = [
     return this.generosSubject.asObservable();
   }
 
+  //Ana alterou de string para converter em number
   add(genero: GeneroMusical) {
-    const novoId = (Math.max(...this.generos.map(g => +g.id)) + 1).toString();
+    const novoId = (Math.max(...this.generos.map(g => +g.id)) + 1);
     genero.id = novoId;
     this.generos.push(genero);
     this.generosSubject.next([...this.generos]); // clonar para disparar atualização
@@ -38,7 +40,7 @@ private generos: GeneroMusical[] = [
     }
   }
 
-  remove(id: string) {
+  remove(id: number) {
     this.generos = this.generos.filter(g => g.id !== id);
     this.generosSubject.next([...this.generos]);
   }
