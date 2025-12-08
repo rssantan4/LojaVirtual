@@ -28,6 +28,7 @@ export class VisualizarProdutos {
     ngOnInit(): void {
       this.produtoService.getProdutos().subscribe(produtos => {
         this.produtos = produtos;
+        console.log(produtos);
         this.produtosFiltrados = produtos;
       });
     }

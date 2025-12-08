@@ -1,99 +1,44 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, first, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Produto } from '../../../models/produto-model';
 @Injectable({
   providedIn: 'root',
 })
 export class ProdutoService {
+  private readonly API = 'http://localhost:8080/api/produtos';
 
-  private readonly API = 'api/produtos';
+  constructor(private http: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) {}
-
-   private produtos: Produto[] = [
-     {
-    id: 1,
-    nome: 'Hamilton',
-    preco: 99.9,
-    descricao: 'Musica ótima',
-    estoque: 100,
-    artista:'Lin Mannuel',
-    generoMusical: { id: 1, nome: 'Pop' },
-    imagemUrl: 'assets/img/fotos-produtos/produto1.jpeg'
-  },
-  {
-    id: 2,
-    nome: 'Mais tocadas',
-    preco: 199.9,
-    descricao: 'Musica ótima',
-    artista:'Arlindo Cruz',
-    estoque: 300,
-    generoMusical: { id: 2, nome: 'MPB' },
-    imagemUrl: 'assets/img/fotos-produtos/produto10.jpeg'
-  }
-  ];
-
-
-  private produtosSubject = new BehaviorSubject<Produto[]>(this.produtos);
-
-  // Retorna um Observable para os componentes se inscreverem
+  // 1. Listar todos os produtos
   getProdutos(): Observable<Produto[]> {
-    return this.produtosSubject.asObservable();
-    // quando integrar backend, troque por:
-    // return this.httpClient.get<Produto[]>('/api/produtos');
-  }
-  /*list(){
-    return this.httpClient.get<Produto[]>(this.API).pipe(
-      first(),
-      delay(10000),
-
-    );
-  }*/
-
-  // Adiciona um produto (mock). Gera id como string.
-  addProduto(produto: Produto): void {
-    produto.id = new Date().getTime(); // id string temporário
-    // ou: produto.id = crypto.randomUUID(); // se quiser UUID (navegador moderno)
-    this.produtos.push(produto);
-    this.produtosSubject.next(this.produtos);
-    // return this.httpClient.post('/api/produtos', produto);
-
+    return this.http.get<Produto[]>(this.API);
   }
 
-  /*  // trocar com backend:
-  private addProduto(record: Partial<Produto>){
- return this.httpClient.post<Produto>(this.API, record);
- }*/
-
-  // Atualiza produto existente — só atualiza caso encontre
-  updateProduto(produto: Produto): void {
-    const index = this.produtos.findIndex(p => p.id === produto.id);
-    if (index !== -1) {
-      this.produtos[index] = produto;
-      this.produtosSubject.next(this.produtos);
-    } else {
-      console.warn('Produto não encontrado para update:', produto.id);
-    }
-    // com backend: return this.httpClient.put(`/api/produtos/${produto.id}`, produto);
+  // 2. Buscar produto por ID
+  getProdutoById(id: number): Observable<Produto> {
+    return this.http.get<Produto>(`${this.API}/${id}`);
   }
-  /*
-   // trocar com backend:
-   private updateProduto(record: Partial<Produto>){
- return this.httpClient.put<Produto>(`${this.API}/${record.id}`, record);
- }
-  */
 
-  // Remove por id (string)
-  deleteProduto(id: number): void {
-    this.produtos = this.produtos.filter(p => p.id !== id);
-    this.produtosSubject.next(this.produtos);
-    // com backend: return this.httpClient.delete(`/api/produtos/${id}`);
+  // 3. Buscar produtos por nome
+  buscarPorNome(nome: string): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${this.API}/buscar?nome=${nome}`);
   }
-  // trocar com backend:
-  /* deleteProduto(id: string){
- return this.httpClient.delete(`${this.API}/${id}`);
- } */
+
+  // 4. Criar produto novo
+  addProduto(produto: Produto): Observable<Produto> {
+    return this.http.post<Produto>(this.API, produto);
+  }
+
+  // 5. Atualizar produto existente
+  updateProduto(produto: Produto): Observable<Produto> {
+    return this.http.put<Produto>(`${this.API}/${produto.id}`, produto);
+  }
+
+  // 6. Deletar produto
+  deleteProduto(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.API}/${id}`);
+  }
 
 }
 
