@@ -20,7 +20,7 @@
       <div class="produto-info">
         <h3>{{ produto.nome }}</h3>
         <p><strong>Preço:</strong> R$ {{ produto.preco | number:'1.2-2' }}</p>
-        <p><strong>Gênero Musical:</strong> {{ produto.generoMusical.name }}</p>
+        <p><strong>Gênero Musical:</strong> {{ produto.generoMusical.nome }}</p>
         <p><strong>Estoque:</strong> {{ produto.estoque }}</p>
         <p><strong>Descrição: </strong>{{produto.descricao}}</p>
       </div>
@@ -62,7 +62,7 @@
   <mat-label>Gênero Musical</mat-label>
   <mat-select [(ngModel)]="produtoSelecionado!.generoMusical" name="genero" required>
     <mat-option *ngFor="let genero of generosMusicais" [value]="genero">
-      {{ genero.name }}
+      {{ genero.nome }}
     </mat-option>
   </mat-select>
   <mat-error *ngIf="!produtoSelecionado!.generoMusical?.id">
