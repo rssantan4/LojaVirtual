@@ -51,6 +51,10 @@ export class RemoverProduto {
       // Atualiza a lista de produtos local
       this.produtos = this.produtos.filter(p => p.id !== this.produtoSelecionado!.id);
       this.filtrarProdutos(); // atualiza produtosFiltrados
+
+    alert('Produto Removido com Sucesso');
+
+
       this.produtoSelecionado = null; // fecha modal
     }
 }
