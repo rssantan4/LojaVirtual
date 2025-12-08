@@ -54,19 +54,48 @@ export class EditarProduto {
     }
 
     // Abre modal de confirmação
-    abrirConfirmacao(produto: Produto): void {
-      this.produtoSelecionado = produto;
-    }
-
-
-
-    EditarProduto(): void {
-  if (this.produtoSelecionado) {
-    this.produtoService.updateProduto(this.produtoSelecionado); // atualiza a lista local
-    this.filtrarProdutos(); // atualiza produtosFiltrados
-this.produtoSelecionado.nome = this.capitalizeFirstLetter(this.produtoSelecionado.nome);
-  }
+    abrirConfirmacao(produto: Produto) {
+  // Cria uma cópia independente para edição
+  this.produtoSelecionado = { ...produto };
 }
+
+
+
+
+ EditarProduto(): void {
+  if (!this.produtoSelecionado) return;
+
+  // Validação de campos obrigatórios
+  if (
+    !this.produtoSelecionado.nome?.trim() ||
+    !this.produtoSelecionado.generoMusical?.id ||
+    this.produtoSelecionado.preco === null ||
+    this.produtoSelecionado.estoque === null
+  ) {
+    alert('Preencha todos os campos obrigatórios antes de salvar.');
+    return; // sai sem salvar
+  }
+
+  // Aplica capitalize
+  this.produtoSelecionado.nome = this.capitalizeFirstLetter(this.produtoSelecionado.nome);
+
+  // Atualiza via serviço
+  this.produtoService.updateProduto(this.produtoSelecionado);
+
+  // Atualiza lista filtrada
+  this.filtrarProdutos();
+
+  // Fecha modal
+  this.produtoSelecionado = null;
+}
+
+  cancelarEdicao() {
+  this.produtoSelecionado = null; // fecha o modal
+}
+
+
+
+
 
 // Função para inicial maiúscula
 capitalizeFirstLetter(value: string): string {
