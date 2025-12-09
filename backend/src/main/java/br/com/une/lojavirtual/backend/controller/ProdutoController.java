@@ -38,9 +38,9 @@ public class ProdutoController {
     }
 
     // URL: http://localhost:8080/api/produtos/categoria/Vinil
-    @GetMapping("/categoria/{nomeCategoria}")
-    public List<Produto> buscarPorCategoria(@PathVariable String nomeCategoria) {
-        return service.buscarPorCategoria(nomeCategoria);
+    @GetMapping("/categoria/{nomeGenero}")
+    public List<Produto> buscarPorCategoria(@PathVariable String nomeGenero) {
+        return service.buscarPorGenero(nomeGenero);
     }
 
     @PostMapping

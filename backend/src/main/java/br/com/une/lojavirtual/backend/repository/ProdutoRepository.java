@@ -16,5 +16,5 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     List<Produto> findByNomeContainingIgnoreCase(String nome);
     
     // Buscar pelo nome do gênero (navegação entre tabelas)
-    List<Produto> findByGeneroMusicalNomeIgnoreCase(String nomeGenero);
+    List<Produto> findByGeneroMusical_NomeIgnoreCase(String nomeGenero);
 }
