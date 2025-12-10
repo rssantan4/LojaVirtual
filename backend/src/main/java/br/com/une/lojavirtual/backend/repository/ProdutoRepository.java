@@ -1,10 +1,13 @@
 package br.com.une.lojavirtual.backend.repository;
 
-import br.com.une.lojavirtual.backend.model.Produto;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository; 
+
+import br.com.une.lojavirtual.backend.model.Produto;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     
@@ -13,6 +16,6 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     // Buscar produtos contendo um texto no nome (ignorando maiúscula/minúscula)
     List<Produto> findByNomeContainingIgnoreCase(String nome);
     
-    // Buscar por categoria (pro filtro da loja)
-    List<Produto> findByCategoria(String categoria);
+    @Query("SELECT p FROM Produto p WHERE LOWER(p.generoMusical.nome) = LOWER(:nomeGenero)")
+    List<Produto> buscarPorNomeDoGenero(@Param("nomeGenero") String nomeGenero);
 }
