@@ -3,16 +3,15 @@
   background-color: black;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* logo esquerda, botões centro, ícones direita */
+  justify-content: space-between;
   padding: 0 1rem;
-  flex-wrap: nowrap; /* não quebra a barra */
-  overflow-x: auto; /* permite rolagem horizontal em telas muito pequenas */
+  flex-wrap: nowrap;
   gap: 1rem;
 }
 
 /* Logo */
 .logo {
-  width: 4rem;  /* tamanho relativo */
+  width: 4rem;
   height: auto;
 }
 
@@ -22,20 +21,17 @@
   font-size: 1.8rem;
   color: #f28444;
   font-weight: bold;
-  letter-spacing: 0.05rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  white-space: nowrap;
-  margin-left: 0.5rem;
 }
 
 /* Botões do meio */
 .button-escolha {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* centraliza todos os botões */
   align-items: center;
   gap: 1rem;
-  flex: 1; /* ocupa espaço restante */
-  min-width: 0; /* evita overflow no flex */
+  flex: 1;
+  min-width: 0;
 }
 
 .button-escolha button {
@@ -45,26 +41,24 @@
   color: white;
   font-size: 1rem;
   white-space: nowrap;
-  transition: color 0.3s;
 }
 
 .button-escolha button span:hover {
   color: #f28444;
 }
 
-/* Ícones (pessoa + carrinho) */
+/* Ícones à direita */
 .icones-escolha {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex-shrink: 0; /* não encolhe os ícones */
+  flex-shrink: 0;
 }
 
 .persson, .cart {
   color: white;
   cursor: pointer;
   font-size: 1.5rem;
-  transition: color 0.3s;
 }
 
 .persson:hover, .persson-item:hover, .cart:hover {
@@ -75,17 +69,23 @@
   color: black;
 }
 
-/* Media query para telas pequenas */
-@media (max-width: 600px) {
+/* Apenas para desktop */
+.desktop-only {
+  display: inline-block;
+}
+
+/* Media query para mobile */
+@media (max-width: 768px) {
   .title {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
-  .button-escolha {
-    gap: 0.5rem;
+  /* esconde os botões secundários no mobile */
+  .desktop-only {
+    display: none;
   }
 
   .persson, .cart {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 }

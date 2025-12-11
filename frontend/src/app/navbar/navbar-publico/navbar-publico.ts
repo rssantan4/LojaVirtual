@@ -15,5 +15,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar-publico.scss',
 })
 export class NavbarPublico {
+  menuAberto: boolean = false;
+
 
 }
