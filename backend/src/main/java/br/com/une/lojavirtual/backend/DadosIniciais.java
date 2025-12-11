@@ -438,6 +438,106 @@ Produto p36 = new Produto(
     "assets/img/fotos-produtos/produto36.jpeg"
 );
 
+Produto p37 = new Produto(
+    null,
+    "Falso Brilhante",
+    "Elis Regina",
+    "Lançado em 1976, Falso Brilhante é um dos álbuns mais icônicos de Elis Regina, destacando sua interpretação intensa e personalidade marcante. Inclui sucessos como “Como Nossos Pais” e “Fascinação”, consolidando-a como referência da música brasileira.",
+    new BigDecimal("99.90"),
+    15,
+    mpb,
+    "assets/img/fotos-produtos/produto37.jpeg"
+);
+
+Produto p38 = new Produto(
+    null,
+    "Acabou Chorare",
+    "Novos Baianos",
+    "Lançado em 1972, Acabou Chorare é um marco do rock e da música popular brasileira, mesclando samba, baião e rock. Com faixas como “Preta Pretinha” e “Mistério do Planeta”, o álbum é referência de criatividade e inovação musical no Brasil.",
+    new BigDecimal("99.90"),
+    15,
+    mpb,
+    "assets/img/fotos-produtos/produto38.jpeg"
+);
+
+Produto p39 = new Produto(
+    null,
+    "Cores, Nomes",
+    "Caetano Veloso",
+    "Lançado em 1982, Cores, Nomes traz Caetano Veloso explorando MPB com arranjos sofisticados e letras poéticas. Destacam-se faixas como “Você É Linda” e “Um Canto de Afoxé para o Bloco do Ilê”, mostrando a versatilidade e genialidade do artista.",
+    new BigDecimal("99.90"),
+    15,
+    mpb,
+    "assets/img/fotos-produtos/produto39.jpeg"
+);
+
+Produto p40 = new Produto(
+    null,
+    "Construção",
+    "Chico Buarque",
+    "Álbum lançado em 1971, Construção é considerado um dos melhores trabalhos de Chico Buarque. Com arranjos complexos e letras críticas sobre a sociedade brasileira, inclui faixas emblemáticas como “Construção” e “Deus Lhe Pague”.",
+    new BigDecimal("99.90"),
+    15,
+    mpb,
+    "assets/img/fotos-produtos/produto40.jpeg"
+);
+
+Produto p41 = new Produto(
+    null,
+    "Elis & Tom",
+    "Elis Regina & Tom Jobim",
+    "Lançado em 1974, Elis & Tom é uma colaboração histórica entre Elis Regina e Tom Jobim. O álbum apresenta clássicos da bossa nova como “Águas de Março” e “Wave”, destacando a harmonia perfeita entre voz e arranjos.",
+    new BigDecimal("99.90"),
+    15,
+    mpb,
+    "assets/img/fotos-produtos/produto41.jpeg"
+);
+
+Produto p42 = new Produto(
+    null,
+    "Clube da Esquina",
+    "Milton Nascimento & Lô Borges",
+    "Lançado em 1972, Clube da Esquina é um marco da música brasileira, misturando MPB, jazz e rock. Com faixas icônicas como “Cravo e Canela” e “Paisagem da Janela”, o álbum influenciou gerações de músicos brasileiros.",
+    new BigDecimal("99.90"),
+    15,
+    mpb,
+    "assets/img/fotos-produtos/produto42.jpeg"
+);
+
+Produto p43 = new Produto(
+    null,
+    "Expresso 2222",
+    "Gilberto Gil",
+    "Lançado em 1972, Expresso 2222 é um álbum emblemático de Gilberto Gil, combinando samba, rock e música popular brasileira. Destacam-se faixas como “Expresso 2222” e “Back in Bahia”, mostrando a versatilidade do artista.",
+    new BigDecimal("99.90"),
+    15,
+    mpb,
+    "assets/img/fotos-produtos/produto43.jpeg"
+);
+
+Produto p44 = new Produto(
+    null,
+    "Mais",
+    "Marisa Monte",
+    "Lançado em 1991, Mais é o segundo álbum de Marisa Monte, consolidando sua carreira com MPB moderna. Inclui sucessos como “Beija Eu” e “Depois”, mesclando arranjos sofisticados e melodias envolventes.",
+    new BigDecimal("99.90"),
+    15,
+    mpb,
+    "assets/img/fotos-produtos/produto44.jpeg"
+);
+
+Produto p45 = new Produto(
+    null,
+    "Oceano (Coisa de Acender)",
+    "Djavan",
+    "Lançado em 1982, Oceano (Coisa de Acender) é um dos álbuns mais memoráveis de Djavan, misturando MPB, jazz e elementos tropicais. Com faixas como “Oceano” e “Coisa de Acender”, o disco mostra sua habilidade em criar melodias sofisticadas e poéticas.",
+    new BigDecimal("99.90"),
+    15,
+    mpb,
+    "assets/img/fotos-produtos/produto45.jpeg"
+);
+
+
 
 
 
@@ -447,7 +547,7 @@ Produto p36 = new Produto(
     p11, p12, p13, p14, p15,
     p16, p17, p18, p19, p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,
     p30, p31, p32, p33, p34,
-    p35, p36
+    p35, p36,p37,p38,p39,p40,p41,p42,p43,p44,p45
 ));
 
 
