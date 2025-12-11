@@ -41,5 +41,18 @@ export class ProdutoService {
     return this.http.delete<void>(`${this.API}/${id}`);
   }
 
+  // 7. Buscar produtos por categoria
+ getByCategoria(nomeGenero: string): Observable<Produto[]> {
+  return this.http.get<Produto[]>(`${this.API}/categoria/${nomeGenero}`);
+
+ // 8. Buscar produtos mais vendidos
+getMaisVendidos(): Observable<Produto[]> {
+  return this.http.get<Produto[]>(`${this.API}/mais-vendidos`);
+}
+
+
+}
+
+
 }
 

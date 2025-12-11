@@ -96,3 +96,73 @@
         gap: 1rem;
     }
 }
+
+//area da categoria
+.categoria-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #eee;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.chip:hover {
+  background: #dcdcdc;
+}
+
+.reset {
+  background: #1976d2;
+  color: white;
+}
+
+.reset:hover {
+  background: #125a9c;
+}
+
+
+// area do price
+.price-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 15px 0;
+}
+
+.price-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.price-field span {
+  font-size: 12px;
+  color: #666;
+}
+
+.price-field input {
+  width: 90px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.price-field input:focus {
+  outline: none;
+  border-color: #1282ff;
+}
+
+.separator {
+  font-size: 18px;
+  font-weight: bold;
+  color: #888;
+}

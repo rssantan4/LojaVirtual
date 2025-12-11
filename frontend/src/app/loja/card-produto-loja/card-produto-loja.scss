@@ -1,12 +1,12 @@
-/* ===== Configuração geral do card ===== */
+/* ===== Card ===== */
 .wrapper {
-  width: 180px;       /* menor que 300px */
-  height: 300px;      /* menor que 500px */
+  width: 180px;
+  height: 300px;
   background: white;
   margin: auto;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;  /* um pouco menor */
+  border-radius: 8px;
   transform: scale(0.96);
   transition: box-shadow 0.3s, transform 0.3s;
 }
@@ -16,15 +16,15 @@
   box-shadow: 3px 10px 15px rgba(0,0,0,0.2);
 }
 
-/* ===== Container interno ===== */
+/* Container */
 .container {
   width: 100%;
   height: 100%;
 }
 
-/* ===== Imagem do produto ===== */
+/* ===== Imagem ===== */
 .top {
-  height: 75%;    /* reduzido para encaixar card menor */
+  height: 68%; /* reduzido um pouco para ganhar espaço para texto */
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -34,65 +34,103 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* ===== Área inferior com nome e preço ===== */
+/* ===== Parte inferior ===== */
 .bottom {
-  height: 25%;    /* proporcional ao top */
+  height: 28%;
   background: #f4f4f4;
+  padding: 7px 10px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 8px 10px;   /* menor padding */
+  flex-direction: column;
   position: relative;
+
+  overflow: hidden; /* impede overflow vertical */
 }
 
+/* ===== Textos ===== */
 .details {
   display: flex;
   flex-direction: column;
-  gap: 2px;       /* menor espaçamento */
+  gap: 2px;
+  width: 100%;
 }
 
-.details h2 {
-  margin: 0;
-  font-size: 14px;   /* menor fonte */
-}
-
+.details h2,
 .details p {
   margin: 0;
-  font-size: 12px;   /* menor fonte */
-  font-weight: bold;
-  opacity: 0.85;
+  font-size: 12px;
+  line-height: 1.1;
+
+  /* impede quebrar o layout com textos enormes */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ===== Botão flutuante de adicionar ao carrinho ===== */
+/* Título um pouco maior */
+.details h2 {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* ===== Botão flutuante ===== */
 .buy-btn {
   position: absolute;
-  bottom: 8px;      /* ajustado para card menor */
+  bottom: 8px;
   right: 8px;
-
-  width: 35px;      /* menor botão */
-  height: 35px;
-
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: none;
   background: #111;
   color: white;
-  cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
+  cursor: pointer;
   transition: 0.2s;
 }
 
 .buy-btn i {
-  font-size: 16px;   /* menor ícone */
+  font-size: 16px;
 }
 
 .buy-btn:hover {
   transform: scale(1.12);
   background: #f28444;
+}
+
+/* ===== Textos com quebra ===== */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+
+  /* limita a área para tudo caber sem sumir */
+  max-height: 100%;
+}
+
+.details h2,
+.details p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.15;
+
+  /* agora quebra a linha automático */
+  white-space: normal;
+  overflow-wrap: break-word;   /* quebra palavras muito grandes */
+  word-break: break-word;
+
+  /* se tiver texto demais, ativa scrollzinho interno */
+  max-height: 40px;
+  overflow-y: auto;
+}
+
+/* Título um pouco maior */
+.details h2 {
+  font-size: 13px;
+  font-weight: bold;
+  max-height: 32px;
 }
