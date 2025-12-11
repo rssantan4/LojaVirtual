@@ -1,69 +1,91 @@
-.toolbar{
+/* Toolbar principal */
+.toolbar {
   background-color: black;
   display: flex;
   align-items: center;
-  padding: 0 0px;
-  overflow: hidden; /* evita que elementos vazem */
+  justify-content: space-between; /* logo esquerda, botões centro, ícones direita */
+  padding: 0 1rem;
+  flex-wrap: nowrap; /* não quebra a barra */
+  overflow-x: auto; /* permite rolagem horizontal em telas muito pequenas */
+  gap: 1rem;
 }
 
-/* logo*/
+/* Logo */
 .logo {
-  width: 70px;
+  width: 4rem;  /* tamanho relativo */
   height: auto;
-  margin-left: 10px;
 }
 
-//Título//
-.title{
-  font-family: 'Arial', sans-serif; /* muda a fonte */
-  font-size: 30px;                  /* tamanho da letra */
-  color: #f28444;                   /* cor da letra */
-  font-weight: bold;                 /* negrito */
-  letter-spacing: 2px;               /* espaço entre letras */
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* sombra */
+/* Título */
+.title {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.8rem;
+  color: #f28444;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  margin-left: 0.5rem;
 }
 
-
-//Butões que estão no meio//
+/* Botões do meio */
 .button-escolha {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
-  flex: 1;   /* ocupa o meio da toolbar */
-  margin-right: 30px;
+  gap: 1rem;
+  flex: 1; /* ocupa espaço restante */
+  min-width: 0; /* evita overflow no flex */
 }
-//Butões que estão no meio//
+
 .button-escolha button {
   background: none;
   border: none;
   cursor: pointer;
   color: white;
-  font-size: 16px;
+  font-size: 1rem;
+  white-space: nowrap;
+  transition: color 0.3s;
 }
-//Butões que estão no meio//
-.button-escolha button span:hover{
+
+.button-escolha button span:hover {
   color: #f28444;
 }
 
-// Icones (peesoa + carrinho)
-.icones-escolha{
+/* Ícones (pessoa + carrinho) */
+.icones-escolha {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 0.75rem;
+  flex-shrink: 0; /* não encolhe os ícones */
 }
 
-.persson, .cart{
+.persson, .cart {
   color: white;
   cursor: pointer;
-  font-size: 26px;
+  font-size: 1.5rem;
+  transition: color 0.3s;
 }
 
-
-.persson:hover, .persson-item:hover,.cart:hover {
+.persson:hover, .persson-item:hover, .cart:hover {
   color: #f28444;
 }
 
-.persson-item{
+.persson-item {
   color: black;
+}
+
+/* Media query para telas pequenas */
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .button-escolha {
+    gap: 0.5rem;
+  }
+
+  .persson, .cart {
+    font-size: 1.2rem;
+  }
 }

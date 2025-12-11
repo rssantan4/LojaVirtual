@@ -1,41 +1,43 @@
+/* Container principal */
 #wrapper {
     overflow: hidden;
-    height: 1153px;
-    width: 1643px;
+    width: 100%;        /* ocupa toda a largura da tela */
+    min-height: 100vh;  /* pelo menos a altura da tela */
     background: #fff;
+    display: flex;      /* sidebar + conteúdo lado a lado */
+    flex-wrap: wrap;    /* permite quebrar em telas pequenas */
 }
 
+/* Sidebar */
 #sidebar {
-    float: left;
     background: #fff;
-    width: 275px;
-    padding: 13px 0 0 45px;
-    height: 1400px;
+    width: 250px;       /* fixo, mas você pode usar % se quiser */
+    padding: 13px 0 0 2rem;
     border-right: 1px solid #eee;
+    flex-shrink: 0;     /* não encolhe demais */
 }
 
 #sidebar h3 {
     color: #262626;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 700;
-    padding: 35px 0 10px 0;
+    padding: 2rem 0 0.5rem 0;
     letter-spacing: 1px;
-    clear: both;
 }
 
 .checklist ul li {
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 400;
     list-style: none;
-    padding: 7px 0 7px 23px;
+    padding: 0.5rem 0 0.5rem 1.5rem;
 }
 
 .checklist li span {
     float: left;
     width: 11px;
     height: 11px;
-    margin-left: -23px;
+    margin-left: -1.5rem;
     margin-top: 4px;
     border: 1px solid #d1d3d7;
     position: relative;
@@ -55,66 +57,42 @@
     border-color: #a6aab3;
 }
 
+/* Grid selector */
 #grid-selector {
-    height: 10px;
-    width: 1291px;
-    padding: 40px 0 40px 30px;
-    float: left;
+    flex: 1;            /* ocupa o restante da largura */
+    padding: 2rem;
     color: #5d5f68;
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
+/* Menu de grid */
 #grid-menu {
-    float: right;
-    width: 105px;
+    display: flex;
+    gap: 0.5rem;
 }
 
-#grid-menu ul {
-    width: 65px;
-    float: right;
-    position: relative;
-    top: -1px;
-}
-
-#grid-menu li {
-    float: right;
-    width: 25px;
-    height: 25px;
-    list-style: none;
-}
-
-#grid-menu li a {
-    display: block;
-    width: 25px;
-    height: 25px;
-    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/grid-menu.png") 0 0 no-repeat;
-}
-
-#grid-menu li.smallGrid {
-    margin-right: 7px;
-}
-
-#grid-menu li.smallGrid a {
-    background-position: 0 -33px;
-}
-
-#grid-menu li.largeGrid a {
-    background-position: -37px 0;
-}
-
-#grid-menu li.smallGrid a.active {
-    background-position: 0 0;
-}
-
-#grid-menu li.largeGrid a.active {
-    background-position: -37px -33px;
-}
-
+/* Lista de produtos */
 .produtos-lista {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* cards menores */
-  gap: 70px; /* menos espaço entre cards */
-  padding: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
-
+/* Ajustes para telas pequenas */
+@media (max-width: 768px) {
+    #wrapper {
+        flex-direction: column;  /* sidebar em cima e conteúdo embaixo */
+    }
+    #sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+    #grid-selector {
+        padding: 1rem;
+    }
+    .produtos-lista {
+        gap: 1rem;
+    }
+}
