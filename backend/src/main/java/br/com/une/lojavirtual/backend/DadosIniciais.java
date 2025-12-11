@@ -48,7 +48,7 @@ GeneroMusical reggae = new GeneroMusical(null, "Reggae");
     "Lin‑Manuel Miranda (Original Broadway Cast)",
     "A trilha sonora oficial do musical Hamilton — mistura hip-hop, R&B, soul e show tunes que narra a vida de Alexander Hamilton através de 46 faixas divididas em dois atos, com duração total de aproximadamente 2h22. O álbum reinventa o teatro musical tradicional com batidas contemporâneas e rap ágil, mantendo a força dramática e a riqueza histórica da narrativa.",
     new BigDecimal("99.90"),
-    30,
+    330,
     musical,
     "assets/img/fotos-produtos/produto1.jpeg"
 );
@@ -59,7 +59,7 @@ Produto p2 = new Produto(
     "Chico Buarque",
     "Álbum de estreia de Chico Buarque, lançado em 1966. Considerado um marco da MPB, reúne composições que misturam poesia, crítica social e melodias tradicionais brasileiras. Traz faixas icônicas como “A Banda”, vencedora do Festival de Música Popular Brasileira, além de músicas que ajudaram a consolidar Chico como um dos maiores compositores do país.",
     new BigDecimal("89.90"),
-    25,
+    225,
     mpb,
     "assets/img/fotos-produtos/produto2.jpeg"
 );
@@ -70,7 +70,7 @@ Produto p3 = new Produto(
     "Lady Gaga & Bruno Mars",
     "Single colaborativo de Lady Gaga e Bruno Mars, trazendo uma mistura marcante de pop e soul. A faixa destaca os vocais poderosos dos dois artistas e apresenta produção refinada, com arranjos modernos e atmosfera romântica. Este lançamento especial em CD inclui a versão oficial do single e é um item ideal para fãs e colecionadores.",
     new BigDecimal("59.90"),
-    50,
+    550,
     pop,
     "assets/img/fotos-produtos/produto3.jpeg"
 );
@@ -81,7 +81,7 @@ Produto p4 = new Produto(
     "Cazuza",
     "Lançado em 1988, este álbum marca uma das fases mais intensas da carreira de Cazuza. Misturando rock, poesia e crítica social, o disco traz faixas emblemáticas como “O Tempo Não Para” e “Ideologia”, que se tornaram clássicos da música brasileira. Esta edição remasterizada apresenta som aprimorado e preserva toda a força emocional e a autenticidade do artista.",
     new BigDecimal("79.90"),
-    40,
+    190,
     rock,
     "assets/img/fotos-produtos/produto4.jpeg"
 );
@@ -92,7 +92,7 @@ Produto p5 = new Produto(
     "Michael Jackson",
     "Lançado em 1982, Thriller é o álbum mais vendido de todos os tempos e um marco absoluto da música pop. Produzido por Quincy Jones, combina pop, funk, rock e R&B em faixas icônicas como “Billie Jean”, “Beat It” e a faixa-título “Thriller”. Esta edição em vinil destaca a qualidade sonora original e é essencial para colecionadores e fãs do Rei do Pop.",
     new BigDecimal("120.00"),
-    50,
+    120,
     pop,
     "assets/img/fotos-produtos/produto5.jpg"
 );
@@ -103,7 +103,7 @@ Produto p6 = new Produto(
     "Ariana Grande",
     "Lançado em 2024, Eternal Sunshine apresenta Ariana Grande em uma fase mais madura, unindo pop contemporâneo, R&B suave e letras emocionais. O álbum traz faixas marcantes como “yes, and?”, “we can’t be friends” e “the boy is mine”, explorando temas de autoconhecimento, relacionamentos e renovação pessoal. Uma produção sofisticada, perfeita para fãs e colecionadores.",
     new BigDecimal("95.00"),
-    60,
+    600,
     pop,
     "assets/img/fotos-produtos/produto6.jpeg"
 );
@@ -114,7 +114,7 @@ Produto p7 = new Produto(
     "Adele",
     "Lançado em 2011, 21 é um dos álbuns mais premiados da história recente, destacando a força vocal e emocional de Adele. Com influências de soul, blues e pop, o disco traz sucessos como “Rolling in the Deep”, “Someone Like You” e “Set Fire to the Rain”. A edição em vinil oferece uma experiência sonora rica, ideal para fãs e colecionadores.",
     new BigDecimal("110.00"),
-    45,
+    450,
     pop,
     "assets/img/fotos-produtos/produto7.jpg"
 );
@@ -125,7 +125,7 @@ Produto p8 = new Produto(
     "Anavitória",
     "A edição especial do álbum de estreia da dupla Anavitória, lançado em 2016. Marcado por um estilo pop folk suave e melodias delicadas, o disco trouxe as artistas ao cenário nacional com sucessos como “Singular”, “Agora Eu Quero Ir” e “Trevo (Tu)”. Esta versão especial destaca a sonoridade leve e emocional da dupla e é ideal para fãs que acompanham sua trajetória desde o início.",
     new BigDecimal("75.00"),
-    35,
+    25,
     pop,
     "assets/img/fotos-produtos/produto8.jpeg"
 );
@@ -136,7 +136,7 @@ Produto p9 = new Produto(
     "Jão",
     "Lançado em 2021, Pirata marca uma fase mais madura e romântica da carreira de Jão. O álbum mistura pop, synthpop e baladas emotivas, explorando temas como liberdade, amor e autodescoberta. Com faixas de destaque como “Idiota”, “Não Te Amo” e “Coringa”, o disco consolidou o artista como um dos principais nomes do pop brasileiro atual.",
     new BigDecimal("85.00"),
-    55,
+    50,
     pop,
     "assets/img/fotos-produtos/produto9.jpeg"
 );
@@ -147,7 +147,7 @@ Produto p10 = new Produto(
     "Arlindo Cruz",
     "Um dos álbuns mais celebrados de Arlindo Cruz, reunindo sambas marcantes com a assinatura do artista: letras poéticas, arranjos tradicionais e muito balanço. O disco destaca a força do samba carioca e traz composições que reforçam Arlindo como um dos maiores nomes do gênero. Ideal para quem aprecia samba de raiz e a musicalidade rica do artista.",
     new BigDecimal("69.90"),
-    40,
+    100,
     olodum,
     "assets/img/fotos-produtos/produto10.jpeg"
 );
@@ -158,7 +158,7 @@ Produto p11 = new Produto(
     "BTS",
     "Trilha sonora oficial do jogo BTS World, lançada em 2019. O álbum reúne faixas inéditas e versões exclusivas de grandes sucessos do grupo, combinando K-Pop, pop e R&B. Destaca a versatilidade musical do BTS e a interação com os fãs, oferecendo uma experiência única para colecionadores e admiradores do grupo.",
     new BigDecimal("89.90"),
-    10,
+    500,
     kpop,
     "assets/img/fotos-produtos/produto11.jpeg"
 );
@@ -169,7 +169,7 @@ Produto p12 = new Produto(
     "BTS",
     "Álbum de antologia lançado em 2022 para celebrar os nove anos de carreira do BTS. Proof reúne grandes sucessos do grupo, faixas inéditas e versões remasterizadas, oferecendo uma visão completa da trajetória musical do grupo. Ideal para colecionadores e fãs, o álbum destaca a evolução do BTS no K-Pop e na música global.",
     new BigDecimal("120.00"),
-    15,
+    500,
     kpop,
     "assets/img/fotos-produtos/produto12.jpeg"
 );
@@ -180,7 +180,7 @@ Produto p13 = new Produto(
     "Rosé",
     "Álbum de estreia solo da integrante Rosé, do grupo BLACKPINK, lançado em 2021. O disco mistura pop, baladas e elementos de R&B, com faixas que exploram temas de amor, autoconfiança e crescimento pessoal. Inclui hits como “On The Ground” e “GONE”, oferecendo aos fãs uma experiência musical intimista e sofisticada.",
     new BigDecimal("75.50"),
-    8,
+    340,
     kpop,
     "assets/img/fotos-produtos/produto13.jpeg"
 );
@@ -191,7 +191,7 @@ Produto p14 = new Produto(
     "Olivia Rodrigo",
     "Álbum de estreia da cantora Olivia Rodrigo, lançado em 2021. Sour combina pop, pop rock e elementos de indie, explorando emoções adolescentes, amor, frustração e autodescoberta. Com hits como “drivers license”, “good 4 u” e “deja vu”, o disco conquistou fãs globalmente e estabeleceu Olivia como uma das vozes mais influentes da nova geração.",
     new BigDecimal("99.90"),
-    12,
+    300,
     pop,
     "assets/img/fotos-produtos/produto14.jpeg"
 );
@@ -202,7 +202,7 @@ Produto p15 = new Produto(
     "Bruno Mars & Anderson .Paak",
     "Álbum de estreia da dupla Silk Sonic, lançado em 2021. Combinando R&B, soul e funk, o disco traz uma produção retrô sofisticada e vocais marcantes. Inclui sucessos como “Leave The Door Open”, “Skate” e “Smokin Out The Window”, oferecendo uma experiência musical elegante e envolvente, perfeita para fãs de grooves clássicos e modernos.",
     new BigDecimal("110.00"),
-    9,
+    230,
     pop,
     "assets/img/fotos-produtos/produto15.jpeg"
 );
@@ -213,7 +213,7 @@ Produto p16 = new Produto(
     "Billie Eilish",
     "Álbum lançado em 2021, mostrando uma evolução madura do estilo único de Billie Eilish. Misturando pop, electropop e baladas introspectivas, o disco aborda temas como fama, relacionamentos e autodescoberta. Destaques incluem as faixas “Happier Than Ever”, “Your Power” e “NDA”, oferecendo uma experiência sonora envolvente e emocional para fãs e colecionadores.",
     new BigDecimal("105.00"),
-    7,
+    700,
     pop,
     "assets/img/fotos-produtos/produto16.jpeg"
 );
@@ -224,7 +224,7 @@ Produto p17 = new Produto(
     "Charlie Brown Jr.",
     "Lançado em 2003, 100% é um álbum emblemático da banda Charlie Brown Jr., trazendo uma mistura de rock, rap e skate punk. Com letras que abordam juventude, desafios e reflexões sobre a vida, o disco inclui faixas marcantes como “Tudo Que Ela Gosta de Escutar” e “Me Encontra”, consolidando a banda como referência do rock brasileiro.",
     new BigDecimal("95.00"),
-    5,
+    200,
     rock,
     "assets/img/fotos-produtos/produto17.jpeg"
 );
@@ -235,7 +235,7 @@ Produto p18 = new Produto(
     "The Beatles",
     "Lançado em 1965, Rubber Soul é um dos álbuns mais influentes dos Beatles, marcando a transição da banda para um estilo mais maduro e experimental. Misturando rock, folk e pop, o disco inclui faixas clássicas como “Norwegian Wood”, “In My Life” e “Michelle”. Esta edição em CD oferece som remasterizado e é essencial para fãs e colecionadores da história da música.",
     new BigDecimal("85.00"),
-    6,
+    120,
     rock,
     "assets/img/fotos-produtos/produto18.jpeg"
 );
@@ -246,7 +246,7 @@ Produto p19 = new Produto(
     "Lana Del Rey",
     "Álbum de estreia lançado em 2012, Born to Die apresenta Lana Del Rey com seu estilo cinematográfico e nostálgico, combinando pop alternativo, baroque pop e elementos de trip hop. Com hits como “Video Games”, “Born to Die” e “Blue Jeans”, o disco explora temas de amor, fama e melancolia, consolidando a artista como referência da música contemporânea.",
     new BigDecimal("99.90"),
-    4,
+    400,
     pop,
     "assets/img/fotos-produtos/produto19.jpeg"
 );
@@ -257,7 +257,7 @@ Produto p20 = new Produto(
     "Taylor Swift",
     "Lançado em 2021, Fearless (Taylor's Version) é a regravação do segundo álbum de Taylor Swift, trazendo todas as faixas originais e versões bônus inéditas. O disco combina country, pop e storytelling lírico, incluindo sucessos como “Love Story”, “You Belong With Me” e “Fifteen”. Esta edição celebra a reinvenção do álbum e é essencial para fãs e colecionadores.",
     new BigDecimal("89.90"),
-    10,
+    300,
     pop,
     "assets/img/fotos-produtos/produto20.jpeg"
 );
@@ -267,8 +267,8 @@ Produto p21 = new Produto(
     "The Troy Saga",
     "Epic: The Musical / Jorge Rivera-Herrans",
     "Primeiro capítulo de EPIC: The Musical, com duração aproximada de 16 minutos e 5 faixas. Narra a vitória de Odysseus na guerra de Troia, incluindo a invasão da cidade com o cavalo de Troia, misturando elementos dramáticos, introspectivos e épicos. Ideal para fãs de musicais conceituais e mitologia.",
-    new BigDecimal("99.90"),
-    15,
+    new BigDecimal("125.90"),
+    150,
     musical,
     "assets/img/fotos-produtos/produto21.jpg"
 );
@@ -278,8 +278,8 @@ Produto p22 = new Produto(
     "The Cyclops Saga",
     "Epic: The Musical / Jorge Rivera-Herrans",
     "Segundo capítulo da série, inspirado no encontro de Odysseus com o ciclope Polyphemus. Retrata tensão, medo e estratégia da fuga, com batidas dramáticas e melodias sombrias, perfeito para quem gosta de emoção e narrativa mitológica.",
-    new BigDecimal("99.90"),
-    15,
+    new BigDecimal("110.90"),
+    100,
     musical,
     "assets/img/fotos-produtos/produto22.jpg"
 );
@@ -289,8 +289,8 @@ Produto p23 = new Produto(
     "The Ocean Saga",
     "Epic: The Musical / Jorge Rivera-Herrans",
     "Terceira saga, retratando a travessia marítima de Odysseus e sua tripulação enfrentando tempestades e desafios divinos. Clima de aventura e superação com músicas épicas e dramáticas, ideal para fãs de histórias mitológicas.",
-    new BigDecimal("99.90"),
-    15,
+    new BigDecimal("98.90"),
+    115,
     musical,
     "assets/img/fotos-produtos/produto23.jpg"
 );
@@ -300,8 +300,8 @@ Produto p24 = new Produto(
     "The Circe Saga",
     "Epic: The Musical / Jorge Rivera-Herrans",
     "Quarta saga da série, narrando o encontro de Odysseus com a feiticeira Circe. Música cheia de fantasia e mistério, com arranjos dramáticos e envolventes, perfeita para quem gosta de magia e narrativa intensa.",
-    new BigDecimal("99.90"),
-    15,
+    new BigDecimal("89.90"),
+    125,
     musical,
     "assets/img/fotos-produtos/produto24.jpg"
 );
@@ -311,8 +311,8 @@ Produto p25 = new Produto(
     "The Underworld Saga",
     "Epic: The Musical / Jorge Rivera-Herrans",
     "Quinta saga, com tom sombrio e introspectivo. Odysseus adentra o submundo em busca de verdades e destino. Ideal para fãs de narrativa intensa, conflitos existenciais e ambientações dramáticas.",
-    new BigDecimal("99.90"),
-    15,
+    new BigDecimal("94.90"),
+    111,
     musical,
     "assets/img/fotos-produtos/produto25.jpg"
 );
@@ -322,8 +322,8 @@ Produto p26 = new Produto(
     "The Thunder Saga",
     "Epic: The Musical / Jorge Rivera-Herrans",
     "Sexta saga, marcada por confrontos, tempestades e tensão dramática. Música potente com arranjos épicos, perfeita para momentos de ação e batalhas míticas na narrativa musical.",
-    new BigDecimal("99.90"),
-    15,
+    new BigDecimal("92.90"),
+    100,
     musical,
     "assets/img/fotos-produtos/produto26.jpg"
 );
@@ -333,8 +333,8 @@ Produto p27 = new Produto(
     "The Wisdom Saga",
     "Epic: The Musical / Jorge Rivera-Herrans",
     "Sétima parte da série, com foco em sabedoria, decisões difíceis e conflitos internos. Tons reflexivos e simbólicos tornam a música perfeita para quem gosta de profundidade emocional e significado nas letras.",
-    new BigDecimal("99.90"),
-    15,
+    new BigDecimal("98.90"),
+    105,
     musical,
     "assets/img/fotos-produtos/produto27.jpg"
 );
@@ -344,8 +344,8 @@ Produto p28 = new Produto(
     "The Vengeance Saga",
     "Epic: The Musical / Jorge Rivera-Herrans",
     "Oitava saga, com clima intenso de justiça, vingança e confrontos finais. Sonoridade dramática e urgente, atraindo fãs de histórias fortes e musicais emocionantes.",
-    new BigDecimal("99.90"),
-    15,
+    new BigDecimal("91.90"),
+    115,
     musical,
     "assets/img/fotos-produtos/produto28.jpg"
 );
@@ -356,19 +356,100 @@ Produto p29 = new Produto(
     "Epic: The Musical / Jorge Rivera-Herrans",
     "Nona e última saga da série, marcando o retorno de Odysseus e a conclusão da odisseia. Cerca de 22 minutos de música épica e dramática, perfeita para fãs de finais emocionantes e narrativas completas.",
     new BigDecimal("99.90"),
-    15,
+    115,
     musical,
     "assets/img/fotos-produtos/produto29.jpg"
 );
 
+Produto p30 = new Produto(
+    null,
+    "Greatest Hits",
+    "Queen",
+    "Coletânea lançada em 1981 reunindo os maiores sucessos do Queen, incluindo faixas icônicas como “Bohemian Rhapsody”, “We Will Rock You” e “Another One Bites The Dust”. Um álbum essencial para fãs do rock clássico e colecionadores.",
+    new BigDecimal("111.90"),
+    100,
+    rock,
+    "assets/img/fotos-produtos/produto30.jpeg"
+);
+
+Produto p31 = new Produto(
+    null,
+    "Nevermind",
+    "Nirvana",
+    "Lançado em 1991, Nevermind é o segundo álbum de estúdio do Nirvana, marcando a explosão do grunge. Inclui clássicos como “Smells Like Teen Spirit”, “Come As You Are” e “Lithium”, consolidando a banda como ícone do rock alternativo.",
+    new BigDecimal("90.90"),
+    105,
+    rock,
+    "assets/img/fotos-produtos/produto31.jpeg"
+);
+
+Produto p32 = new Produto(
+    null,
+    "Back in Black",
+    "AC/DC",
+    "Lançado em 1980, Back in Black é o álbum mais famoso do AC/DC, homenageando o ex-vocalista Bon Scott. Com sucessos como “Hells Bells”, “Shoot to Thrill” e “Back in Black”, o disco é um marco do hard rock mundial.",
+    new BigDecimal("94.90"),
+    500,
+    rock,
+    "assets/img/fotos-produtos/produto32.jpeg"
+);
+
+Produto p33 = new Produto(
+    null,
+    "AM",
+    "Arctic Monkeys",
+    "Lançado em 2013, AM é o quinto álbum do Arctic Monkeys, misturando rock alternativo, indie e R&B. Inclui faixas de sucesso como “Do I Wanna Know?”, “R U Mine?” e “Arabella”, consolidando a banda como referência do rock moderno.",
+    new BigDecimal("199.90"),
+    195,
+    rock,
+    "assets/img/fotos-produtos/produto33.jpeg"
+);
+
+Produto p34 = new Produto(
+    null,
+    "Please Please Me (1963)",
+    "The Beatles",
+    "Álbum de estreia dos Beatles, lançado em 1963. Com faixas como “I Saw Her Standing There” e “Love Me Do”, este disco introduziu o som único da banda e marcou o início da Beatlemania.",
+    new BigDecimal("89.90"),
+    125,
+    rock,
+    "assets/img/fotos-produtos/produto34.jpeg"
+);
+
+Produto p35 = new Produto(
+    null,
+    "Yellow Submarine",
+    "The Beatles",
+    "Lançado em 1969, Yellow Submarine acompanha a trilha sonora do filme homônimo. Inclui clássicos como “Yellow Submarine” e “All You Need Is Love”, misturando rock psicodélico e pop leve.",
+    new BigDecimal("199.90"),
+    119,
+    rock,
+    "assets/img/fotos-produtos/produto35.jpeg"
+);
+
+Produto p36 = new Produto(
+    null,
+    "Abbey Road",
+    "The Beatles",
+    "Lançado em 1969, Abbey Road é um dos álbuns mais icônicos dos Beatles, destacando faixas como “Come Together”, “Something” e “Here Comes The Sun”. Reconhecido pelo famoso cover da faixa de pedestres, é essencial para fãs de rock clássico e história da música.",
+    new BigDecimal("100.90"),
+    59,
+    rock,
+    "assets/img/fotos-produtos/produto36.jpeg"
+);
 
 
-                produtoRepo.saveAll(Arrays.asList(
-                p1, p2, p3, p4, p5,
-                p6, p7, p8, p9, p10,
-                p11, p12, p13, p14, p15,
-                p16, p17, p18, p19, p20,p21,p22,p23,p24,p25,p26,p27,p28,p29
-                ));
+
+
+               produtoRepo.saveAll(Arrays.asList(
+    p1, p2, p3, p4, p5,
+    p6, p7, p8, p9, p10,
+    p11, p12, p13, p14, p15,
+    p16, p17, p18, p19, p20,
+    p30, p31, p32, p33, p34,
+    p35, p36
+));
+
 
             }
         }
