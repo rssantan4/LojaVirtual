@@ -461,6 +461,9 @@ Produto p36 = new Produto(
                 Usuario cliente = new Usuario(null, "Vagner Cliente", "cliente@loja.com", "senha1234", TipoUsuario.CLIENTE);
                 usuarioRepo.saveAll(Arrays.asList(admin, cliente));
             }
+            
+
+
         };
     }
 }
