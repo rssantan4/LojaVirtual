@@ -1041,16 +1041,117 @@ Produto p90 = new Produto(
     "assets/img/fotos-produtos/produto90.jpg"
 );
 
+Produto p91 = new Produto(
+    null,
+    "KPop Demon Hunters (Original Motion Picture Soundtrack)",
+    "Various Artists",
+    "Trilha sonora oficial do filme de animação musical \"KPop Demon Hunters\", lançada em 20 de junho de 2025. O álbum reúne músicas originais interpretadas por vários artistas (incluindo os grupos fictícios HUNTR/X e Saja Boys, além de participações de TWICE e MeloMance), misturando K‑Pop e electropop com temas cinematográficos. Hits como “Takedown”, “Golden” e “Soda Pop” ajudaram o álbum a alcançar destaque global nas paradas musicais, consolidando‑o como um fenômeno pop e cultural.",
+    new BigDecimal("209.90"),
+    200,
+    kpop,
+    "assets/img/fotos-produtos/produto91.jpeg"
+);
 
+Produto p92 = new Produto(
+    null,
+    "1989 (Taylor's Version)",
+    "Taylor Swift",
+    "Regravação do icônico álbum de 2014, lançado em 2023, 1989 (Taylor's Version) traz todos os hits originais como “Shake It Off”, “Blank Space” e “Style”, além de faixas inéditas e versões repaginadas. O álbum celebra o pop de Taylor Swift e reafirma sua trajetória artística.",
+    new BigDecimal("209.90"),
+    280,
+    pop,
+    "assets/img/fotos-produtos/produto92.jpeg"
+);
 
+Produto p93 = new Produto(
+    null,
+    "Thank U, Next (Exclusive Limited Edition)",
+    "Ariana Grande",
+    "Edição limitada do álbum icônico \"Thank U, Next\" (2019), que inclui hits como “7 Rings”, “Break Up with Your Girlfriend, I’m Bored” e a faixa-título “Thank U, Next”. Esta edição exclusiva traz conteúdo bônus, arte diferenciada e faixas inéditas, celebrando o pop contemporâneo e a carreira da artista.",
+    new BigDecimal("319.90"),
+    220,
+    pop,
+    "assets/img/fotos-produtos/produto93.jpg"
+);
 
+Produto p94 = new Produto(
+    null,
+    "SUPER REAL ME (Debut Mini Album)",
+    "ILLIT",
+    "Álbum de estreia do artista ILLIT, lançado em 2025, trazendo faixas de hip-hop e pop contemporâneo. O mini álbum apresenta músicas cativantes e experimentais, consolidando ILLIT como uma nova referência na cena musical internacional.",
+    new BigDecimal("199.90"),
+    150,
+    kpop,
+    "assets/img/fotos-produtos/produto94.jpg"
+);
 
+Produto p95 = new Produto(
+    null,
+    "4 ONLY",
+    "Lee Hi",
+    "Álbum lançado em 2021 pela cantora sul-coreana Lee Hi, trazendo uma mistura de R&B, soul e pop. \"4 ONLY\" apresenta faixas como “Red Lipstick” e “Intentions”, destacando a versatilidade vocal e o estilo único da artista.",
+    new BigDecimal("155.00"),
+    120,
+    kpop,
+    "assets/img/fotos-produtos/produto95.jpg"
+);
 
+Produto p96 = new Produto(
+    null,
+    "Young Forever",
+    "BTS",
+    "Álbum lançado em 2016 pelo BTS, reunindo músicas do conceito ‘The Most Beautiful Moment in Life’ e incluindo hits como “Fire”, “Save Me” e “Epilogue: Young Forever”. Uma coletânea que celebra a juventude e a trajetória do grupo no K-Pop.",
+    new BigDecimal("245.00"),
+    14,
+    kpop,
+    "assets/img/fotos-produtos/produto96.jpg"
+);
 
+Produto p97 = new Produto(
+    null,
+    "Visceral (EP)",
+    "José Jr",
+    "EP lançado em 2023 pelo cantor José Jr, no gênero gospel. Visceral apresenta faixas com letras profundas e emotivas, explorando temas de fé, dependência espiritual e devoção, reforçando a sensibilidade artística e a conexão da música com a espiritualidade.",
+    new BigDecimal("89.90"),
+    180,
+    worship,
+    "assets/img/fotos-produtos/produto97.jpg"
+);
 
+Produto p98 = new Produto(
+    null,
+    "My World 2.0",
+    "Justin Bieber",
+    "Álbum de estúdio lançado em 2010 por Justin Bieber, servindo como a segunda parte do projeto iniciado com o EP “My World”. Combina pop adolescente, R&B e dance‑pop, incluindo faixas de grande sucesso como “Baby” (com Ludacris), “Never Let You Go”, “Somebody to Love” e “U Smile”. O álbum estreou no topo da Billboard 200 e consolidou Bieber como uma das principais vozes do pop juvenil.",
+    new BigDecimal("209.90"),
+    200,
+    pop,
+    "assets/img/fotos-produtos/produto98.jpg"
+);
 
+Produto p99 = new Produto(
+    null,
+    "Dangerous Woman",
+    "Ariana Grande",
+    "Álbum lançado em 2016 por Ariana Grande, apresentando um estilo pop maduro e R&B contemporâneo. Inclui hits como “Into You”, “Side to Side” (feat. Nicki Minaj) e a faixa-título “Dangerous Woman”, consolidando Ariana como uma das principais artistas pop da década.",
+    new BigDecimal("209.90"),
+    150,
+    pop,
+    "assets/img/fotos-produtos/produto99.jpg"
+);
 
-               produtoRepo.saveAll(Arrays.asList( p1, p2, p3, p4, p5,p6, p7, p8, p9, p10,p11, p12, p13, p14, p15,p16, p17, p18, p19, p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30, p31, p32, p33, p34,p35, p36,p37,p38,p39,p40,p41,p42,p43,p44,p45,p46, p47, p48, p49, p50, p51, p52, p53, p54, p55,p56, p57, p58, p59, p60,p61, p62, p63, p64, p65,p66, p67, p68, p69, p70, p71, p72, p73,p74,p75, p76, p77, p78,p79, p80, p81, p82,p83, p84, p85, p86, p87,p88, p89, p90));
+Produto p100 = new Produto(
+    null,
+    "Amado Timóteo",
+    "Marco Telles",
+    "Álbum lançado em 2021 pelo cantor e compositor Marco Telles, com 9 faixas que combinam adoração cristã e música inspiradora. O projeto musical é baseado em temáticas espirituais e mensagens de fé, tendo sido produzido em formato de sermão musical e disponível nas principais plataformas de streaming.",
+    new BigDecimal("89.90"),
+    18,
+    worship,
+    "assets/img/fotos-produtos/produto100.jpg"
+);
+
+               produtoRepo.saveAll(Arrays.asList( p1, p2, p3, p4, p5,p6, p7, p8, p9, p10,p11, p12, p13, p14, p15,p16, p17, p18, p19, p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30, p31, p32, p33, p34,p35, p36,p37,p38,p39,p40,p41,p42,p43,p44,p45,p46, p47, p48, p49, p50, p51, p52, p53, p54, p55,p56, p57, p58, p59, p60,p61, p62, p63, p64, p65,p66, p67, p68, p69, p70, p71, p72, p73,p74,p75, p76, p77, p78,p79, p80, p81, p82,p83, p84, p85, p86, p87,p88, p89, p90,p91,p92,p93,p94,p95,p96,p97,p98,p99,p100));
             }
         }
             
