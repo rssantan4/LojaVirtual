@@ -31,7 +31,6 @@ GeneroMusical sertanejo = new GeneroMusical(null, "Sertanejo");
 GeneroMusical worship = new GeneroMusical(null, "Worship");
 GeneroMusical musical = new GeneroMusical(null, "Musical");
 GeneroMusical olodum = new GeneroMusical(null, "Olodum");
-GeneroMusical anime = new GeneroMusical(null, "Anime OST");
 GeneroMusical reggae = new GeneroMusical(null, "Reggae");
 GeneroMusical samba = new GeneroMusical(null, "Samba");
 
