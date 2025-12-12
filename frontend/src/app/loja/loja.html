@@ -73,12 +73,19 @@
 <div id="grid-selector">
        <p>Showing 1 - {{produtos.length}}</p>
 
-    <div class="produtos-lista">
-  <ng-container *ngFor="let p of produtos">
-    <app-card-produto-loja [produto]="p"></app-card-produto-loja>
+   <div class="produtos-lista">
+  <ng-container *ngIf="!loading; else loadingTemplate">
+    <ng-container *ngFor="let p of produtos">
+      <app-card-produto-loja [produto]="p"></app-card-produto-loja>
+    </ng-container>
   </ng-container>
-</div>
 
+  <ng-template #loadingTemplate>
+    <div class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</div>
 
 </div>
 
