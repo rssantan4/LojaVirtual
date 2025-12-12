@@ -186,3 +186,9 @@
   box-shadow: 0 0 4px rgba(18,130,255,0.4);
 }
 
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh; // altura proporcional à tela
+}
