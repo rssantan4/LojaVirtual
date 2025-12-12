@@ -11,32 +11,51 @@
         </nav>
       </div>
     </div>
-    <div class="grid product">
+
+    <!-- Mostra enquanto o produto NÃO está carregado -->
+    <p *ngIf="!produto">Carregando o produto, aguarde...</p>
+
+    <div class="grid product" *ngIf="produto">
       <div class="column-xs-12 column-md-7">
         <div class="product-gallery">
-          <div class="product-image">
-            <img class="active" src="https://source.unsplash.com/W1yjvf5idqA">
+          <div class="product-images">
+            <img class="back left" [src]="produto?.imagemUrl" [alt]="produto.nome">
+            <img class="back right" [src]="produto?.imagemUrl" [alt]="produto.nome">
+            <img class="main" [src]="produto?.imagemUrl" [alt]="produto.nome">
           </div>
-
         </div>
       </div>
       <div class="column-xs-12 column-md-5">
-        <h1>Bonsai</h1>
-        <h2>$19.99</h2>
+        <h1>{{ produto?.nome }}</h1>
+        <h2>${{ produto.preco.toFixed(2) }}</h2>
         <div class="description">
-          <p>Discrição</p>
+          <p>{{ produto?.descricao }}</p>
         </div>
         <button class="add-to-cart">Adicionar no carrinho</button>
       </div>
     </div>
 
+    <!-- Produtos relacionados com carrossel -->
+<div class="grid related-products" *ngIf="produtosRelacionados?.length">
+  <div class="column-xs-12">
+    <h3>Você também pode gostar</h3>
+  </div>
 
-    <div class="grid related-products">
-      <div class="column-xs-12">
-        <h3>Você tambem pode gostar</h3>
+  <div class="column-xs-12">
+    <div class="carousel-wrapper">
+      <button class="arrow left" (click)="scroll(-1)">‹</button>
+
+      <div class="produtos-lista" #carousel>
+        <ng-container *ngFor="let p of produtosRelacionados">
+          <app-card-produto-loja [produto]="p"></app-card-produto-loja>
+        </ng-container>
       </div>
 
+      <button class="arrow right" (click)="scroll(1)">›</button>
     </div>
   </div>
-</main>
+</div>
 
+
+  </div>
+</main>
