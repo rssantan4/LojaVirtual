@@ -954,6 +954,93 @@ Produto p82 = new Produto(
     "assets/img/fotos-produtos/produto81.jpeg"
 );
 
+Produto p83 = new Produto(
+    null,
+    "Legend: The Best of Bob Marley and the Wailers (Deluxe Edition)",
+    "Bob Marley & The Wailers",
+    "Coletânea lançada originalmente em 1984 e posteriormente em edições deluxe com duas faixas extras e material remasterizado. “Legend” é a coletânea de maior sucesso da história do reggae, reunindo hits que moldaram o gênero, incluindo “No Woman, No Cry”, “One Love/People Get Ready”, “Buffalo Soldier”, “Jamming” e “Could You Be Loved”. É considerado o álbum mais vendido de reggae de todos os tempos e um marco na popularização global da música de Bob Marley e sua banda.",
+    new BigDecimal("120.00"),
+    15,
+    reggae,
+    "assets/img/fotos-produtos/produto83.jpg"
+);
+
+Produto p84 = new Produto(
+    null,
+    "Exodus",
+    "Bob Marley & The Wailers",
+    "Lançado em 3 de junho de 1977, ‘Exodus’ é o nono álbum de estúdio de Bob Marley & The Wailers e um dos mais influentes do reggae. O álbum combina temas sociais, políticos e espirituais com grooves inconfundíveis, incluindo faixas marcantes como “Jamming”, “Three Little Birds”, “Exodus” e “Waiting in Vain”. O trabalho foi gravado após um período turbulento na vida de Marley e ajudou a consolidar sua fama mundial.",
+    new BigDecimal("110.00"),
+    12,
+    reggae,
+    "assets/img/fotos-produtos/produto84.jpg"
+);
+
+Produto p85 = new Produto(
+    null,
+    "The Harder They Come (Soundtrack)",
+    "Jimmy Cliff & Various Artists",
+    "Trilha sonora do filme jamaicano ‘The Harder They Come’, lançada em 1972, que se tornou um dos principais pontos de referência do reggae internacional. A obra apresenta Jimmy Cliff interpretando a faixa‑título “The Harder They Come”, além de músicas de outros artistas que ajudaram a introduzir o reggae e o ska ao público global, com influências que vão do rocksteady ao reggae roots.",
+    new BigDecimal("95.00"),
+    10,
+    reggae,
+    "assets/img/fotos-produtos/produto85.jpg"
+);
+
+Produto p86 = new Produto(
+    null,
+    "Equal Rights",
+    "Peter Tosh",
+    "Lançado em 1977, ‘Equal Rights’ é o segundo álbum solo do ex‑Wailer Peter Tosh e uma obra fundamental do reggae politizado, com temas de justiça social e resistência. O álbum traz faixas poderosas como a faixa‑título “Equal Rights” e “Get Up, Stand Up” (co‑escrita com Bob Marley), expressando mensagens diretas de igualdade, liberdade e luta contra a opressão.",
+    new BigDecimal("98.50"),
+    8,
+    reggae,
+    "assets/img/fotos-produtos/produto86.jpg"
+);
+
+Produto p87 = new Produto(
+    null,
+    "Marcus Garvey",
+    "Burning Spear",
+    "Lançado em 12 de dezembro de 1975, ‘Marcus Garvey’ é o terceiro álbum do jamaicano Burning Spear (Winston Rodney), um marco do roots reggae. Nomeado em homenagem ao líder pan‑africanista Marcus Garvey, o álbum combina ritmos tradicionais com letras conscientes sobre identidade, história e luta pela liberdade, incluindo faixas como “Marcus Garvey”, “Slavery Days” e “Old Marcus Garvey”.",
+    new BigDecimal("97.00"),
+    10,
+    reggae,
+    "assets/img/fotos-produtos/produto87.jpg"
+);
+
+Produto p88 = new Produto(
+    null,
+    "Funky Kingston",
+    "Toots & The Maytals",
+    "Lançado originalmente no início dos anos 1970 e ampliado internacionalmente em 1975, ‘Funky Kingston’ é um dos álbuns mais celebrados do grupo Toots & The Maytals, combinando reggae, ska e soul com groove contagiante. Destaque para faixas como “Funky Kingston”, “Time Tough” e interpretações cheias de energia que ajudaram a definir a evolução do reggae para públicos além da Jamaica.",
+    new BigDecimal("96.50"),
+    9,
+    reggae,
+    "assets/img/fotos-produtos/produto88.jpg"
+);
+
+Produto p89 = new Produto(
+    null,
+    "Night Nurse",
+    "Gregory Isaacs",
+    "Lançado em 1982, ‘Night Nurse’ é um dos álbuns mais emblemáticos de Gregory Isaacs, consolidando seu estilo suave e sensual no reggae, muitas vezes associado ao subgênero known as lovers rock. A faixa‑título “Night Nurse” tornou‑se um hit global, destacando a voz única e a capacidade de Isaacs em misturar temas românticos com arranjos reggae sofisticados.",
+    new BigDecimal("99.00"),
+    11,
+    reggae,
+    "assets/img/fotos-produtos/produto89.jpg"
+);
+
+Produto p90 = new Produto(
+    null,
+    "Cool Ruler",
+    "Gregory Isaacs",
+    "Lançado em 1978, ‘Cool Ruler’ é um dos primeiros álbuns que consolidaram Gregory Isaacs como um dos maiores nomes do reggae, mostrando seu estilo suave e elegante que mais tarde influenciaria o lovers rock. O álbum traz uma fusão de grooves reggae clássicos com a voz característica de Isaacs, marcada por sensibilidade e sentimento.",
+    new BigDecimal("95.50"),
+    10,
+    reggae,
+    "assets/img/fotos-produtos/produto90.jpg"
+);
 
 
 
@@ -961,7 +1048,10 @@ Produto p82 = new Produto(
 
 
 
-               produtoRepo.saveAll(Arrays.asList( p1, p2, p3, p4, p5,p6, p7, p8, p9, p10,p11, p12, p13, p14, p15,p16, p17, p18, p19, p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30, p31, p32, p33, p34,p35, p36,p37,p38,p39,p40,p41,p42,p43,p44,p45,p46, p47, p48, p49, p50, p51, p52, p53, p54, p55,p56, p57, p58, p59, p60,p61, p62, p63, p64, p65,p66, p67, p68, p69, p70, p71, p72, p73,p74,p75, p76, p77, p78,p79, p80, p81, p82));
+
+
+
+               produtoRepo.saveAll(Arrays.asList( p1, p2, p3, p4, p5,p6, p7, p8, p9, p10,p11, p12, p13, p14, p15,p16, p17, p18, p19, p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30, p31, p32, p33, p34,p35, p36,p37,p38,p39,p40,p41,p42,p43,p44,p45,p46, p47, p48, p49, p50, p51, p52, p53, p54, p55,p56, p57, p58, p59, p60,p61, p62, p63, p64, p65,p66, p67, p68, p69, p70, p71, p72, p73,p74,p75, p76, p77, p78,p79, p80, p81, p82,p83, p84, p85, p86, p87,p88, p89, p90));
             }
         }
             
