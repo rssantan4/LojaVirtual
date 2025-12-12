@@ -2,6 +2,7 @@ import { Produto } from './../models/produto-model';
 import { Component,EventEmitter,Input, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,4 +17,10 @@ export class ProdutoCard {
     adicionarCarrinho(produto: Produto) {
       console.log("Cliquei no botão!");
     }
+
+    constructor(private router: Router) { }
+
+    irParaProduto(id: number) {
+    this.router.navigate(['/produto-info', id]);
+  }
 }
