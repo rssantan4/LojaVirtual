@@ -37,7 +37,7 @@ GeneroMusical samba = new GeneroMusical(null, "Samba");
             
             // Salvamos e guardamos as referências para usar nos produtos
             generoRepo.saveAll(Arrays.asList(
-    rock, pop, mpb, kpop, sertanejo, worship, musical, olodum, anime, reggae,samba
+    rock, pop, mpb, kpop, sertanejo, worship, musical, olodum, reggae,samba
 ));
             
             // 2. Cadastrar Produtos (Usando os objetos de gênero acima)
