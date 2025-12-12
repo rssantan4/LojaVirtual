@@ -16,6 +16,7 @@ import { Loja } from './loja/loja';
 import { CarrinhoCompras } from './Carrinho-compras/carrinho-compras';
 
 import { LayoutPublico } from './layout-publico/layout-publico';
+import { produtoResolver } from './resolvers/produto-resolver';
 export const routes: Routes = [
 
   // 🔹 ROTAS PÚBLICAS (navbar público)
@@ -27,7 +28,9 @@ export const routes: Routes = [
       { path: 'home', component: Home },
       { path: 'sobre', component: Sobre },
       { path: 'contato', component: Contato },
-      { path: 'loja', component: Loja },
+      { path: 'loja', component: Loja,
+         resolve: { produtos: produtoResolver } // nome do resolver na rota
+       },
       { path: 'produto-info/:id', component: ProdutoInfo },
       { path: 'login', component: Login },
       { path: 'cadastro', component: Cadastro },

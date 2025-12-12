@@ -10,6 +10,7 @@ import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatSelect, MatOption } from "@angular/material/select";
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinner } from "@angular/material/progress-spinner";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-loja',
@@ -30,6 +31,7 @@ export class Loja {
 
   // AQUI: dois serviços funcionando juntos
   constructor(
+    private route: ActivatedRoute,
     private produtoService: ProdutoService,
     private generoService: GeneroMusicalService
   ) {}
@@ -37,12 +39,12 @@ loading: boolean = true;
   ngOnInit(): void {
 
     // Carrega os produtos
-    this.produtoService.getProdutos().subscribe(produtos => {
-      this.produtos = produtos;
-      this.produtosOriginais = produtos;
-       this.loading = false;
+    this.route.data.subscribe(data => {
+  this.produtos = data['produtos'];
+  this.produtosOriginais = data['produtos'];
+  this.loading = false;
 
-      console.log('Produtos carregados:', produtos);
+      //console.log('Produtos carregados:', produtos);
     });
 
     // Carrega os gêneros (quando backend estiver pronto)
