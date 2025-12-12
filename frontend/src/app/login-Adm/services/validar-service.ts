@@ -46,8 +46,12 @@ export class ValidarService {
 
   // Verifica se o usuário está logado
   estaLogado(): boolean {
+  if (this.isBrowser()) {
     return !!localStorage.getItem('usuarioLogado');
   }
+  return false;
+}
+
 
   // Faz logout
   logout(): void {

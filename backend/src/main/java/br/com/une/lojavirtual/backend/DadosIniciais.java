@@ -1,22 +1,31 @@
 package br.com.une.lojavirtual.backend;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import br.com.une.lojavirtual.backend.model.Carrinho;
 import br.com.une.lojavirtual.backend.model.GeneroMusical;
 import br.com.une.lojavirtual.backend.model.Produto;
 import br.com.une.lojavirtual.backend.model.TipoUsuario;
 import br.com.une.lojavirtual.backend.model.Usuario;
+import br.com.une.lojavirtual.backend.repository.CarrinhoRepository;
 import br.com.une.lojavirtual.backend.repository.GeneroRepository;
 import br.com.une.lojavirtual.backend.repository.ProdutoRepository;
 import br.com.une.lojavirtual.backend.repository.UsuarioRepository;
 
 @Configuration
 public class DadosIniciais {
+
+    private final CarrinhoRepository carrinhoRepository;
+
+    DadosIniciais(CarrinhoRepository carrinhoRepository) {
+        this.carrinhoRepository = carrinhoRepository;
+    }
 
     @Bean
     CommandLineRunner rodar(ProdutoRepository produtoRepo, UsuarioRepository usuarioRepo, GeneroRepository generoRepo) {
@@ -1156,15 +1165,19 @@ Produto p100 = new Produto(
         }
             
 
-            // 3. Usuários (Mantém igual)
-            if (usuarioRepo.count() == 0) {
-                Usuario admin = new Usuario(null, "Rafael Admin", "admin@loja.com", "senha1234", TipoUsuario.ADMIN);
-                Usuario cliente = new Usuario(null, "Vagner Cliente", "cliente@loja.com", "senha1234", TipoUsuario.CLIENTE);
-                usuarioRepo.saveAll(Arrays.asList(admin, cliente));
-            }
-            
+// 3. Usuários (Mantém igual)
+if (usuarioRepo.count() == 0) {
+    Usuario admin = new Usuario(null, "Rafael Admin", "admin@loja.com", "senha1234", TipoUsuario.ADMIN);
+    Usuario cliente = new Usuario(null, "Vagner Cliente", "cliente@loja.com", "senha1234", TipoUsuario.CLIENTE);
+    usuarioRepo.saveAll(Arrays.asList(admin, cliente));
 
+Carrinho c1 = new Carrinho();
+c1.setUsuario(cliente);
+c1.setItens(new ArrayList<>());
 
+carrinhoRepository.saveAll(Arrays.asList(c1));
+
+}
         };
     }
 }

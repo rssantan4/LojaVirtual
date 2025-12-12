@@ -4,7 +4,7 @@
       <img [src]="produto.imagemUrl" [alt]="produto.nome" (click)="irParaProduto(produto.id)" class="clickable-img">
 
       <!-- BOTÃO FLUTUANTE -->
-      <button class="buy-btn">
+      <button class="buy-btn" (click)="adicionarAoCarrinho(produto)">
         <i class="material-icons">add_shopping_cart</i>
       </button>
     </div>

@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { GeneroMusical } from './../../models/generoMusical-models';
 import { Produto } from './../../models/produto-model';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
+import { Carrinho, ItemCarrinho } from '../../models/carrinho';
 
 
 @Injectable({
@@ -11,58 +13,46 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 
 export class CarrinhoService {
-  // A lista de produtos que você tinha no componente, agora no serviço
-  private listaGenero: GeneroMusical[] = [
-    {
-      id:1,
-      nome: "Kpop"
-    },
-    {
-      id:2,
-      nome: "Pop"
-    }
+  private apiUrl = 'http://localhost:8080/api/carrinho';
 
-  ];
-  private listaProdutos: Produto[] = [];
+  constructor(private http: HttpClient) { }
 
-constructor() {
-  this.listaProdutos = [
-    {
-      id: 1,
-      nome: 'Hamilton',
-      preco: 99.90,
-      imagemUrl: 'assets/img/fotos-produtos/produto1.jpeg',
-      artista: "Lin Manuel Miranda",
-      estoque: 400,
-      descricao: "Musical",
-      generoMusical: this.listaGenero[1]   // AGORA FUNCIONA
-    },
-    {
-      id: 3,
-      nome: 'BTS WORLD',
-      preco: 120.00,
-      imagemUrl: 'assets/img/fotos-produtos/produto11.jpeg',
-      artista: "BTS",
-      estoque: 800,
-      descricao: "Album do jogo",
-      generoMusical: this.listaGenero[0]   // AGORA FUNCIONA
-    }
-  ];
+  // GET - Buscar carrinho por usuário
+  getCarrinho(usuarioId: number): Observable<Carrinho> {
+    return this.http.get<Carrinho>(`${this.apiUrl}/${usuarioId}`);
+  }
+
+  // POST - Adicionar item
+  adicionarItem(usuarioId: number, produtoId: number, quantidade: number): Observable<Carrinho> {
+    const body = { produtoId, quantidade };
+    return this.http.post<Carrinho>(`${this.apiUrl}/${usuarioId}/adicionar`, body);
+  }
+
+  // DELETE - Remover item
+  removerItem(usuarioId: number, produtoId: number): Observable<Carrinho> {
+    return this.http.delete<Carrinho>(`${this.apiUrl}/${usuarioId}/remover/${produtoId}`);
+  }
+
+  // AUMENTAR quantidade (+)
+aumentar(usuarioId: number, item: ItemCarrinho) {
+  return this.adicionarItem(usuarioId, item.produto.id, 1);
 }
 
+// DIMINUIR quantidade (–)
+diminuir(usuarioId: number, item: ItemCarrinho) {
 
-  // Usamos um BehaviorSubject para armazenar o estado do carrinho.
-  // Ele permite que novos componentes recebam o valor atual imediatamente ao se inscreverem.
-  private carrinhoSource = new BehaviorSubject<Produto[]>(this.listaProdutos);
-
-  // O Observable público que os componentes usarão.
-  // Usamos .asObservable() para evitar que o componente chame .next() e altere o estado.
-  carrinho$ = this.carrinhoSource.asObservable();
-
-  // Exemplo: Método para adicionar um item (você pode expandir isso)
-  adicionarItem(produto: Produto): void {
-    // Lógica para adicionar ou aumentar a quantidade e enviar pro banco
+  // Se já for 1 → remover
+  if (item.quantidade === 1) {
+    return this.removerItem(usuarioId, item.produto.id);
   }
+
+  // Se for maior que 1 → remover 1 unidade
+  // Estratégia: remove 1 e deixa o back recalcular tudo
+  return this.removerItem(usuarioId, item.produto.id).pipe(
+    switchMap(() => this.adicionarItem(usuarioId, item.produto.id, item.quantidade - 1))
+  );
+}
+
 
 
 

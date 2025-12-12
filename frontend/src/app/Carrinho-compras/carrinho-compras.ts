@@ -5,6 +5,10 @@ import { CarrinhoService } from './services/service-carrinho';
 import { Observable } from 'rxjs';
 import { AsyncPipe, CurrencyPipe, NgFor } from '@angular/common';
 import { Produto } from '../models/produto-model';
+import { ProdutoService } from '../Area-Adm/produtos/services/produto-service';
+import { AuthGuard } from '../Services/auth-guard';
+import { ValidarService } from '../login-Adm/services/validar-service';
+import { Carrinho, ItemCarrinho } from '../models/carrinho';
 
 @Component({
   selector: 'carrinho-compras',
@@ -14,23 +18,61 @@ import { Produto } from '../models/produto-model';
   styleUrl: './carrinho-compras.scss',
 })
 
-export class CarrinhoCompras implements OnInit {
-carrinho$!: Observable<Produto[]>;
+export class CarrinhoCompras {
+ carrinho!: Carrinho; // carrinho completo
+  carregando = true;
 
-  constructor(private carrinhoService: CarrinhoService) {}
+  constructor(
+    private carrinhoService: CarrinhoService,
+    private authService: ValidarService
+  ) {}
 
   ngOnInit(): void {
-    this.carrinho$ = this.carrinhoService.carrinho$;
+    this.carregarCarrinho();
   }
 
-  // --- Funções Auxiliares
+  carregarCarrinho() {
+    const usuarioId = this.authService.getUsuario();
 
-  calcularTotalItens(produtos: Produto[]): number {
-    return produtos.length;
+    this.carrinhoService.getCarrinho(Number(usuarioId?.id)).subscribe({
+      next: (c) => {
+        this.carrinho = c;
+        this.carregando = false;
+      },
+      error: (err) => {
+        console.log("Erro carregando carrinho:", err);
+        this.carregando = false;
+      }
+    });
   }
 
-  calcularSubtotal(produtos: Produto[]): number {
-    return produtos.reduce((total, item) => total + item.preco, 0);
-  }
+  aumentar(item: ItemCarrinho) {
+  const usuario = this.authService.getUsuario();
+  if (!usuario) return;
+
+  this.carrinhoService.aumentar(Number(usuario.id), item).subscribe(() => {
+    this.carregarCarrinho();
+  });
+}
+
+diminuir(item: ItemCarrinho) {
+  const usuario = this.authService.getUsuario();
+  if (!usuario) return;
+
+  this.carrinhoService.diminuir(Number(usuario.id), item).subscribe(() => {
+    this.carregarCarrinho();
+  });
+}
+
+remover(item: ItemCarrinho) {
+  const usuario = this.authService.getUsuario();
+  if (!usuario) return;
+
+  this.carrinhoService.removerItem(Number(usuario.id), item.produto.id).subscribe(() => {
+    this.carregarCarrinho();
+  });
+}
+
+
 
 }
