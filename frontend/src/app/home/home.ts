@@ -5,6 +5,8 @@ import { CommonModule,NgFor } from '@angular/common';
 import { ProdutoCard } from '../produto-card/produto-card';
 import { Produto } from '../models/produto-model';
 import { ProdutoService } from '../Area-Adm/produtos/services/produto-service';
+import { Observable } from 'rxjs';
+import { ValidarService } from '../login-Adm/services/validar-service';
 
 
 
@@ -18,8 +20,9 @@ import { ProdutoService } from '../Area-Adm/produtos/services/produto-service';
 export class Home {
   produtos: Produto[] = [];
 
-  constructor(private produtosService: ProdutoService) { }
+  constructor(private produtosService: ProdutoService, private validarService: ValidarService) { }
 
+  isLogado$!: Observable<boolean>;
   ngOnInit(): void {
   this.produtosService.getMaisVendidos().subscribe(
     (data) => {
@@ -29,6 +32,8 @@ export class Home {
       console.error('Erro ao carregar produtos mais vendidos:', error);
     }
   );
+
+  this.isLogado$ = this.validarService.isLogado$;
 }
 
 }

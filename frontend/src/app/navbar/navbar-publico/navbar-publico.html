@@ -13,19 +13,43 @@
     <button class="desktop-only" routerLink="/contato"><span>CONTATO</span></button>
   </div>
 
-  <!-- Ícones à direita -->
-  <div class="icones-escolha">
-    <button class="persson-button" mat-icon-button [matMenuTriggerFor]="menu">
+  <!-- Ícones se NAO estiver logado -->
+  <div class="icones-escolha" *ngIf="!(validarService.isLogado$ | async)">
+    <button class="persson-button" mat-icon-button [matMenuTriggerFor]="menuPublico">
       <mat-icon class="persson">account_circle</mat-icon>
     </button>
 
-    <mat-menu #menu="matMenu">
+    <mat-menu #menuPublico="matMenu">
       <button class="persson-item" routerLink="/login" mat-menu-item>Login</button>
       <button class="persson-item" routerLink="/cadastro" mat-menu-item>Cadastrar</button>
     </mat-menu>
-
-    <button mat-icon-button routerLink="/carrinhoCompras">
-      <mat-icon class="cart">shopping_cart</mat-icon>
-    </button>
   </div>
+
+  <!-- Ícones se ESTIVER logado -->
+  <div class="icones-escolha" *ngIf="validarService.isLogado$ | async">
+    <button mat-icon-button [matMenuTriggerFor]="menuCliente">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <mat-menu #menuCliente="matMenu">
+      <button mat-menu-item routerLink="/minha-conta">
+        <mat-icon>person</mat-icon>
+        <span>Minha Conta</span>
+      </button>
+      <button mat-menu-item routerLink="/meus-pedidos">
+        <mat-icon>shopping_cart</mat-icon>
+        <span>Meus Pedidos</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+
+  <!-- Ícone carrinho -->
+  <button mat-icon-button routerLink="/carrinho">
+    <mat-icon class="cart">shopping_cart</mat-icon>
+  </button>
+
 </mat-toolbar>
