@@ -631,7 +631,7 @@ Produto p54 = new Produto(
     "Paula Fernandes",
     "Álbum de Paula Fernandes lançado em 2009, Hora Certa traz faixas que consolidaram a cantora no cenário sertanejo romântico, incluindo sucessos como “Pássaro de Fogo” e “Hora Certa”.",
     new BigDecimal("87.90"),
-    15,
+    150,
     sertanejo,
     "assets/img/fotos-produtos/produto54.jpg"
 );
@@ -642,7 +642,7 @@ Produto p55 = new Produto(
     "Chitãozinho & Xororó",
     "Coletânea especial da dupla Chitãozinho & Xororó, reunindo seus maiores sucessos ao longo da carreira, incluindo “Evidências”, “Fio de Cabelo” e “Se Deus Me Ouvisse”. Um álbum essencial para fãs do sertanejo clássico.",
     new BigDecimal("95.00"),
-    18,
+    180,
     sertanejo,
     "assets/img/fotos-produtos/produto55.jpg"
 );
@@ -652,7 +652,7 @@ Produto p56 = new Produto(
     "Hillsong Worship",
     "Álbum ao vivo do Hillsong Worship, gravado durante a Hillsong Conference em Sydney e lançado em 14 de outubro de 2016. O projeto captura a adoração congregacional com músicas que se tornaram grandes hinos modernos, como “Behold (Then Sings My Soul)”, “What a Beautiful Name” e “Grace to Grace”. É considerado um dos álbuns mais influentes do ministério global de louvor da Hillsong, reunindo líderes e compositores como Brooke Ligertwood, Ben Fielding, Joel Houston e Reuben Morgan. O álbum aborda temas de luz, esperança e a presença de Deus na vida do crente. ",
     new BigDecimal("99.90"),
-    20,
+    200,
     worship,
     "assets/img/fotos-produtos/produto56.jpeg"
 );
@@ -663,7 +663,7 @@ Produto p57 = new Produto(
     "Forrest Frank",
     "Segundo álbum de estúdio cristão do artista americano Forrest Frank, lançado em maio de 2025. O projeto mistura elementos de pop cristão e hip‑hop e tem sido bem recebido nas paradas de música cristã contemporânea, alcançando destaque com faixas como “Your Way’s Better” e colaborando com nomes como Thomas Rhett. O álbum celebra a identidade e a fé cristã por meio de composições modernas e acessíveis.",
     new BigDecimal("85.00"),
-    15,
+    150,
     worship,
     "assets/img/fotos-produtos/produto57.jpeg"
 );
@@ -674,7 +674,7 @@ Produto p58 = new Produto(
     "Dunamis Music",
     "Projeto ao vivo do ministério Dunamis Music, lançado em 2024, que apresenta uma coletânea de músicas de adoração contemporânea com ênfase em presença, louvor e intimidade com Deus. O repertório inclui composições como “Essência” e outras que têm sido usadas em momentos de adoração e celebração em igrejas por todo o Brasil e no exterior.",
     new BigDecimal("92.50"),
-    18,
+    180,
     worship,
     "assets/img/fotos-produtos/produto58.jpeg"
 );
@@ -686,7 +686,7 @@ Produto p59 = new Produto(
     "Hillsong United",
     "Álbum ao vivo do Hillsong United gravado em 2011 e lançado em 14 de fevereiro de 2012. Registrado na American Airlines Arena em Miami, o projeto traz performances de sucessos da banda e captura a energia de uma grande noite de adoração, com músicas como “Hosanna”, “Your Name High” e “From the Inside Out”.",
     new BigDecimal("88.00"),
-    12,
+    120,
     worship,
     "assets/img/fotos-produtos/produto59.jpeg"
 );
@@ -698,7 +698,7 @@ Produto p60 = new Produto(
     "Dunamis Music",
     "Projeto que reúne músicas significativas do ministério Dunamis Music, focadas em louvor, intimidade e devoção a Deus. O repertório (e o título) enfatizam a essência da adoração e a busca por um relacionamento mais profundo com Cristo.",
     new BigDecimal("90.00"),
-    14,
+    140,
     worship,
     "assets/img/fotos-produtos/produto60.jpeg"
 );
@@ -710,7 +710,7 @@ Produto p61 = new Produto(
     "Hillsong United",
     "Registro ao vivo da banda Hillsong United capturado em Miami (2011), lançado em 2012. Ele apresenta performances de várias músicas que marcaram os primeiros anos da banda, destacando o estilo rock‑worship moderno em um ambiente de culto dinâmico e poderoso.",
     new BigDecimal("99.90"),
-    20,
+    200,
     worship,
     "assets/img/fotos-produtos/produto61.jpeg"
 );
@@ -722,7 +722,7 @@ Produto p62 = new Produto(
     "Alessandro Vilas Boas",
     "Álbum de adoração lançado por Alessandro Vilas Boas, com músicas em português que exploram temas de fé, caminhada espiritual e devoção. Com composições que convidam o ouvinte à reflexão e à entrega, o projeto é usado em cultos e momentos devocionais.",
     new BigDecimal("87.50"),
-    10,
+    100,
     worship,
     "assets/img/fotos-produtos/produto62.jpeg"
 );
@@ -734,7 +734,7 @@ Produto p63 = new Produto(
     "Thamires Garcia",
     "Projeto musical da cantora Thamires Garcia, reunindo canções de adoração contemporânea que falam de esperança, justiça espiritual e expectativa pela manifestação de Deus. O álbum combina temas de fé com letras que buscam fortalecer a comunidade cristã através da música.",
     new BigDecimal("92.00"),
-    12,
+    120,
     worship,
     "assets/img/fotos-produtos/produto63.jpeg"
 );
@@ -746,7 +746,7 @@ Produto p64 = new Produto(
     "Cultura do Céu",
     "Álbum do grupo brasileiro Cultura do Céu, liderado por Davi Fernandes com seus filhos Kaleb & Josh. O projeto traz músicas que misturam louvor contemporâneo com influências pop e eletrônicas e enfatizam temas de esperança, adoração e presença de Deus.",
     new BigDecimal("95.00"),
-    15,
+    150,
     worship,
     "assets/img/fotos-produtos/produto64.jpeg"
 );
@@ -758,7 +758,7 @@ Produto p65 = new Produto(
     "Live Church",
     "Álbum congregacional da igreja Live Church, com canções de louvor que inspiram comunhão e adoração coletiva. O projeto é ideal para momentos de culto comunitário e celebração da fé cristã, reunindo músicas que enfatizam a presença de Deus como morada eterna do crente.",
     new BigDecimal("90.00"),
-    18,
+    180,
     worship,
     "assets/img/fotos-produtos/produto65.jpeg"
 );
@@ -769,7 +769,7 @@ Produto p66 = new Produto(
     "BTS",
     "Lançado em 21 de fevereiro de 2020, “Map of the Soul: 7” é o quarto álbum em coreano (sétimo no geral) do BTS, marcando uma celebração dos sete anos de carreira do grupo. Com 20 faixas, o álbum mistura pop, R&B, hip hop e EDM, explorando temas de introspecção, crescimento pessoal e identidade. Inclui grandes sucessos como “ON” e “Black Swan”, além de colaborações notáveis (Halsey em “Boy With Luv” e Sia em “ON – Remix”). O álbum foi um dos mais vendidos de 2020 e ajudou a consolidar o BTS como fenômeno global.",
     new BigDecimal("120.00"),
-    15,
+    150,
     kpop,
     "assets/img/fotos-produtos/produto66.jpeg"
 );
@@ -780,7 +780,7 @@ Produto p67 = new Produto(
     "BTS",
     "Lançado em 20 de novembro de 2020, “BE” é o quinto álbum em coreano (nono no geral) do BTS, criado em resposta à pandemia de COVID‑19 e concebido com forte participação dos próprios membros na composição e produção. O álbum transmite mensagens de esperança e conexão durante tempos difíceis, com faixas como “Life Goes On” e o single global “Dynamite”. Musicalmente, mescla pop, hip hop, disco e synth‑pop, refletindo emoções variadas como solidariedade, saudade e otimismo.",
     new BigDecimal("115.00"),
-    12,
+    120,
     kpop,
     "assets/img/fotos-produtos/produto67.jpeg"
 );
@@ -791,7 +791,7 @@ Produto p68 = new Produto(
     "BLACKPINK",
     "Lançado em 2 de outubro de 2020, “The Album” é o primeiro álbum de estúdio coreano do BLACKPINK, marcando um importante marco na carreira do grupo feminino. Com oito faixas, o trabalho mistura pop, hip hop, EDM e R&B, trazendo hits como “How You Like That”, “Ice Cream” (com Selena Gomez) e “Lovesick Girls”. O álbum explora temas de amor, crescimento e confiança, além de mostrar a versatilidade vocal e o forte apelo internacional do BLACKPINK.",
     new BigDecimal("125.00"),
-    10,
+    100,
     kpop,
     "assets/img/fotos-produtos/produto68.jpeg"
 );
@@ -802,7 +802,7 @@ Produto p69 = new Produto(
     "TWICE",
     "Lançado em 12 de novembro de 2021, “Formula of Love: O+T=<3” é o terceiro álbum de estúdio coreano (sexto no geral) do grupo TWICE. O álbum apresenta uma mistura de disco‑pop, synth‑pop, R&B e outros estilos, com faixas populares como “Scientist”, “The Feels” (primeiro single em inglês do grupo) e “Talk That Talk”. O projeto foi um dos mais vendidos do grupo até então e solidificou TWICE como um dos principais atos femininos no K‑pop global.",
     new BigDecimal("110.00"),
-    14,
+    140,
     kpop,
     "assets/img/fotos-produtos/produto69.jpeg"
 );
@@ -813,7 +813,7 @@ Produto p70 = new Produto(
     "NewJeans",
     "Lançado digitalmente em 1º de agosto de 2022 (físico em 8 de agosto de 2022), “New Jeans” é o EP de estreia do grupo NewJeans, introduzindo o quinteto ao cenário do K‑pop com um som fresco que mistura synth‑pop, R&B e hip‑hop. O EP contém grandes sucessos como “Attention”, “Hype Boy” e “Cookie”, que foram amplamente elogiados por sua produção inovadora e atraíram atenção internacional imediatamente após o debut do grupo.",
     new BigDecimal("105.00"),
-    16,
+    160,
     kpop,
     "assets/img/fotos-produtos/produto70.jpeg"
 );
@@ -824,7 +824,7 @@ Produto p71 = new Produto(
     "NewJeans",
     "Lançado como single e incorporado nas versões físicas/álbuns do NewJeans, “Super Shy” se tornou um dos maiores sucessos do grupo, com melodias cativantes e estética sonora que combina pop moderno com elementos de R&B e electro. A faixa ajudou o grupo a consolidar sua popularidade global e viralizou nas plataformas de streaming e redes sociais.",
     new BigDecimal("98.00"),
-    20,
+    200,
     kpop,
     "assets/img/fotos-produtos/produto71.jpeg"
 );
@@ -835,7 +835,7 @@ Produto p72 = new Produto(
     "IU",
     "Lançado em 25 de março de 2021, “Lilac” é o quinto álbum de estúdio da cantora sul‑coreana IU, celebrando seus 13 anos de carreira com um projeto que mistura city pop, retro‑funk, pop e R&B. O álbum traz singles marcantes como “Celebrity”, “Lilac” e “Coin”, e foi certificado múltiplas vezes nas paradas coreanas por suas vendas e popularidade.",
     new BigDecimal("102.00"),
-    12,
+    120,
     kpop,
     "assets/img/fotos-produtos/produto72.jpeg"
 );
@@ -846,7 +846,7 @@ Produto p73 = new Produto(
     "IU",
     "Lançado em 18 de novembro de 2019, “Love Poem” é o quinto EP coreano de IU, que apresenta letras introspectivas e emotivas, com destaque para as faixas “Love Poem”, “Blueming” e “Above the Time”. O projeto foi aclamado tanto por fãs quanto pela crítica por sua profundidade emocional e pela performance vocal da artista.",
     new BigDecimal("100.00"),
-    15,
+    150,
     kpop,
     "assets/img/fotos-produtos/produto73.jpeg"
 );
@@ -857,7 +857,7 @@ Produto p74 = new Produto(
     "Olodum",
     "Álbum do Olodum lançado em 2012, apresentando 8 faixas que celebram a energia vibrante e os ritmos afro‑brasileiros que caracterizam o samba‑reggae baiano. O projeto combina percussão intensa, letras que exaltam a cultura afro‑descendente e a tradição dos tambores do Olodum, refletindo sua importância na música e no carnaval da Bahia.",
     new BigDecimal("95.00"),
-    12,
+    120,
     olodum,
     "assets/img/fotos-produtos/produto80.jpeg"
 );
@@ -868,7 +868,7 @@ Produto p75 = new Produto(
     "Diversos Artistas",
     "Coletânea ao vivo que reúne clássicos do samba de raiz interpretados por diversos artistas consagrados. O álbum apresenta performances autênticas e espontâneas que capturam a essência do samba tradicional, com sonoridade que enfatiza cavaquinho, pandeiro e voz, celebrando a história e a cultura do gênero.",
     new BigDecimal("89.90"),
-    15,
+    150,
     samba,
     "assets/img/fotos-produtos/produto74.jpg"
 );
@@ -879,7 +879,7 @@ Produto p76 = new Produto(
     "Zeca Pagodinho",
     "Clássico álbum do sambista Zeca Pagodinho com destaque para o hit “Deixa a Vida Me Levar”, que se tornou um dos maiores símbolos do samba e pagode brasileiros. O projeto mistura composições que celebram alegria, cotidiano e malandragem com a interpretação descontraída e carismática que marcou a carreira do artista.",
     new BigDecimal("92.50"),
-    10,
+    100,
     samba,
     "assets/img/fotos-produtos/produto75.jpg"
 );
@@ -891,7 +891,7 @@ Produto p77 = new Produto(
     "Fundo de Quintal",
     "Álbum representativo do Fundo de Quintal, grupo lendário do samba carioca, reunindo faixas que se tornaram referência do samba de roda e pagode. Com arranjos marcantes de cavaco, banjo e percussão e vozes harmonizadas, o projeto celebra a tradição do samba com repertório que influenciou gerações de músicos.",
     new BigDecimal("94.00"),
-    14,
+    140,
     samba,
     "assets/img/fotos-produtos/produto76.jpeg"
 );
@@ -903,7 +903,7 @@ Produto p78 = new Produto(
     "Fundo de Quintal",
     "Coletânea com os maiores sucessos do Fundo de Quintal, trazendo o melhor do samba e do pagode carioca. O repertório inclui interpretações emblemáticas que destacam a musicalidade e a contribuição do grupo para a história do samba popular brasileiro.",
     new BigDecimal("90.00"),
-    12,
+    120,
     samba,
     "assets/img/fotos-produtos/produto77.jpeg"
 );
@@ -914,7 +914,7 @@ Produto p79 = new Produto(
     "Olodum",
     "Coletânea especial do Olodum com faixas que celebram a cultura afro‑brasileira e o ritmo contagiante do samba‑reggae. O álbum reúne sucessos do grupo percussivo, destacando sua contribuição histórica ao carnaval de Salvador e à música brasileira.",
     new BigDecimal("96.50"),
-    10,
+    100,
     olodum,
     "assets/img/fotos-produtos/produto78.jpeg"
 );
@@ -925,7 +925,7 @@ Produto p80 = new Produto(
     "Martinho da Vila",
     "Lançado em 1974, “Canta Canta, Minha Gente” é um dos álbuns mais emblemáticos de Martinho da Vila, com letras poéticas e melodias que celebram as tradições do samba. O disco é considerado um clássico da música brasileira e inclui faixas que se tornaram parte do repertório essencial do gênero.",
     new BigDecimal("97.00"),
-    8,
+    80,
     samba,
     "assets/img/fotos-produtos/produto79.jpeg"
 );
@@ -936,7 +936,7 @@ Produto p81 = new Produto(
     "Olodum",
     "Coletânea do Olodum que destaca sua trajetória musical e a força dos ritmos afro‑brasileiros, misturando percussão contagiante e músicas que celebram a vida, a cultura e a tradição do samba‑reggae. O álbum inclui temas consagrados e referências à presença do Olodum no cenário musical brasileiro.",
     new BigDecimal("95.50"),
-    10,
+    100,
     olodum,
     "assets/img/fotos-produtos/produto82.jpg"
 );
@@ -948,7 +948,7 @@ Produto p82 = new Produto(
     "Timbalada",
     "Lançado em 1993, este álbum da Timbalada apresenta o percussivo e inovador estilo samba‑reggae baiano criado por Carlinhos Brown. Com batidas intensas, ritmo contagiante e instrumentos marcantes, o trabalho consolidou o grupo como um dos principais representantes da música baiana no Brasil e no exterior.",
     new BigDecimal("98.00"),
-    12,
+    120,
     samba,
     "assets/img/fotos-produtos/produto81.jpeg"
 );
@@ -959,7 +959,7 @@ Produto p83 = new Produto(
     "Bob Marley & The Wailers",
     "Coletânea lançada originalmente em 1984 e posteriormente em edições deluxe com duas faixas extras e material remasterizado. “Legend” é a coletânea de maior sucesso da história do reggae, reunindo hits que moldaram o gênero, incluindo “No Woman, No Cry”, “One Love/People Get Ready”, “Buffalo Soldier”, “Jamming” e “Could You Be Loved”. É considerado o álbum mais vendido de reggae de todos os tempos e um marco na popularização global da música de Bob Marley e sua banda.",
     new BigDecimal("120.00"),
-    15,
+    150,
     reggae,
     "assets/img/fotos-produtos/produto83.jpg"
 );
@@ -970,7 +970,7 @@ Produto p84 = new Produto(
     "Bob Marley & The Wailers",
     "Lançado em 3 de junho de 1977, ‘Exodus’ é o nono álbum de estúdio de Bob Marley & The Wailers e um dos mais influentes do reggae. O álbum combina temas sociais, políticos e espirituais com grooves inconfundíveis, incluindo faixas marcantes como “Jamming”, “Three Little Birds”, “Exodus” e “Waiting in Vain”. O trabalho foi gravado após um período turbulento na vida de Marley e ajudou a consolidar sua fama mundial.",
     new BigDecimal("110.00"),
-    12,
+    120,
     reggae,
     "assets/img/fotos-produtos/produto84.jpg"
 );
@@ -981,7 +981,7 @@ Produto p85 = new Produto(
     "Jimmy Cliff & Various Artists",
     "Trilha sonora do filme jamaicano ‘The Harder They Come’, lançada em 1972, que se tornou um dos principais pontos de referência do reggae internacional. A obra apresenta Jimmy Cliff interpretando a faixa‑título “The Harder They Come”, além de músicas de outros artistas que ajudaram a introduzir o reggae e o ska ao público global, com influências que vão do rocksteady ao reggae roots.",
     new BigDecimal("95.00"),
-    10,
+    100,
     reggae,
     "assets/img/fotos-produtos/produto85.jpg"
 );
@@ -992,7 +992,7 @@ Produto p86 = new Produto(
     "Peter Tosh",
     "Lançado em 1977, ‘Equal Rights’ é o segundo álbum solo do ex‑Wailer Peter Tosh e uma obra fundamental do reggae politizado, com temas de justiça social e resistência. O álbum traz faixas poderosas como a faixa‑título “Equal Rights” e “Get Up, Stand Up” (co‑escrita com Bob Marley), expressando mensagens diretas de igualdade, liberdade e luta contra a opressão.",
     new BigDecimal("98.50"),
-    8,
+    80,
     reggae,
     "assets/img/fotos-produtos/produto86.jpg"
 );
@@ -1003,7 +1003,7 @@ Produto p87 = new Produto(
     "Burning Spear",
     "Lançado em 12 de dezembro de 1975, ‘Marcus Garvey’ é o terceiro álbum do jamaicano Burning Spear (Winston Rodney), um marco do roots reggae. Nomeado em homenagem ao líder pan‑africanista Marcus Garvey, o álbum combina ritmos tradicionais com letras conscientes sobre identidade, história e luta pela liberdade, incluindo faixas como “Marcus Garvey”, “Slavery Days” e “Old Marcus Garvey”.",
     new BigDecimal("97.00"),
-    10,
+    100,
     reggae,
     "assets/img/fotos-produtos/produto87.jpg"
 );
@@ -1014,7 +1014,7 @@ Produto p88 = new Produto(
     "Toots & The Maytals",
     "Lançado originalmente no início dos anos 1970 e ampliado internacionalmente em 1975, ‘Funky Kingston’ é um dos álbuns mais celebrados do grupo Toots & The Maytals, combinando reggae, ska e soul com groove contagiante. Destaque para faixas como “Funky Kingston”, “Time Tough” e interpretações cheias de energia que ajudaram a definir a evolução do reggae para públicos além da Jamaica.",
     new BigDecimal("96.50"),
-    9,
+    90,
     reggae,
     "assets/img/fotos-produtos/produto88.jpg"
 );
@@ -1025,7 +1025,7 @@ Produto p89 = new Produto(
     "Gregory Isaacs",
     "Lançado em 1982, ‘Night Nurse’ é um dos álbuns mais emblemáticos de Gregory Isaacs, consolidando seu estilo suave e sensual no reggae, muitas vezes associado ao subgênero known as lovers rock. A faixa‑título “Night Nurse” tornou‑se um hit global, destacando a voz única e a capacidade de Isaacs em misturar temas românticos com arranjos reggae sofisticados.",
     new BigDecimal("99.00"),
-    11,
+    110,
     reggae,
     "assets/img/fotos-produtos/produto89.jpg"
 );
@@ -1036,7 +1036,7 @@ Produto p90 = new Produto(
     "Gregory Isaacs",
     "Lançado em 1978, ‘Cool Ruler’ é um dos primeiros álbuns que consolidaram Gregory Isaacs como um dos maiores nomes do reggae, mostrando seu estilo suave e elegante que mais tarde influenciaria o lovers rock. O álbum traz uma fusão de grooves reggae clássicos com a voz característica de Isaacs, marcada por sensibilidade e sentimento.",
     new BigDecimal("95.50"),
-    10,
+    100,
     reggae,
     "assets/img/fotos-produtos/produto90.jpg"
 );
