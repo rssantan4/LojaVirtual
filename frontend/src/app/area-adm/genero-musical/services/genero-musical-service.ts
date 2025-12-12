@@ -9,15 +9,15 @@ import { GeneroMusical } from '../../../models/generoMusical-models';
 export class GeneroMusicalService {
 
 private generos: GeneroMusical[] = [
-  { id: 1, nome: 'Rock' },
-  { id: 2, nome: 'Pop' },
-  { id: 3, nome: 'MPB' },
-  { id: 4, nome: 'K-pop' },
-  { id: 5, nome: 'Sertanejo' },
+  { id: 1, nome: 'Pop' },
+  { id: 2, nome: 'MPB' },
+  { id: 3, nome: 'Musical' },
+  { id: 4, nome: 'Rock' },
+  { id: 5, nome: 'K-pop' },
   { id: 6, nome: 'Worship' },
-  { id: 7, nome: 'Musical' },
+  { id: 7, nome: 'Sertanejo' },
   { id: 8, nome: 'Olodum' },
-  { id: 9, nome: 'Anime OST' },
+  { id: 9, nome: 'Samba' },
   { id: 10, nome: 'Reggae' }
 ];
 
