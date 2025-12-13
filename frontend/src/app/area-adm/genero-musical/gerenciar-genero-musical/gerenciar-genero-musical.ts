@@ -12,7 +12,7 @@ import { ErrorDialog } from '../../shared/components/error-dialog/error-dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError } from 'rxjs/operators';
+import { catchError, first } from 'rxjs/operators';
 import { ConfirmationDialog } from '../../shared/components/confirmation-dialog/confirmation-dialog';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
@@ -29,117 +29,78 @@ import { GeneroMusical } from '../../../models/generoMusical-models';
   templateUrl: './gerenciar-genero-musical.html',
   styleUrl: './gerenciar-genero-musical.scss',
 })
-export class GerenciarGeneroMusical implements OnInit {
 
+export class GerenciarGeneroMusical implements OnInit {
   generos$!: Observable<GeneroMusical[]>;
   generoForm: GeneroMusical = { id: 0, nome: '' };
 
-  constructor(private generoService: GeneroMusicalService) {}
+  constructor(
+    private generoService: GeneroMusicalService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
-    this.generos$ = this.generoService.getAll();
+    this.refresh();
   }
 
+  // 🔹 Atualiza a lista do observable
+  refresh() {
+    this.generos$ = this.generoService.getAll().pipe(first());
+  }
+
+  // 🔹 Criar ou atualizar
   onSave() {
     const nome = this.generoForm.nome?.trim();
     if (!nome) return;
 
     if (this.generoForm.id) {
-      this.generoService.update({ ...this.generoForm, nome: nome });
+      this.generoService.update({ ...this.generoForm, nome }).subscribe(() => {
+        this.snackBar.open('Gênero atualizado com sucesso', 'X', { duration: 3000 });
+        this.refresh();
+      });
     } else {
-      this.generoService.create({ id: 0, nome: nome });
+      this.generoService.create({ id: 0, nome }).subscribe(() => {
+        this.snackBar.open('Gênero criado com sucesso', 'X', { duration: 3000 });
+        this.refresh();
+      });
     }
+
     this.onCancel();
   }
 
+  // 🔹 Editar
   onEdit(genero: GeneroMusical) {
     this.generoForm = { ...genero };
   }
 
-  onRemove(id?: number) {
-    if (!id) return;
-    this.generoService.delete(id);
+  // 🔹 Remover
+  onRemove(genero: GeneroMusical) {
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      data: `Deseja excluir o gênero: ${genero.nome}?`
+    });
+
+    dialogRef.afterClosed().subscribe((confirm: boolean) => {
+      if (confirm) {
+        this.generoService.delete(genero.id).subscribe(() => {
+          this.snackBar.open('Gênero removido com sucesso', 'X', { duration: 3000 });
+          this.refresh();
+        });
+      }
+    });
   }
 
+  // 🔹 Cancelar edição/novo
   onCancel() {
     this.generoForm = { id: 0, nome: '' };
   }
 
-
-
-
- /* ########## LIBERAR QUANDO TIVER O BANCO ESSA PARTE ########################
-   generos$: Observable<GeneroMusical[]> | null = null;
-
-  constructor(
-  private generoService: GerenciarGeneroMusicalService,
-  public dialog: MatDialog,
-  private router : Router,
-  private route : ActivatedRoute,
-  private snackBar: MatSnackBar
-
-  ){
-      this.refresh();
-
+  // 🔹 Função auxiliar: primeira letra maiúscula
+  capitalizeFirstLetter(value: string): string {
+    if (!value) return '';
+    return value.charAt(0).toUpperCase() + value.slice(1);
   }
 
-   refresh(){
- this.generos$ = this.generoService.list()
- .pipe(
- catchError(error => {
- this.onError('Erro ao carregar a lista de generos musicais');
- return of([])
- })
- );
- }
-
-onError(erroMsg: string){
-  this.dialog.open(ErrorDialog, {
-    data:erroMsg,
-  })
-}
-
-  onAdd(){
- this.router.navigate(['new'], { relativeTo : this.route });
- }
-
- onEdit(genero: GeneroMusical) {
- this.router.navigate(['edit', genero.id], { relativeTo: this.route });
- }
 
 
-
-  onRemove(genero: GeneroMusical) {
-           const dialogRef = this.dialog.open(ConfirmationDialog, {
-      data: 'Excluir gênero: ${genero.name}?'
-    });
-    dialogRef.afterClosed().subscribe((result : boolean) => {
-      if (result){
-        this.generoService.remove(genero.id).subscribe(
-          () => {
-            this.refresh();
-            this.snackBar.open('Genero removido com sucesso', 'X', {
-              duration : 5000,
-              verticalPosition: 'top',
-              horizontalPosition: 'center'
-            });
-          },
-          () => this.onError('Erro ao tentar remover genero.')
-        );
-      }
-    });
-  }
-ngOnInit(): void {
-
-  const genero: GeneroMusical = this.route.snapshot.data['genero'];
-  console.log('Dados carregados do backend:', genero);
-}
-*/
-
-
-// Função para inicial maiúscula
-capitalizeFirstLetter(value: string): string {
-  if (!value) return '';
-  return value.charAt(0).toUpperCase() + value.slice(1);
-}
 }
