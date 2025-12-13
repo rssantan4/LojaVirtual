@@ -36,7 +36,8 @@ constructor( private fb: FormBuilder, private snackBar: MatSnackBar,
       nome: ['', Validators.required],
       sobrenome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]]
+      senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
+      endereco: ['', Validators.required]
     });
   }
 

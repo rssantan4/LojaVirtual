@@ -8,5 +8,6 @@ export interface Usuario {
   nome: string;
   email: string;
   senha: string;
+  endereco : string;
   tipo: TipoUsuario;  // Enum para garantir consistência com o back
 }

@@ -51,6 +51,18 @@
 </mat-error>
 </mat-form-field>
 
+<mat-form-field appearance="outline" class="endereco">
+  <mat-label>Endereço</mat-label>
+  <input matInput formControlName="endereco" placeholder="Ex. Rua das Flores, 123" type="text">
+
+  <!-- Erro se o campo estiver vazio -->
+  <mat-error *ngIf="cadastroForm.get('endereco')?.hasError('required')">
+    Endereço é <strong>obrigatório</strong>
+  </mat-error>
+</mat-form-field>
+
+
+
 <button class = "button-cadastro" type="submit"> Cadastre-se</button>
 
   </form>
