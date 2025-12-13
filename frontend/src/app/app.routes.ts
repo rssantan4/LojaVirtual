@@ -79,8 +79,6 @@ export const routes: Routes = [
 
 ];
 
-const routerOptions: ExtraOptions = {
-  scrollPositionRestoration: 'top', // faz scroll ir para o topo
-  anchorScrolling: 'enabled'         // opcional: permite links tipo #ancora
-};
+
+
 
