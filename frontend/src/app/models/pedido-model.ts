@@ -1,8 +1,9 @@
 import { ItemPedido } from "./itemPedido";
+import { Usuario } from "./usuarioLogin-model";
 
 export interface Pedido {
   id: number;
-  usuario: string;
+  usuario: Usuario;
   itens: ItemPedido[];
   valorTotal: number;
   dataPedido: Date;

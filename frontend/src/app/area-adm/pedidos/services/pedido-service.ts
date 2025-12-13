@@ -27,12 +27,18 @@ export class PedidoService {
     return this.http.put<Pedido>(`${this.apiUrl}/${pedido.id}`, pedido);
   }
 
-  // Atualizar somente o status (mais elegante)
-  atualizarStatus(id: number, novoStatus: Pedido['status']): Observable<Pedido> {
-    return this.http.patch<Pedido>(
-      `${this.apiUrl}/${id}/status`,
-      { status: novoStatus }
-    );
-  }
+ // Atualizar somente o status
+atualizarStatus(id: number, novoStatus: Pedido['status']): Observable<Pedido> {
+  console.log('Status enviado:', novoStatus);
+
+  return this.http.put<Pedido>(
+    `${this.apiUrl}/${id}/status`,
+    JSON.stringify(novoStatus),
+    {
+      headers: { 'Content-Type': 'application/json' }
+    }
+  );
+}
+
 
 }
