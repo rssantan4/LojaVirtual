@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { ExtraOptions, Routes } from '@angular/router';
 
 import { Home } from './home/home';
 import { Sobre } from './sobre/sobre';
@@ -59,4 +59,9 @@ export const routes: Routes = [
   { path: 'loginAdm', component: LoginAdm },
 
 ];
+
+const routerOptions: ExtraOptions = {
+  scrollPositionRestoration: 'top', // faz scroll ir para o topo
+  anchorScrolling: 'enabled'         // opcional: permite links tipo #ancora
+};
 
