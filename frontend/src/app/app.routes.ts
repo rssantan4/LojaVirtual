@@ -7,7 +7,6 @@ import { Contato } from './contato/contato'
 import { Login } from './login/login';
 import { Cadastro } from './cadastro/cadastro';
 import { AreaAdmModule } from './Area-Adm/areaAdm-module';
-import { AreaCliente } from './Area-Cliente/homeCliente/area-cliente';
 
 import { ProdutoInfo } from './produto-info/produto-info';
 
