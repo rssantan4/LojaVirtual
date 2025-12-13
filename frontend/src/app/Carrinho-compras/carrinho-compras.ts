@@ -152,6 +152,22 @@ finalizarPagamento() {
   });
 }
 
+// Valor do frete selecionado
+freteSelecionado: number = 0;
+
+// Função para atualizar frete
+selecionarFrete(event: Event) {
+  const select = event.target as HTMLSelectElement; // <--- aqui dizemos que é um select
+  this.freteSelecionado = Number(select.value);
+}
+
+
+// Getter para total com frete
+get totalComFrete(): number {
+  return (this.carrinho?.valorTotal || 0) + this.freteSelecionado;
+}
+
+
 
 
 

@@ -56,17 +56,19 @@
         <br>
 
         <form>
-            <p>Frete</p>
-            <select>
-                <option class="text-muted">Sedex – R$50.00</option>
-                <option class="text-muted">Entrega Padrão – R$25.00</option>
-            </select>
-        </form>
+  <p>Frete</p>
+  <select (change)="selecionarFrete($event)">
+  <option value="50">Receba em 7 dias via Sedex – R$50,00</option>
+  <option value="25">Receba em 15 dias via Entrega Padrão – R$25,00</option>
+</select>
 
-        <div class="row total-row">
-            <span>TOTAL</span>
-            <span>{{ carrinho?.valorTotal | currency:'BRL' }}</span>
-        </div>
+</form>
+
+<div class="row total-row">
+  <span>TOTAL</span>
+  <span>R$ {{ totalComFrete | number:'1.2-2' }}</span>
+</div>
+
 
         <br>
 
