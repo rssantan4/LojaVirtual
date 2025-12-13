@@ -13,6 +13,7 @@ import { produtoResolver } from '../resolvers/produto-resolver';
 const routes: Routes = [
   { path: '', component: AreaAdm },
   {path: 'cadastrarProduto', component:CadastrarProduto},
+
   {path: 'editarProduto', component:EditarProduto,
     resolve: {produtos: produtoResolver}
   },

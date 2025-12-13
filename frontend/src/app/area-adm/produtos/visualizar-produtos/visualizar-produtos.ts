@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
 import { Produto } from '../../../models/produto-model';
 import { MatProgressSpinner } from "@angular/material/progress-spinner";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-visualizar-produtos',
@@ -25,16 +26,26 @@ export class VisualizarProdutos {
     produtoSelecionado: Produto | null = null; // Produto selecionado para confirmar remoção
           loadingProdutos = true;
 
-    constructor(private produtoService: ProdutoService) { }
+    constructor(
+      private route: ActivatedRoute,
+      private produtoService: ProdutoService
+    ) { }
 
     ngOnInit(): void {
-      this.produtoService.getProdutos().subscribe(produtos => {
-        this.produtos = produtos;
-        console.log(produtos);
-        this.produtosFiltrados = produtos;
-        this.loadingProdutos = false;
-      });
+       this.loadingProdutos = true;
+
+  this.route.data.subscribe({
+    next: ({ produtos }) => {
+      this.produtos = produtos;
+      this.produtosFiltrados = produtos;
+      this.loadingProdutos = false;
+    },
+    error: (err) => {
+      console.error('Erro ao carregar produtos', err);
+      this.loadingProdutos = false;
     }
+  });
+}
 
     // Filtra os produtos conforme o input
     filtrarProdutos(): void {
