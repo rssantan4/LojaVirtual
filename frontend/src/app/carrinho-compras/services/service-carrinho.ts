@@ -53,6 +53,12 @@ diminuir(usuarioId: number, item: ItemCarrinho) {
   );
 }
 
+// DELETE - Limpar carrinho
+limparCarrinho(usuarioId: number): Observable<Carrinho> {
+  return this.http.delete<Carrinho>(`${this.apiUrl}/${usuarioId}/limpar`);
+}
+
+
 
 
 

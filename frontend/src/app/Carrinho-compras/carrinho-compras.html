@@ -4,7 +4,7 @@
   <div class="spinner"></div>
 </div>
 
-<div *ngIf="!loading" class="cart">
+<div class="cart" *ngIf="!loading" >
         <div class="title">
             <h4><b>Carrinho </b></h4>
             <span class="text-muted">{{ carrinho?.itens?.length }} items</span>
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div class="summary">
+    <div class="summary" *ngIf="!loading">
         <h5><b>Resumo</b></h5>
         <hr>
 
@@ -70,9 +70,69 @@
 
         <br>
 
-        <button class="btn" [routerLink]="['/confirmarPagamento']">CHECKOUT</button>
+        <button class="btn" (click)="toggleCheckout()">CHECKOUT</button>
 
     </div>
+
+ <!-- Modal de pagamento -->
+<!-- Modal de pagamento -->
+<div class="modal" *ngIf="checkoutAtivo">
+  <div class="modal-overlay" (click)="toggleCheckout()"></div>
+
+  <div class="modal-content">
+    <button class="btn-close" (click)="toggleCheckout()">×</button>
+
+    <h3 class="modal-title">Escolha a forma de pagamento</h3>
+
+<div class="pagamento-options">
+  <button
+    type="button"
+    class="pag-btn"
+    [class.selecionado]="formaPagamentoSelecionada === 'debito'"
+    (click)="selecionarPagamento('debito')">
+    Débito
+  </button>
+
+  <button
+    type="button"
+    class="pag-btn"
+    [class.selecionado]="formaPagamentoSelecionada === 'credito'"
+    (click)="selecionarPagamento('credito')">
+    Crédito
+  </button>
+
+  <button
+    type="button"
+    class="pag-btn"
+    [class.selecionado]="formaPagamentoSelecionada === 'pix'"
+    (click)="selecionarPagamento('pix')">
+    PIX
+  </button>
+</div>
+
+
+    <div class="resumo">
+      <h4>Resumo do Pedido</h4>
+      <div class="resumo-item">
+        <span>Itens</span>
+        <span>{{ carrinho.itens.length }}</span>
+      </div>
+      <div class="resumo-item total">
+        <span>Total</span>
+        <span>{{ carrinho.valorTotal | currency:'BRL' }}</span>
+      </div>
+    </div>
+
+    <button
+  class="btn-confirm"
+  [disabled]="!formaPagamentoSelecionada"
+  (click)="finalizarPagamento()">
+  CONFIRMAR PAGAMENTO
+</button>
+
+  </div>
+</div>
+
 
 </div>
 </div>

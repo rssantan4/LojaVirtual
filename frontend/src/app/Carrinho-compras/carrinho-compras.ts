@@ -1,21 +1,24 @@
 // 1. Importe OnInit do core
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 // 2. Ajuste o nome da classe para CarrinhoService (se for o nome correto)
 import { CarrinhoService } from './services/service-carrinho';
 import { Observable } from 'rxjs';
-import { AsyncPipe, CurrencyPipe, NgFor } from '@angular/common';
+import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
 import { Produto } from '../models/produto-model';
 import { ProdutoService } from '../Area-Adm/produtos/services/produto-service';
 import { AuthGuard } from '../Services/auth-guard';
 import { ValidarService } from '../login-Adm/services/validar-service';
 import { Carrinho, ItemCarrinho } from '../models/carrinho';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatProgressSpinner, MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { FormsModule } from '@angular/forms';
+import { ServicePedido } from '../Area-Cliente/Services/service-pedido';
+
 
 @Component({
   selector: 'carrinho-compras',
   standalone: true, // Adicionado para componentes Standalone
-  imports: [NgFor, AsyncPipe, CurrencyPipe, RouterModule, MatProgressSpinner,MatProgressSpinnerModule  ],
+  imports: [ AsyncPipe, CurrencyPipe, RouterModule, MatProgressSpinner,MatProgressSpinnerModule,CommonModule,FormsModule],
   templateUrl: './carrinho-compras.html',
   styleUrl: './carrinho-compras.scss',
 })
@@ -27,7 +30,9 @@ export class CarrinhoCompras implements OnInit{
 
   constructor(
     private carrinhoService: CarrinhoService,
-    private authService: ValidarService
+    private authService: ValidarService,
+    private router: Router,
+    private pedidoService: ServicePedido,
   ) {}
 
   ngOnInit(): void {
@@ -79,6 +84,74 @@ remover(item: ItemCarrinho) {
     this.carregarCarrinho();
   });
 }
+
+checkoutAtivo = false;
+
+toggleCheckout() {
+  this.checkoutAtivo = !this.checkoutAtivo;
+}
+
+// dentro da classe do componente
+formaPagamentoSelecionada: string | null = null;
+
+selecionarPagamento(tipo: string) {
+  this.formaPagamentoSelecionada = tipo;
+}
+
+
+finalizarPagamento() {
+  const usuario = this.authService.getUsuario();
+
+  if (!usuario) {
+    // Usuário não está logado, redireciona
+    this.router.navigate(['/login']);
+    return;
+  }
+
+  if (!this.formaPagamentoSelecionada) {
+    alert('Por favor, selecione uma forma de pagamento!');
+    return;
+  }
+
+  // Monta o DTO com os itens do carrinho
+  const pedidoDTO = {
+    usuarioId: Number(usuario.id),
+    formaPagamento: this.formaPagamentoSelecionada, // adiciona a forma selecionada
+    itens: this.carrinho.itens.map(item => ({
+      produtoId: item.produto.id,
+      quantidade: item.quantidade
+    }))
+  };
+
+  // Envia para o back-end
+  this.pedidoService.criarPedido(pedidoDTO).subscribe({
+    next: (pedidoCriado) => {
+      console.log('Pedido criado:', pedidoCriado);
+
+      alert('Pedido finalizado com sucesso!');
+
+      // Limpar carrinho
+     this.carrinhoService.limparCarrinho(Number(usuario.id)).subscribe(() => {
+         this.carrinho.itens = [];
+        this.carrinho.valorTotal = 0;
+      });
+
+      // Redireciona para a página "Meus Pedidos"
+      this.router.navigate(['/loja']);
+
+      // Fecha o modal
+      this.checkoutAtivo = false;
+
+      // Resetar seleção de pagamento
+      this.formaPagamentoSelecionada = null;
+    },
+    error: (err) => {
+      console.error('Erro ao criar pedido:', err);
+      alert('Erro ao finalizar pedido.');
+    }
+  });
+}
+
 
 
 

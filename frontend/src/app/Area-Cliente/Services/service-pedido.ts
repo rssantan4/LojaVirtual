@@ -1,12 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-@Component({
-  selector: 'app-service-pedido',
-  imports: [],
-  templateUrl: './service-pedido.html',
-  styleUrl: './service-pedido.scss',
+@Injectable({
+  providedIn: 'root',
 })
 export class ServicePedido {
   private apiUrl = 'http://localhost:8080/api/pedidos';
@@ -20,5 +17,4 @@ export class ServicePedido {
   listarPorUsuario(usuarioId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/usuario/${usuarioId}`);
   }
-
 }
