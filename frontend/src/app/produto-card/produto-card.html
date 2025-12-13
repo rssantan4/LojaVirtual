@@ -4,7 +4,7 @@
       <img [src]="produto.imagemUrl" [alt]="produto.nome" (click)="irParaProduto(produto.id)" class="clickable-img">
 
       <!-- BOTÃO FLUTUANTE -->
-      <button class="buy-btn" (click)="adicionarCarrinho(produto)">
+      <button class="buy-btn" (click)="adicionarAoCarrinho(produto)">
         <i class="material-icons">add_shopping_cart</i>
       </button>
     </div>
@@ -13,12 +13,8 @@
       <div class="details">
         <h2>{{ produto.nome }}</h2>
         <p>Artista: {{ produto.artista }}</p>
-        <p>Genero: </p>
-
+        <p>Genero:{{ produto.generoMusical.nome }}</p>
         <p>R$ {{ produto.preco.toFixed(2) }} </p>
-
-        <!-- ESTOQUE -->
-        <p>Estoque: {{ produto.estoque }}</p>
       </div>
     </div>
   </div>
