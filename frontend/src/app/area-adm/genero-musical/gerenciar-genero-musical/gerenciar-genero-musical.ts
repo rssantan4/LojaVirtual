@@ -18,6 +18,7 @@ import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
 import { GeneroMusical } from '../../../models/generoMusical-models';
+import { Alerts } from '../../../shared/alerts/alerts';
 @Component({
   selector: 'app-gerenciar-genero-musical',
   imports: [FormsModule, MatFormFieldModule, MatInputModule,
@@ -44,51 +45,73 @@ export class GerenciarGeneroMusical implements OnInit {
     this.refresh();
   }
 
-  // 🔹 Atualiza a lista do observable
+  //  Atualiza a lista do observable
   refresh() {
     this.generos$ = this.generoService.getAll().pipe(first());
   }
 
-  // 🔹 Criar ou atualizar
-  onSave() {
-    const nome = this.generoForm.nome?.trim();
-    if (!nome) return;
+ // Criar ou atualizar
+onSave() {
+  const nome = this.generoForm.nome?.trim();
+  if (!nome) return;
 
-    if (this.generoForm.id) {
-      this.generoService.update({ ...this.generoForm, nome }).subscribe(() => {
-        this.snackBar.open('Gênero atualizado com sucesso', 'X', { duration: 3000 });
-        this.refresh();
+  if (this.generoForm.id) {
+    this.generoService.update({ ...this.generoForm, nome }).subscribe(() => {
+      this.dialog.open(Alerts, {
+        data: 'Gênero atualizado com sucesso!'
       });
-    } else {
-      this.generoService.create({ id: 0, nome }).subscribe(() => {
-        this.snackBar.open('Gênero criado com sucesso', 'X', { duration: 3000 });
-        this.refresh();
+      this.refresh();
+    });
+  } else {
+    this.generoService.create({ id: 0, nome }).subscribe(() => {
+      this.dialog.open(Alerts, {
+        data: 'Gênero criado com sucesso!'
       });
-    }
-
-    this.onCancel();
+      this.refresh();
+    });
   }
 
-  // 🔹 Editar
+  this.onCancel();
+}
+
+
+  // Editar
   onEdit(genero: GeneroMusical) {
     this.generoForm = { ...genero };
   }
 
-  // 🔹 Remover
-  onRemove(genero: GeneroMusical) {
-    const dialogRef = this.dialog.open(ConfirmationDialog, {
-      data: `Deseja excluir o gênero: ${genero.nome}?`
-    });
+  //  Remover
+onRemove(genero: GeneroMusical) {
+  const dialogRef = this.dialog.open(ConfirmationDialog, {
+    data: `Deseja mesmo excluir?`
+  });
 
-    dialogRef.afterClosed().subscribe((confirm: boolean) => {
-      if (confirm) {
-        this.generoService.delete(genero.id).subscribe(() => {
-          this.snackBar.open('Gênero removido com sucesso', 'X', { duration: 3000 });
+  dialogRef.afterClosed().subscribe((confirm: boolean) => {
+    if (confirm) {
+      this.generoService.delete(genero.id).subscribe({
+        next: () => {
+          this.dialog.open(Alerts, {
+            data: 'Gênero removido com sucesso!'
+          });
           this.refresh();
-        });
-      }
-    });
-  }
+        },
+        error: (err) => {
+          let mensagem = 'Erro ao remover o gênero.';
+
+          // regra de negócio: gênero com produtos vinculados
+          if (err.status === 400 || err.status === 409) {
+            mensagem = 'Este gênero possui produtos cadastrados e não pode ser excluído.';
+          }
+
+          this.dialog.open(Alerts, {
+            data: mensagem
+          });
+        }
+      });
+    }
+  });
+}
+
 
   // 🔹 Cancelar edição/novo
   onCancel() {

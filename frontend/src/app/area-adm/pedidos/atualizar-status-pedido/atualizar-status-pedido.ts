@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-interno-adm";
 import { Pedido } from '../../../models/pedido-model';
 import { ActivatedRoute } from '@angular/router';
+import { Alerts } from '../../../shared/alerts/alerts';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-atualizar-status-pedido',
@@ -26,7 +28,8 @@ export class AtualizarStatusPedido {
 
     constructor(
       private pedidoService: PedidoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {}
 
     ngOnInit(): void {
@@ -46,13 +49,22 @@ export class AtualizarStatusPedido {
     }
 
     atualizarStatus(pedido: Pedido, novoStatus: Pedido['status']) {
-      this.pedidoService.atualizarStatus(pedido.id, novoStatus).subscribe({
-        next: (pedidoAtualizado) => {
-          pedido.status = pedidoAtualizado.status;
-          this.filtrarStatus();
-        },
-        error: (err) => console.error(err)
+  this.pedidoService.atualizarStatus(pedido.id, novoStatus).subscribe({
+    next: (pedidoAtualizado) => {
+      pedido.status = pedidoAtualizado.status;
+      this.filtrarStatus();
+
+      this.dialog.open(Alerts, {
+        data: 'Status do pedido atualizado com sucesso!'
+      });
+    },
+    error: () => {
+      this.dialog.open(Alerts, {
+        data: 'Erro ao atualizar o status do pedido.'
       });
     }
+  });
+}
+
 
 }
