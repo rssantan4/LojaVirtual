@@ -26,7 +26,13 @@
         <h3>{{ produto.nome }}</h3>
         <p><strong>Artista:</strong> {{ produto.artista }}</p>
         <p><strong>Preço:</strong> R$ {{ produto.preco | number:'1.2-2' }}</p>
-        <p><strong>Gênero Musical:</strong> </p>
+        <p>
+  <strong>
+    Gênero Musical:
+    {{ produto.generoMusical?.nome || 'Não informado' }}
+  </strong>
+</p>
+
         <p><strong>Estoque:</strong> {{ produto.estoque }}</p>
         <p><strong>Descrição: </strong>{{produto.descricao}}</p>
       </div>

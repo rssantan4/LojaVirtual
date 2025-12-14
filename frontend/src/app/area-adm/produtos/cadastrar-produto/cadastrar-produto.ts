@@ -50,7 +50,7 @@ export class CadastrarProduto implements OnInit{
 
 onSalvarProduto() {
 
-  // 🔴 Validação dos campos obrigatórios
+  // Validação dos campos obrigatórios
   if (
     !this.produto.nome?.trim() ||
     !this.produto.artista?.trim() ||
@@ -78,7 +78,7 @@ onSalvarProduto() {
 
     dialogRef.afterClosed().subscribe(() => {
 
-      // 🔄 Resetar formulário APÓS clicar em OK
+      // Resetar formulário APÓS clicar em OK
       this.produto = {
         id: 0,
         nome: '',

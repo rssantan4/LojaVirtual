@@ -13,6 +13,8 @@ import { Produto } from '../../../models/produto-model';
 import { GeneroMusical } from '../../../models/generoMusical-models';
 import { MatProgressSpinner } from "@angular/material/progress-spinner";
 import { ActivatedRoute } from '@angular/router';
+import { Alerts } from '../../../shared/alerts/alerts';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-editar-produto',
   imports: [MatFormFieldModule, FormsModule, MatButtonModule,
@@ -29,12 +31,14 @@ export class EditarProduto {
     generosMusicais: GeneroMusical[] = [];  // Lista de gêneros do service
     loadingProdutos = true;
     loadingSalvar = false;
+    modal = false;
 
 
     constructor(
     private route: ActivatedRoute,
     private produtoService: ProdutoService,
-    private generoService: GeneroMusicalService
+    private generoService: GeneroMusicalService,
+    private dialog: MatDialog
   ) {}
 
     ngOnInit(): void {
@@ -55,19 +59,28 @@ export class EditarProduto {
 });
     }
 
-
-
     // Filtra os produtos conforme o input
     filtrarProdutos(): void {
       const termo = this.buscaProduto.toLowerCase();
       this.produtosFiltrados = this.produtos.filter(p => p.nome.toLowerCase().includes(termo));
     }
 
-    // Abre modal de confirmação
-    abrirConfirmacao(produto: Produto) {
-  // Cria uma cópia independente para edição
+
+abrirConfirmacao(produto: Produto) {
   this.produtoSelecionado = { ...produto };
+
+  // 🔥 sincroniza o gênero pelo ID
+  const generoEncontrado = this.generosMusicais.find(
+    g => g.id === produto.generoMusical?.id
+  );
+
+  if (generoEncontrado) {
+    this.produtoSelecionado.generoMusical = generoEncontrado;
+  }
+
+  this.modal = true;
 }
+
 
 
 
@@ -78,36 +91,51 @@ EditarProduto(): void {
   // Validação de campos obrigatórios
   if (
     !this.produtoSelecionado.nome?.trim() ||
+    !this.produtoSelecionado.generoMusical ||
     !this.produtoSelecionado.generoMusical?.id ||
     this.produtoSelecionado.preco === null ||
     this.produtoSelecionado.estoque === null
   ) {
-    alert('Preencha todos os campos obrigatórios antes de salvar.');
+    this.dialog.open(Alerts, {
+      data: 'Preencha todos os campos obrigatórios antes de salvar.'
+    });
     return;
   }
 
   // Formata nome
-  this.produtoSelecionado.nome = this.capitalizeFirstLetter(this.produtoSelecionado.nome);
+  this.produtoSelecionado.nome =
+    this.capitalizeFirstLetter(this.produtoSelecionado.nome);
 
-  // Atualiza via serviço
-  this.produtoService.updateProduto(this.produtoSelecionado)
-    .subscribe({
-      next: (res) => {
-        console.log('Produto atualizado no backend:', res);
-        alert('Produto atualizado com sucesso!');
+  // Atualiza produto
+  this.produtoService.updateProduto(this.produtoSelecionado).subscribe({
+    next: () => {
 
-        // Atualiza lista filtrada
+      const dialogRef = this.dialog.open(Alerts, {
+        data: 'Produto atualizado com sucesso!'
+      });
+
+      dialogRef.afterClosed().subscribe(() => {
+
+        // Atualiza lista
         this.filtrarProdutos();
 
         // Limpa seleção
         this.produtoSelecionado = null;
-      },
-      error: (err) => {
-        console.error('Erro ao atualizar produto:', err);
-        alert('Erro ao atualizar produto. Veja o console.');
+      });
+    },
+
+    error: (err) => {
+      let mensagem = 'Erro ao atualizar produto. Tente novamente.';
+
+      if (err.status === 0) {
+        mensagem = 'Servidor fora do ar. Tente mais tarde.';
       }
-    });
+
+      this.dialog.open(Alerts, { data: mensagem });
+    }
+  });
 }
+
 
   cancelarEdicao() {
   this.produtoSelecionado = null; // fecha o modal
