@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import br.com.une.lojavirtual.backend.model.Pedido;
@@ -50,14 +52,16 @@ public class ProdutoService {
         produtoExistente.setEstoque(produtoAtualizado.getEstoque());
         produtoExistente.setImagemUrl(produtoAtualizado.getImagemUrl());
         produtoExistente.setGeneroMusical(produtoAtualizado.getGeneroMusical());
-
+        produtoExistente.setGeneroMusical(produtoAtualizado.getGeneroMusical());
         return repository.save(produtoExistente);
     }
 
     @Autowired
     private br.com.une.lojavirtual.backend.repository.ItemPedidoRepository itemPedidoRepository;
     public List<Produto> buscarMaisVendidos() {
-        return itemPedidoRepository.findTopSellingProducts();
+        // Cria um objeto de paginação: Página 0 (primeira), com 6 itens
+        Pageable limite = PageRequest.of(0, 6);
+        return itemPedidoRepository.findTopSellingProducts(limite);
     }
 
     // Salvar ou Atualizar
@@ -72,5 +76,14 @@ public class ProdutoService {
     // Deletar
     public void deletar(Long id) {
         repository.deleteById(id);
+    }
+
+    //Desativar produto
+    public Produto desativar(Long id)
+    {
+        Produto produto = buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("Produto não encontrado."));
+
+        produto.setAtivo(false);
+        return repository.save(produto);
     }
 }

@@ -34,12 +34,12 @@ public class DadosIniciais {
             // 2. Cadastrar Produtos (Usando os objetos de gênero acima)
             if (produtoRepo.count() == 0) {
                 // Note que agora passamos o objeto 'rock', 'mpb', etc, no lugar da string
-                Produto p1 = new Produto(null, "Thriller", "Michael Jackson", "O álbum mais vendido...", new BigDecimal("120.00"), 50, pop, "url_img_1");
-                Produto p2 = new Produto(null, "The Dark Side of the Moon", "Pink Floyd", "Clássico...", new BigDecimal("150.00"), 20, rock, "url_img_2");
-                Produto p3 = new Produto(null, "Revolver", "The Beatles", "Edição remasterizada", new BigDecimal("80.00"), 100, rock, "url_img_3");
-                Produto p4 = new Produto(null, "Acabou Chorare", "Novos Baianos", "Música popular...", new BigDecimal("90.00"), 30, mpb, "url_img_4");
-                Produto p5 = new Produto(null, "Random Access Memories", "Daft Punk", "Eletrônica...", new BigDecimal("60.00"), 40, eletronica, "url_img_5");
-
+                Produto p1 = new Produto(null, "Thriller", "Michael Jackson", "O álbum mais vendido...", new BigDecimal("120.00"), 50, pop, "url_img_1", true);
+                Produto p2 = new Produto(null, "The Dark Side of the Moon", "Pink Floyd", "Clássico...", new BigDecimal("150.00"), 20, rock, "url_img_2", true);
+                Produto p3 = new Produto(null, "Revolver", "The Beatles", "Edição remasterizada", new BigDecimal("80.00"), 100, rock, "url_img_3", true);
+                Produto p4 = new Produto(null, "Acabou Chorare", "Novos Baianos", "Música popular...", new BigDecimal("90.00"), 30, mpb, "url_img_4", true);
+                Produto p5 = new Produto(null, "Random Access Memories", "Daft Punk", "Eletrônica...", new BigDecimal("60.00"), 40, eletronica, "url_img_5", true);
+                
                 produtoRepo.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
             }
         }
