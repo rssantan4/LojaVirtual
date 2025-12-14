@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-minha-conta',
   imports: [],
@@ -12,19 +13,11 @@ export class MinhaConta {
 constructor(private router: Router) {}
 
   irParaPedidos() {
-    this.router.navigate(['cliente/meus-pedidos']);
+    this.router.navigate(['/cliente/meus-pedidos']);
   }
 
   irParaEditarConta() {
-    this.router.navigate(['cliente/editar-minha-conta']);
-  }
-
-  irParaHistorico() {
-    this.router.navigate(['cliente/historico']);
-  }
-
-  irParaEnderecos() {
-    this.router.navigate(['cliente/enderecos']);
+    this.router.navigate(['/cliente/editar-minha-conta']);
   }
 
 }

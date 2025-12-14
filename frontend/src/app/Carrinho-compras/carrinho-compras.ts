@@ -14,6 +14,8 @@ import { MatProgressSpinner, MatProgressSpinnerModule } from "@angular/material/
 import { FormsModule } from '@angular/forms';
 import { ServicePedido } from '../Area-Cliente/Services/service-pedido';
 import { Usuario } from '../models/usuarioLogin-model';
+import { Alerts } from '../Area-Adm/shared/components/alerts/alerts';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -35,7 +37,8 @@ export class CarrinhoCompras implements OnInit{
     private authService: ValidarService,
     private router: Router,
     private pedidoService: ServicePedido,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {}
 
 
@@ -135,47 +138,37 @@ selecionarPagamento(tipo: string) {
 }
 
 
-finalizarPagamento() {
+finalizarPedido() {
   const usuario = this.authService.getUsuario();
+  if (!usuario) return;
 
-  if (!usuario) {
-    // Usuário não está logado, redireciona
-    this.router.navigate(['/login']);
-    return;
-  }
-
-  if (!this.formaPagamentoSelecionada) {
-    alert('Por favor, selecione uma forma de pagamento!');
-    return;
-  }
-
-  // Monta o DTO com os itens do carrinho
   const pedidoDTO = {
-    usuarioId: Number(usuario.id),
-    formaPagamento: this.formaPagamentoSelecionada, // adiciona a forma selecionada
-    itens: this.carrinho.itens.map(item => ({
-      produtoId: item.produto.id,
-      quantidade: item.quantidade
+    usuarioId: usuario.id,
+    itens: this.carrinho.itens.map(i => ({
+      produtoId: i.produto.id,
+      quantidade: i.quantidade
     }))
   };
 
-  // Envia para o back-end
   this.pedidoService.criarPedido(pedidoDTO).subscribe({
     next: (pedidoCriado) => {
       console.log('Pedido criado:', pedidoCriado);
 
-      alert('Pedido finalizado com sucesso!');
-
-      // Limpar carrinho
-     this.carrinhoService.limparCarrinho(Number(usuario.id)).subscribe(() => {
-         this.carrinho.itens = [];
-        this.carrinho.valorTotal = 0;
+      // ⚡ Usando modal ao invés de alert
+      this.dialog.open(Alerts, {
+        data: 'Pedido finalizado com sucesso!'
       });
 
-      // Redireciona para a página "Meus Pedidos"
-      this.router.navigate(['/loja']);
+      // Limpar carrinho
+      // this.carrinhoService.limparCarrinho(Number(usuario.id)).subscribe(() => {
+      //  this.carrinho.itens = [];
+      //  this.carrinho.valorTotal = 0;
+      //});
 
-      // Fecha o modal
+      // Redireciona para a página Meus Pedidos
+      this.router.navigate(['/cliente/meus-pedidos']);
+
+      // Fecha o modal de checkout
       this.checkoutAtivo = false;
 
       // Resetar seleção de pagamento
@@ -183,7 +176,11 @@ finalizarPagamento() {
     },
     error: (err) => {
       console.error('Erro ao criar pedido:', err);
-      alert('Erro ao finalizar pedido.');
+
+      // Modal de erro
+      this.dialog.open(Alerts, {
+        data: 'Erro ao finalizar pedido.'
+      });
     }
   });
 }
@@ -207,9 +204,5 @@ temItensNoCarrinho(): boolean {
 get totalComFrete(): number {
   return (this.carrinho?.valorTotal || 0) + this.freteSelecionado;
 }
-
-
-
-
 
 }

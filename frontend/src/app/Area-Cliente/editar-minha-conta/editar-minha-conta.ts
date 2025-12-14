@@ -6,10 +6,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClienteService } from '../Services/cliente/cliente-service';
 import { MatIcon } from "@angular/material/icon";
+import { CommonModule, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-editar-minha-conta',
-  imports: [ReactiveFormsModule, MatIcon],
+  imports: [ReactiveFormsModule, MatIcon,CommonModule],
   templateUrl: './editar-minha-conta.html',
   styleUrl: './editar-minha-conta.scss',
 })
@@ -20,7 +21,8 @@ export class EditarMinhaConta implements OnInit{
 
   constructor(
     private usuarioService: ClienteService,
-    private snack: MatSnackBar
+    private snack: MatSnackBar,
+    private router: Router,
   ) {
     this.contaForm = new FormGroup({
       nome: new FormControl('', [Validators.required]),
@@ -62,4 +64,8 @@ toggleSenha() {
       }
     });
   }
+
+  voltarParaMinhaConta() {
+    this.router.navigate(['/cliente/minha-Conta']); // ajuste para a rota correta
+   }
 }

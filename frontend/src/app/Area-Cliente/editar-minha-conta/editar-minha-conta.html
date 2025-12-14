@@ -1,3 +1,12 @@
+<br>
+<!-- ===== Botão Voltar ===== -->
+<div class="voltar-container">
+  <button class="btn-voltar" (click)="voltarParaMinhaConta()">
+    ← Voltar para Minha Conta
+  </button>
+</div>
+
+
 <div class="editar-conta-container">
   <h2>Editar Minha Conta</h2>
   <form [formGroup]="contaForm" (ngSubmit)="salvar()">

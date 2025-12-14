@@ -151,6 +151,12 @@
     font-size: 14px;
   }
 }
+.aviso {
+  text-align: center;       /* centraliza o texto dentro do p */
+  margin: 20px 0;           /* dá um espaçamento em cima e embaixo */
+  font-size: 16px;          /* opcional, ajusta o tamanho da fonte */
+  color: #555;              /* opcional, muda a cor do texto */
+}
 
 
 
@@ -246,4 +252,27 @@
     transform: scale(1);
     opacity: 1;
   }
+}
+
+/* ===== Botão Voltar ===== */
+.voltar-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.btn-voltar {
+  background: #111;       /* preto da paleta */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-voltar:hover {
+  background: #ff6600;    /* laranja da paleta */
+  transform: translateX(-2px);
 }

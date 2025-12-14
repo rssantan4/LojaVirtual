@@ -1,6 +1,11 @@
+<br>
+<!-- ===== Botão Voltar ===== -->
+<div class="voltar-container">
+  <button class="btn-voltar" (click)="voltarParaMinhaConta()">
+    ← Voltar para Minha Conta
+  </button>
+</div>
 
-<br>
-<br>
 <!-- ===== Abas de Status ===== -->
 <div class="order-tabs">
 <button (click)="filtrarPedidos('todos')" [class.active]="statusSelecionado==='todos'">Todos</button>
@@ -13,6 +18,10 @@
 </div>
 
 <!-- ===== Lista de Pedidos ===== -->
+ <p class="aviso" *ngIf="pedidosFiltrados?.length === 0">
+  Você não possui nenhum pedido realizado nessa categoria ainda
+</p>
+
 <div *ngFor="let pedido of pedidosFiltrados" class="pedido-card">
 
   <!-- Cabeçalho do Pedido -->

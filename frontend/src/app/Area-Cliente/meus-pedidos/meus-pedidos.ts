@@ -5,6 +5,7 @@ import { ValidarService } from '../../login-Adm/services/validar-service';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { PedidoService } from '../../Area-Adm/pedidos/services/pedido-service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-meus-pedidos',
@@ -26,6 +27,7 @@ acaoModal: 'cancelar' | 'confirmar' | null = null;
     private pedidoServicoAdm: PedidoService,
     private authService: ValidarService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -86,6 +88,11 @@ confirmarAcao() {
       }
     });
 }
+
+voltarParaMinhaConta() {
+  this.router.navigate(['/cliente/minha-Conta']); // ajuste para a rota correta
+}
+
 
 abrirModal(pedido: Pedido, acao: 'cancelar' | 'confirmar') {
   this.pedidoSelecionado = pedido;
