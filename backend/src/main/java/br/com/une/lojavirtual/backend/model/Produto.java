@@ -47,5 +47,6 @@ public class Produto {
 
     private String imagemUrl; // Link da capa do álbum
 
-    
+    @Column(nullable = false)
+    private boolean ativo = true;    
 }

@@ -52,7 +52,7 @@ public class ProdutoService {
         produtoExistente.setEstoque(produtoAtualizado.getEstoque());
         produtoExistente.setImagemUrl(produtoAtualizado.getImagemUrl());
         produtoExistente.setGeneroMusical(produtoAtualizado.getGeneroMusical());
-
+        produtoExistente.setGeneroMusical(produtoAtualizado.getGeneroMusical());
         return repository.save(produtoExistente);
     }
 
@@ -76,5 +76,14 @@ public class ProdutoService {
     // Deletar
     public void deletar(Long id) {
         repository.deleteById(id);
+    }
+
+    //Desativar produto
+    public Produto desativar(Long id)
+    {
+        Produto produto = buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("Produto não encontrado."));
+
+        produto.setAtivo(false);
+        return repository.save(produto);
     }
 }
