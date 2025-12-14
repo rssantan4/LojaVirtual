@@ -40,4 +40,5 @@ atualizarStatus(id: number, novoStatus: Pedido['status']): Observable<Pedido> {
   );
 }
 
+
 }

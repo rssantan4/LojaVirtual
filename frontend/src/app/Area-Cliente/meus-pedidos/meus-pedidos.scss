@@ -69,7 +69,7 @@
 .status-pendente { background-color: #ffcc66; }      /* laranja suave */
 .status-processamento { background-color: #ff9933; }   /* laranja mais forte */
 .status-enviado { background-color: #4CAF50; }       /* verde */
-.status.entregue { background-color: #2196F3; }      /* azul */
+.status-entregue { background-color: #2196F3; }      /* azul */
 .status-cancelado { background-color: #f44336; }     /* vermelho */
 
 /* ===== Itens dentro do pedido ===== */
@@ -146,8 +146,35 @@
 
 /* opcional: tamanho menor em telas pequenas */
 @media (max-width: 600px) {
-  .cancelarPedido button {
+  .cancelarPedido button, .confirmarPedido button{
     padding: 6px 12px;
     font-size: 14px;
   }
 }
+
+
+
+
+/*estilos gerais para o botão de cancelar */
+.confirmarPedido button {
+  background-color: #f28444; /* laranja forte */
+  color: #fff;               /* texto branco */
+  border: none;              /* remove borda padrão */
+  padding: 8px 16px;         /* espaçamento interno */
+  border-radius: 5px;        /* cantos arredondados */
+  cursor: pointer;           /* cursor de mãozinha */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* efeito ao passar o mouse */
+.confirmarPedido button:hover {
+  background-color: #ee6237; /* laranja mais escuro */
+}
+
+/* efeito ao clicar */
+.confirmarPedido button:active {
+  transform: scale(0.98); /* leve redução ao clicar */
+}
+
+

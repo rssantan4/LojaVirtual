@@ -3,6 +3,7 @@ import { Pedido } from '../../models/pedido-model';
 import { ServicePedido } from '../Services/service-pedido';
 import { ValidarService } from '../../login-Adm/services/validar-service';
 import { CommonModule, TitleCasePipe } from '@angular/common';
+import { PedidoService } from '../../Area-Adm/pedidos/services/pedido-service';
 
 @Component({
   selector: 'app-meus-pedidos',
@@ -19,6 +20,7 @@ export class MeusPedidos {
 
   constructor(
     private pedidoService: ServicePedido,
+    private pedidoServicoAdm: PedidoService,
     private authService: ValidarService
   ) {}
 
@@ -54,11 +56,14 @@ export class MeusPedidos {
   }
 
 
+
+
+
 cancelarPedido(pedido: Pedido) {
   if (pedido.status !== 'PENDENTE') return;
 
   if (confirm(`Deseja realmente cancelar o pedido nº ${pedido.id}?`)) {
-    this.pedidoService.atualizarStatus(pedido.id, 'CANCELADO').subscribe({
+    this.pedidoServicoAdm.atualizarStatus(pedido.id, 'CANCELADO').subscribe({
       next: (pedidoAtualizado: Pedido) => {
         pedido.status = pedidoAtualizado.status;
         this.filtrarPedidos(this.statusSelecionado);
@@ -74,8 +79,8 @@ cancelarPedido(pedido: Pedido) {
 confirmarPedido(pedido:Pedido){
   if(pedido.status !== 'ENVIADO') return;
 
-  if(confirm('Deseja realmente cancelar o pedido nº ${pedido.id}?')){
-    this.pedidoService.atualizarStatus(pedido.id, 'ENTREGUE').subscribe({
+  if(confirm(`Deseja realmente cancelar o pedido nº ${pedido.id}?`)){
+    this.pedidoServicoAdm.atualizarStatus(pedido.id, 'ENTREGUE').subscribe({
       next: (pedidoAtualizado: Pedido) => {
         pedido.status = pedidoAtualizado.status;
         this.filtrarPedidos(this.statusSelecionado)
@@ -88,12 +93,6 @@ confirmarPedido(pedido:Pedido){
   }
 
 }
-
-
-
-
-
-
 
 
 

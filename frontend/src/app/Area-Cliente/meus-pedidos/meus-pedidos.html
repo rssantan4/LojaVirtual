@@ -52,13 +52,10 @@
       <div class = "cancelarPedido" *ngIf="pedido.status === 'PENDENTE'">
   <button (click)="cancelarPedido(pedido)">Cancelar Pedido</button>
 </div>
-  <div class = "confirmarPedido" *ngIf="pedido.status === 'ENTREGUE'">
+  <div class = "confirmarPedido" *ngIf="pedido.status === 'ENVIADO'">
   <button (click)="confirmarPedido(pedido)">Confirmar Entrega</button>
 </div>
 </div>
 
 
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-
