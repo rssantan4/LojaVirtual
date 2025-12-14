@@ -12,6 +12,12 @@
 </button>
 
 <mat-menu #menu="matMenu">
+    <div class="menu-usuario">
+    <span class="bem-vindo">Bem-vindo</span>
+    <span class="nome-usuario">
+      {{  usuarioNome }}
+    </span>
+  </div>
   <button class="persson-item" mat-menu-item (click)="logout()">Logout</button>
 </mat-menu>
 
