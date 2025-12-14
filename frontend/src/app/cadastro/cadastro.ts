@@ -45,34 +45,41 @@ constructor( private fb: FormBuilder, private snackBar: MatSnackBar, private dia
   }
 
 onSubmit() {
-    if (this.cadastroForm.valid) {
-      this.cadastroService.cadastrar(this.cadastroForm.value).subscribe({
-        next: () => {
-          // Abre modal de sucesso
-          const dialogRef = this.dialog.open(Alerts, {
-            data: 'Cadastro realizado com sucesso!'
-          });
+  if (this.cadastroForm.valid) {
+    this.cadastroService.cadastrar(this.cadastroForm.value).subscribe({
+      next: () => {
+        // Abre modal de sucesso
+        const dialogRef = this.dialog.open(Alerts, {
+          data: 'Cadastro realizado com sucesso!'
+        });
 
-          // Fecha modal e redireciona após clique
-          dialogRef.afterClosed().subscribe(() => {
-            this.fazerlogin()
-            this.router.navigate(['/loja']);
-          });
-        },
-        error: () => {
-          // Modal de erro
-          this.dialog.open(Alerts, {
-            data: 'Email ja cadastrado! Tente outro.'
-          });
+        // Fecha modal e redireciona após clique
+        dialogRef.afterClosed().subscribe(() => {
+          this.fazerlogin();
+          this.router.navigate(['/loja']);
+        });
+      },
+      error: (err) => {
+        // verifica se o servidor está fora do ar
+        if (err.status === 0) {
+          alert('Servidor fora do ar. Tente novamente mais tarde.');
+          return; // sai para não executar o restante
         }
-      });
-    } else {
-      // Modal de validação
-      this.dialog.open(Alerts, {
-        data: 'Erro: Preencha todos os campos corretamente!'
-      });
-    }
+
+        // Modal de erro específico
+        this.dialog.open(Alerts, {
+          data: 'Email já cadastrado! Tente outro.'
+        });
+      }
+    });
+  } else {
+    // Modal de validação
+    this.dialog.open(Alerts, {
+      data: 'Erro: Preencha todos os campos corretamente!'
+    });
   }
+}
+
 
   fazerlogin() {
   const email = this.cadastroForm.get('email')?.value;

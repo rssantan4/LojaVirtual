@@ -66,25 +66,34 @@ export class LoginAdm implements OnInit {
 
   this.adminService.login(email, senha).subscribe({
     next: (valido) => {
-      // Aqui o backend retornou 200 OK
+      // login bem-sucedido
       this.loginForm.reset();
       this.hideSenha.set(true);
       this.router.navigateByUrl('/areaAdm', { replaceUrl: true });
     },
     error: (err) => {
-      // Aqui o backend retornou 400 ou outro erro
-      let msg = 'senha ou email incorretos!';
+      // verifica primeiro se o servidor está fora do ar
+      if (err.status === 0) {
+        alert('Servidor fora do ar. Tente novamente mais tarde.');
+        this.loginForm.reset();
+        this.hideSenha.set(true);
+        return; // sai para não executar o restante
+      }
+
+      // outros erros
+      let msg = 'Senha ou email incorretos!';
       if (err.error?.erro) {
         msg = err.error.erro; // pega a mensagem do backend
       }
       this.dialog.open(ErrorDialog, { data: msg });
 
-      // Reset do formulário e da senha
+      // reset do formulário
       this.loginForm.reset();
       this.hideSenha.set(true);
     }
   });
 }
+
 
 }
 

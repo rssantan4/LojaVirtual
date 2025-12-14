@@ -17,23 +17,33 @@ import { ValidarService } from '../login/services/validar-service';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
+
+
 export class Home {
   produtos: Produto[] = [];
 
-  constructor(private produtosService: ProdutoService, private validarService: ValidarService) { }
+  constructor(
+    private produtosService: ProdutoService,
+    private validarService: ValidarService
+  ) { }
 
   isLogado$!: Observable<boolean>;
+
   ngOnInit(): void {
-  this.produtosService.getMaisVendidos().subscribe(
-    (data) => {
-      this.produtos = data; // agora sim, data é Produto[]
-    },
-    (error) => {
-      console.error('Erro ao carregar produtos mais vendidos:', error);
-    }
-  );
+    this.produtosService.getMaisVendidos().subscribe(
+      (data) => {
+        this.produtos = data; // agora sim, data é Produto[]
+      },
+      (error) => {
+        if (error.status === 0) {
+          alert('Servidor fora do ar. Tente novamente mais tarde.');
+        } else {
+          alert('Erro ao carregar produtos mais vendidos.');
+        }
+        console.error('Erro ao carregar produtos:', error);
+      }
+    );
 
-  this.isLogado$ = this.validarService.isLogado$;
-}
-
+    this.isLogado$ = this.validarService.isLogado$;
+  }
 }

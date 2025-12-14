@@ -35,43 +35,51 @@ export class Login {
     this.hideSenha.set(!this.hideSenha());
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      const email = this.loginForm.value.email;
-      const senha = this.loginForm.value.senha;
+ onSubmit() {
+  if (this.loginForm.valid) {
+    const email = this.loginForm.value.email;
+    const senha = this.loginForm.value.senha;
 
-      // chama o serviço de login, que retorna Observable<boolean>
-      this.validarService.login(email, senha).subscribe({
-        next: valido => {
-          if (valido) {
-            // login bem-sucedido, redireciona para a home
-            this.loginForm.reset();
-            this.hideSenha.set(true);
-            this.router.navigate(['/']);
-          } else {
-            // login inválido, mostra diálogo de erro
-            this.dialog.open(ErrorDialog, {
-              data: 'Email ou senha incorretos'
-            });
-            this.loginForm.reset();
-            this.hideSenha.set(true);
-          }
-        },
-        error: (err) => {
-          // erro na requisição, também exibe
+    this.validarService.login(email, senha).subscribe({
+      next: valido => {
+        if (valido) {
+          // login bem-sucedido
+          this.loginForm.reset();
+          this.hideSenha.set(true);
+          this.router.navigate(['/']);
+        } else {
+          // login inválido
           this.dialog.open(ErrorDialog, {
-            data: err.error?.erro || 'Ocorreu um erro ao tentar logar'
+            data: 'Email ou senha incorretos'
           });
           this.loginForm.reset();
           this.hideSenha.set(true);
         }
-      });
+      },
+      error: (err) => {
+        // verifica primeiro se o servidor está fora do ar
+        if (err.status === 0) {
+          alert('Servidor fora do ar. Tente novamente mais tarde.');
+          this.loginForm.reset();
+          this.hideSenha.set(true);
+          return; // sai da função para não executar o resto
+        }
 
-    } else {
-      console.log('Formulário inválido');
-      this.loginForm.markAllAsTouched();
-    }
+        // outros erros continuam sendo tratados pelo diálogo
+        this.dialog.open(ErrorDialog, {
+          data: err.error?.erro || 'Ocorreu um erro ao tentar logar'
+        });
+        this.loginForm.reset();
+        this.hideSenha.set(true);
+      }
+    });
+
+  } else {
+    console.log('Formulário inválido');
+    this.loginForm.markAllAsTouched();
   }
+}
+
 
 
 
