@@ -10,7 +10,6 @@ import { ValidarService } from '../../login/services/validar-service';
 import { Alerts } from '../../shared/alerts/alerts';
 import { MatDialog } from '@angular/material/dialog';
 
-
 @Component({
   selector: 'app-navbar-publico',
   imports: [MatToolbarModule, MatButtonModule,
