@@ -21,4 +21,8 @@ export class NavbarAdm {
     this.adminService.logout()
     this.router.navigate(['/']);
   }
+  get usuarioNome(): string {
+    return this.adminService.getUsuario()?.nome || '';
+  }
+
 }
