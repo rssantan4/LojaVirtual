@@ -50,11 +50,42 @@
 <br>
   </div>
       <div class = "cancelarPedido" *ngIf="pedido.status === 'PENDENTE'">
-  <button (click)="cancelarPedido(pedido)">Cancelar Pedido</button>
+  <button type="button" (click)="abrirModal(pedido, 'cancelar')">Cancelar Pedido</button>
 </div>
   <div class = "confirmarPedido" *ngIf="pedido.status === 'ENVIADO'">
-  <button (click)="confirmarPedido(pedido)">Confirmar Entrega</button>
+  <button type="button" (click)="abrirModal(pedido, 'confirmar')">Confirmar Entrega</button>
 </div>
+
+</div>
+
+
+
+
+<!-- ===== MODAL CONFIRMAÇÃO ===== -->
+<div class="modal-backdrop" *ngIf="pedidoSelecionado">
+
+  <div class="modal">
+    <h2>{{ acaoModal === 'cancelar' ? 'Cancelar Pedido' : 'Confirmar Entrega' }}</h2>
+
+    <p>
+      Tem certeza que deseja
+      <strong>
+        {{ acaoModal === 'cancelar' ? 'cancelar' : 'confirmar a entrega do' }}
+      </strong>
+      pedido nº <strong>{{ pedidoSelecionado.id }}</strong>?
+    </p>
+
+    <div class="modal-actions">
+      <button class="btn-cancelar" (click)="fecharModal()">Voltar</button>
+
+      <button
+        class="btn-confirmar"
+        (click)="confirmarAcao()">
+        Confirmar
+      </button>
+    </div>
+  </div>
+
 </div>
 
 

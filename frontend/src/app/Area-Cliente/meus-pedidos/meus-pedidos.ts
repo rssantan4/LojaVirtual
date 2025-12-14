@@ -18,6 +18,8 @@ export class MeusPedidos {
   pedidos: Pedido[] = [];
   pedidosFiltrados: Pedido[] = [];
   loading = false;
+  pedidoSelecionado: Pedido | null = null;
+acaoModal: 'cancelar' | 'confirmar' | null = null;
 
   constructor(
     private pedidoService: ServicePedido,
@@ -64,41 +66,35 @@ export class MeusPedidos {
 
 
 
-cancelarPedido(pedido: Pedido) {
-  if (pedido.status !== 'PENDENTE') return;
+confirmarAcao() {
+  if (!this.pedidoSelecionado || !this.acaoModal) return;
 
-  if (confirm(`Deseja realmente cancelar o pedido nº ${pedido.id}?`)) {
-    this.pedidoServicoAdm.atualizarStatus(pedido.id, 'CANCELADO').subscribe({
-      next: (pedidoAtualizado: Pedido) => {
-        pedido.status = pedidoAtualizado.status;
+  const novoStatus =
+    this.acaoModal === 'cancelar' ? 'CANCELADO' : 'ENTREGUE';
+
+  this.pedidoServicoAdm
+    .atualizarStatus(this.pedidoSelecionado.id, novoStatus)
+    .subscribe({
+      next: (pedidoAtualizado) => {
+        this.pedidoSelecionado!.status = pedidoAtualizado.status;
         this.filtrarPedidos(this.statusSelecionado);
+        this.fecharModal();
       },
-      error: (err) => {
-        console.error('Erro ao cancelar pedido', err);
-        alert('Não foi possível cancelar o pedido. Tente novamente.');
+      error: () => {
+        alert('Erro ao atualizar o pedido.');
+        this.fecharModal();
       }
     });
-  }
 }
 
-confirmarPedido(pedido:Pedido){
-  if(pedido.status !== 'ENVIADO') return;
-
-  if(confirm(`Deseja realmente cancelar o pedido nº ${pedido.id}?`)){
-    this.pedidoServicoAdm.atualizarStatus(pedido.id, 'ENTREGUE').subscribe({
-      next: (pedidoAtualizado: Pedido) => {
-        pedido.status = pedidoAtualizado.status;
-        this.filtrarPedidos(this.statusSelecionado)
-      },
-      error: (err) => {
-        console.error("Erro ao colocar como ENTREGUE o pedido ", err);
-        alert("Não foi possível colocar como ENTREGUE o pedido. Tente novamente.");
-      }
-    })
-  }
-
+abrirModal(pedido: Pedido, acao: 'cancelar' | 'confirmar') {
+  this.pedidoSelecionado = pedido;
+  this.acaoModal = acao;
 }
 
-
+fecharModal() {
+  this.pedidoSelecionado = null;
+  this.acaoModal = null;
+}
 
 }
