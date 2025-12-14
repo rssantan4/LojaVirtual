@@ -12,6 +12,8 @@ import { NavbarInternoAdm } from "../../../navbar/navbar-interno-adm/navbar-inte
 import { ProdutoService } from '../services/produto-service';
 import { GeneroMusical } from '../../../models/generoMusical-models';
 import { Produto } from '../../../models/produto-model';
+import { Alerts } from '../../../shared/alerts/alerts';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cadastrar-produto',
@@ -39,73 +41,74 @@ export class CadastrarProduto implements OnInit{
   imagemPreview: string | null = null;
 
   constructor(private generoService: GeneroMusicalService,
-              private produtoService: ProdutoService) {}
+              private produtoService: ProdutoService,
+              private dialog: MatDialog,) {}
 
   ngOnInit(): void {
     this.generos$ = this.generoService.getAll();
   }
 
-  onSalvarProduto() {
-   // Validação dos campos obrigatórios
+onSalvarProduto() {
+
+  // 🔴 Validação dos campos obrigatórios
   if (
     !this.produto.nome?.trim() ||
-    !this.produto.artista?.trim() ||                       // nome vazio
-    !this.produto.preco || this.produto.preco <= 0 ||   // preço inválido
-    !this.produto.estoque || this.produto.estoque < 0 ||// estoque inválido
-    !this.produto.generoMusical?.id ||                  // gênero não selecionado
-    !this.imagemSelecionada                             // imagem não escolhida
+    !this.produto.artista?.trim() ||
+    !this.produto.preco || this.produto.preco <= 0 ||
+    this.produto.estoque === null || this.produto.estoque < 0 ||
+    !this.produto.generoMusical?.id ||
+    !this.imagemSelecionada
   ) {
-    alert('Preencha todos os campos obrigatórios corretamente!');
+    this.dialog.open(Alerts, {
+      data: 'Preencha todos os campos obrigatórios corretamente.'
+    });
     return;
   }
 
-  // Formata nome
+  // 🔹 Formata nome
   this.produto.nome = this.capitalizeFirstLetter(this.produto.nome);
 
-  // Salva
+  // 🔹 Salva produto
   this.produtoService.addProduto(this.produto).subscribe({
-  next: (res) => {
-    console.log('Produto criado no backend:', res);
-    alert('Produto salvo com sucesso!');
+  next: () => {
 
-    // Resetar formulário
-    this.produto = {
-      id: 0,
-      nome: '',
-      preco: null as any,
-      descricao: '',
-      estoque: null as any,
-      artista:'',
-      generoMusical: { id: 0, nome: '' },
-      imagemUrl: '',
-      ativo:true
-    };
-    this.imagemPreview = null;
-    this.imagemSelecionada = null;
+    const dialogRef = this.dialog.open(Alerts, {
+      data: 'Produto salvo com sucesso!'
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+
+      // 🔄 Resetar formulário APÓS clicar em OK
+      this.produto = {
+        id: 0,
+        nome: '',
+        preco: null as any,
+        descricao: '',
+        estoque: null as any,
+        artista: '',
+        generoMusical: { id: 0, nome: '' },
+        imagemUrl: '',
+        ativo: true
+      };
+
+      this.imagemPreview = null;
+      this.imagemSelecionada = null;
+    });
   },
+
   error: (err) => {
-    console.error('Erro ao salvar produto:', err);
-    alert('Erro ao salvar produto. Veja o console.');
+    let mensagem = 'Erro ao salvar produto. Tente novamente.';
+
+    if (err.status === 0) {
+      mensagem = 'Servidor fora do ar. Tente mais tarde.';
+    }
+
+    this.dialog.open(Alerts, { data: mensagem });
   }
 });
 
-
-  // Resetar formulário
-  this.produto = {
-    id: 0,
-    nome: '',
-    preco: null as any,
-    descricao: '',
-    estoque: null as any,
-    artista:'',
-    generoMusical: { id: 0, nome: '' },
-    imagemUrl: '',
-    ativo: true
-  };
-
-  this.imagemPreview = null;
-  this.imagemSelecionada = null;
 }
+
 
   onSelecionarGenero(genero: GeneroMusical) {
     this.produto.generoMusical = genero;
