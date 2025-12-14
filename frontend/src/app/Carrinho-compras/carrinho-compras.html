@@ -79,7 +79,7 @@
 
         <br>
 
-        <button class="btn" (click)="toggleCheckout()">CHECKOUT</button>
+        <button class="btn" (click)="toggleCheckout()" [disabled]="!carrinho?.itens?.length">Pagamento</button>
 
     </div>
 

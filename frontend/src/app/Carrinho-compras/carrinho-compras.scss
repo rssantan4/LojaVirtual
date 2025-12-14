@@ -319,7 +319,12 @@
   transform: translateY(-2px);
 }
 
-
+.btn:disabled {
+  background-color: #555; /* cinza escuro */
+  color: #ccc; /* texto claro */
+  cursor: not-allowed;
+  transform: none;
+}
 
 
 .loading-spinner {
