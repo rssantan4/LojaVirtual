@@ -36,8 +36,9 @@
       </div>
     </div>
 
+  <div *ngIf="!produtos.length"> <br> <br> <br> <br> <br> <br> </div>
 
-<div class="produtos">
+<div class="produtos" *ngIf="produtos.length">
   <h1 class=" title2">Produtos mais comprados</h1>
 
   <div class="produtos-lista">
@@ -47,6 +48,6 @@
     </app-produto-card>
   </div>
 </div>
-
+<br> <br> <br> <br> <br> <br> <br> <br> <br>
 </div>
 
