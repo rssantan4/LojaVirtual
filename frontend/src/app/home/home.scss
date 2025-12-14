@@ -34,61 +34,88 @@
 
 /* === Banner de destaque com texto sobreposto === */
 .banner {
-  position: relative;             /* necessário para posicionar texto dentro */
+  position: relative;
   width: 100%;
-  max-width: 600px;               /* largura máxima do banner */
+  max-width: 600px;
+  margin: auto;
 }
 
 .banner img {
-  width: 100%;                    /* ocupa toda a largura do banner */
+  width: 100%;
   height: auto;
   display: block;
+  border-radius: 12px; /* cantos arredondados para o banner */
 }
 
+/* Texto sobreposto */
 .banner-text {
   position: absolute;
-  top: 40%;
-  left: 50%;        /* mantém o texto no lado esquerdo */
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
 
-  /* fundo semi-transparente atrás do texto */
-  background-color: rgba(0, 0, 0, 0.5); /* preto 50% transparente */
-  padding: 20px 30px;                  /* espaço interno do quadrado */
-  border-radius: 10px;                  /* cantos arredondados */
+  background-color: rgba(0, 0, 0, 0.6); /* fundo preto semi-transparente */
+  padding: 20px 30px;
+  border-radius: 12px;
+  width: 80%;              /* evita que o texto fique muito largo */
+  max-width: 500px;
 }
 
 .banner-text h1 {
-  margin: 20px 0;                 /* espaço entre linhas de texto */
-  font-family: 'Arial Black';
-  text-shadow: 2px 2px 4px #000;  /* sombra para contraste sobre a imagem */
-  letter-spacing: 7px;            /* espaçamento entre letras */
+  margin: 0 0 15px 0;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 32px;
+  text-shadow: 2px 2px 4px #000;
+  letter-spacing: 4px;
+  line-height: 1.2;
 }
 
-.banner-button{
+/* Botão dentro do banner */
+.banner-button {
   border: none;
-  border-bottom: 2px solid white; /* linha embaixo do botão */
+  border-bottom: 2px solid white;
   cursor: pointer;
   background: none;
   color: white;
   font-size: 16px;
   text-shadow: 1px 1px 4px #000;
+  padding: 6px 12px;
+  transition: all 0.3s;
 }
 
-/* === Seção de produtos === */
-.produtos, h1{
-  text-align: center;           /* centraliza títulos e seções */
-  margin-top: 30px;
-  margin-bottom: 30px;
-
+.banner-button:hover {
+  color: #ff6600;            /* laranja da paleta ao passar o mouse */
+  border-bottom-color: #ff6600;
+  transform: translateY(-2px);
 }
 
-.produtos {
-  max-width: 1200px;            /* largura máxima da seção */
-  margin: 0 auto;               /* centraliza horizontalmente */
-  padding: 40px 20px;           /* espaçamento interno */
-  text-align: center;
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .banner-text h1 {
+    font-size: 26px;
+    letter-spacing: 2px;
+  }
+  .banner-text {
+    padding: 15px 20px;
+  }
+  .banner-button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-text h1 {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+  .banner-text {
+    padding: 10px 15px;
+  }
+  .banner-button {
+    font-size: 13px;
+  }
 }
 
 /* === Lista de produtos dentro da seção === */
@@ -131,18 +158,38 @@
 .title2 {
   font-family: 'Arial Black', sans-serif;
   font-size: 38px;
-  color: #111;                      /* preto principal */
-  text-shadow: 3px 3px 0 #ff6600,   /* sombra laranja forte */
-               6px 6px 0 rgba(0,0,0,0.2); /* sombra preta suave */
+  color: #111;
+  text-shadow: 3px 3px 0 #ff6600,
+               6px 6px 0 rgba(0,0,0,0.2);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 20px;
-  display: inline-block;
+  display: block; /* altera de inline-block para block */
+  line-height: 1.2;
+  word-wrap: break-word;
   transition: transform 0.3s;
+  text-align: center; /* garante que o título ficará centralizado */
+  width: 100%; /* ocupa toda a largura disponível */
 }
 
 .title2:hover {
-  transform: scale(1.08);           /* leve “pop” no hover */
+  transform: scale(1.08);
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .title2 {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 480px) {
+  .title2 {
+    font-size: 24px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+  }
 }
 
 
