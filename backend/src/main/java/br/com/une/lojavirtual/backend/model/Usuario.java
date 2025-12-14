@@ -1,6 +1,13 @@
 package br.com.une.lojavirtual.backend.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -13,8 +20,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuario {
 
+public class Usuario {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,4 +42,9 @@ public class Usuario {
     @Enumerated(EnumType.STRING) // Grava no banco como texto ("ADMIN", "CLIENTE") e não número (0, 1)
     @Column(nullable = false)
     private TipoUsuario tipo; // ADMIN ou CLIENTE
+
+    private String cep;
+    private String endereco; // Rua, número, bairro
+    private String cidade;
+    private String estado;
 }
