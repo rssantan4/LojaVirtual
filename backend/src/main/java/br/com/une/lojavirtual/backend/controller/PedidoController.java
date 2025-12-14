@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.une.lojavirtual.backend.dto.PedidoDTO;
 import br.com.une.lojavirtual.backend.model.Pedido;
+import br.com.une.lojavirtual.backend.model.StatusPedido;
 import br.com.une.lojavirtual.backend.service.PedidoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @RestController
@@ -44,4 +47,10 @@ public class PedidoController {
         return ResponseEntity.ok(service.listarPorUsuario(id));
     }
     
+    // PUT: Atualizar status dos pedidos
+    // URL http://localhost:8080/api/pedidos/{id}/status
+    @PutMapping("{id}/status")
+    public ResponseEntity<Pedido> atualizarPedido(@PathVariable Long id, @RequestBody StatusPedido status) {
+        return ResponseEntity.ok(service.atualizarStatus(id, status));
+    }
 }
