@@ -68,6 +68,14 @@
 </mat-form-field>
 
 <mat-form-field appearance="outline">
+  <mat-label>Artista</mat-label>
+  <input matInput [(ngModel)]="produtoSelecionado!.artista" artista="artista" required>
+  <mat-error *ngIf="!produtoSelecionado!.artista || produtoSelecionado!.artista.trim() === ''">
+    Nome do artista é obrigatório
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
   <mat-label>Preço</mat-label>
   <input matInput type="number" [(ngModel)]="produtoSelecionado!.preco" name="preco" required min="0">
   <mat-error *ngIf="produtoSelecionado!.preco == null || produtoSelecionado!.preco < 0">

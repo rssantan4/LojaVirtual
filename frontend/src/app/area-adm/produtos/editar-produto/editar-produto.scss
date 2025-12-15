@@ -95,7 +95,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 8px;
 }
 
 /* Campos dentro do modal */
@@ -129,3 +129,6 @@
 ::ng-deep mat-spinner circle {
   stroke: #f28444;  // Força a cor laranja
 }
+
+
+

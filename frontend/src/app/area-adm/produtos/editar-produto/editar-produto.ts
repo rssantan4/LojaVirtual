@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { ProdutoService } from '../services/produto-service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -24,142 +24,114 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class EditarProduto {
 
-   produtos: Produto[] = [];           // Todos os produtos
-    produtosFiltrados: Produto[] = [];  // Produtos filtrados pela busca
-    buscaProduto: string = '';          // Valor do input de busca
-    produtoSelecionado: Produto | null = null; // Produto selecionado para confirmar remoção
-    generosMusicais: GeneroMusical[] = [];  // Lista de gêneros do service
-    loadingProdutos = true;
-    loadingSalvar = false;
-    modal = false;
+  produtos: Produto[] = [];
+  produtosFiltrados: Produto[] = [];
+  buscaProduto: string = '';
+  produtoSelecionado: Produto | null = null;
+  generosMusicais: GeneroMusical[] = [];
+  loadingProdutos = true;
+  loadingSalvar = false;
+  modal = false;
 
-
-    constructor(
+  constructor(
     private route: ActivatedRoute,
     private produtoService: ProdutoService,
     private generoService: GeneroMusicalService,
-    private dialog: MatDialog 
+    private dialog: MatDialog,
+    private cdr: ChangeDetectorRef
   ) {}
 
-    ngOnInit(): void {
-
-      // Carrega produtos
-
-      this.route.data.subscribe(({ produtos }) => {
-      console.log('Produtos vindos do resolver:', produtos);
+  ngOnInit(): void {
+    // 🔹 Carrega produtos do resolver
+    this.route.data.subscribe(({ produtos }) => {
       this.produtos = produtos;
-      this.produtosFiltrados = produtos;
+      this.produtosFiltrados = [...produtos];
       this.loadingProdutos = false;
-          });
-
-      // Carrega gêneros musicais
-
-      this.generoService.getAll().subscribe(generos => {
-  this.generosMusicais = generos;
-});
-    }
-
-    // Filtra os produtos conforme o input
-    filtrarProdutos(): void {
-      const termo = this.buscaProduto.toLowerCase();
-      this.produtosFiltrados = this.produtos.filter(p => p.nome.toLowerCase().includes(termo));
-    }
-
-
-abrirConfirmacao(produto: Produto) {
-  this.produtoSelecionado = { ...produto };
-
-  // 🔥 sincroniza o gênero pelo ID
-  const generoEncontrado = this.generosMusicais.find(
-    g => g.id === produto.generoMusical?.id
-  );
-
-  if (generoEncontrado) {
-    this.produtoSelecionado.generoMusical = generoEncontrado;
-  }
-
-  this.modal = true;
-}
-
-
-
-
-
-EditarProduto(): void {
-  if (!this.produtoSelecionado) return;
-
-  // Validação de campos obrigatórios
-  if (
-    !this.produtoSelecionado.nome?.trim() ||
-    !this.produtoSelecionado.generoMusical ||
-    !this.produtoSelecionado.generoMusical?.id ||
-    this.produtoSelecionado.preco === null ||
-    this.produtoSelecionado.estoque === null
-  ) {
-    this.dialog.open(Alerts, {
-      data: 'Preencha todos os campos obrigatórios antes de salvar.'
+      this.cdr.detectChanges(); // força atualização do template
     });
-    return;
+
+    this.carregarGeneros();
   }
 
-  // Formata nome
-  this.produtoSelecionado.nome =
-    this.capitalizeFirstLetter(this.produtoSelecionado.nome);
+  carregarGeneros(): void {
+    this.generoService.getAll().subscribe({
+      next: (lista) => {
+        this.generosMusicais = lista;
+        this.cdr.detectChanges();
+      },
+      error: (err) => console.error('Erro ao carregar gêneros', err)
+    });
+  }
 
-  // Atualiza produto
-  this.produtoService.updateProduto(this.produtoSelecionado).subscribe({
-    next: () => {
+  filtrarProdutos(): void {
+    const termo = this.buscaProduto.toLowerCase();
+    this.produtosFiltrados = this.produtos.filter(p => p.nome.toLowerCase().includes(termo));
+    this.cdr.detectChanges();
+  }
 
-      const dialogRef = this.dialog.open(Alerts, {
-        data: 'Produto atualizado com sucesso!'
-      });
+  abrirConfirmacao(produto: Produto) {
+    this.produtoSelecionado = { ...produto };
 
-      dialogRef.afterClosed().subscribe(() => {
+    const generoEncontrado = this.generosMusicais.find(
+      g => g.id === produto.generoMusical?.id
+    );
+    if (generoEncontrado) {
+      this.produtoSelecionado.generoMusical = generoEncontrado;
+    }
 
-        // Atualiza lista
+    this.modal = true;
+    this.cdr.detectChanges();
+  }
+
+  EditarProduto(): void {
+    if (!this.produtoSelecionado) return;
+
+    if (!this.produtoSelecionado.nome?.trim() ||
+    !this.produtoSelecionado.artista?.trim() ||
+        !this.produtoSelecionado.generoMusical?.id ||
+        this.produtoSelecionado.preco === null ||
+        this.produtoSelecionado.estoque === null) {
+      this.dialog.open(Alerts, { data: 'Preencha todos os campos obrigatórios antes de salvar.' });
+      return;
+    }
+
+    this.produtoSelecionado.nome = this.capitalizeFirstLetter(this.produtoSelecionado.nome);
+    this.loadingSalvar = true;
+    this.cdr.detectChanges(); // força o loading a aparecer imediatamente
+
+    this.produtoService.updateProduto(this.produtoSelecionado).subscribe({
+      next: (produtoAtualizado) => {
+        const index = this.produtos.findIndex(p => p.id === produtoAtualizado.id);
+        if (index > -1) this.produtos[index] = produtoAtualizado;
+
         this.filtrarProdutos();
 
-        // Limpa seleção
+        this.modal = false;
         this.produtoSelecionado = null;
-      });
-    },
+        this.loadingSalvar = false;
+        this.cdr.detectChanges(); // garante que modal e loading sejam atualizados
 
-    error: (err) => {
-      let mensagem = 'Erro ao atualizar produto. Tente novamente.';
+        this.dialog.open(Alerts, { data: 'Produto atualizado com sucesso!' });
 
-      if (err.status === 0) {
-        mensagem = 'Servidor fora do ar. Tente mais tarde.';
+      },
+      error: (err) => {
+        this.loadingSalvar = false;
+        this.cdr.detectChanges();
+        let mensagem = 'Erro ao atualizar produto. Tente novamente.';
+        if (err.status === 0) mensagem = 'Servidor fora do ar. Tente mais tarde.';
+        this.dialog.open(Alerts, { data: mensagem });
       }
-
-      this.dialog.open(Alerts, { data: mensagem });
-    }
-  });
-}
-
+    });
+  }
 
   cancelarEdicao() {
-  this.produtoSelecionado = null; // fecha o modal
-}
+    this.produtoSelecionado = null;
+    this.modal = false;
+    this.cdr.detectChanges();
+  }
 
-
-
-
-
-// Função para inicial maiúscula
-capitalizeFirstLetter(value: string): string {
-  if (!value) return '';
-  return value.charAt(0).toUpperCase() + value.slice(1);
-}
-
-
-
-carregarGeneros() {
-  this.generoService.getAll().subscribe({
-    next: (lista) => this.generosMusicais = lista,
-    error: (err) => console.error('Erro ao carregar gêneros', err)
-  });
-}
-
-
-
+  capitalizeFirstLetter(value: string): string {
+    if (!value) return '';
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  }
 }
