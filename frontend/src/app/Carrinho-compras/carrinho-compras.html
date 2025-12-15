@@ -32,8 +32,8 @@
                     <a (click)="aumentar(item)">+</a>
                 </div>
 
-                <div class="col">
-                    R$ {{ item.produto.preco | currency:'BRL' }}
+                <div class="col" class = preco>
+                     {{ item.produto.preco | currency:'BRL' }}
                     <span class="close" (click)="remover(item)">&#10005;</span>
                 </div>
 

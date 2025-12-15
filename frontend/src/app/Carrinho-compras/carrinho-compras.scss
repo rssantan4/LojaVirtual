@@ -163,9 +163,35 @@
 }
 
 /* Responsivo */
-@media(max-width: 768px) {
+@media(max-width: 400px) {
+     .card {
+        flex-direction: column;
+        width: 100%;
+    }
+    .cart {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    .summary {
+        padding-top: 1rem;
+    }
+    .preco{
+    display: block;
+    max-width: 100%;
+    min-width: 0;          /* ESSENCIAL em flex */
+    white-space: normal;
+    word-break: keep-all; /* não quebra no meio */
+    overflow-wrap: break-word;
+    text-align: center;
+
+    }
+}
+
+/* Responsivo */
+@media(min-width: 401px) and (max-width: 768px) {
     .card {
         flex-direction: column;
+        width: 100%;
     }
     .cart {
         border-right: none;
