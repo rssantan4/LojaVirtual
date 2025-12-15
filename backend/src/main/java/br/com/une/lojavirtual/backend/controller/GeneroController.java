@@ -36,4 +36,11 @@ public class GeneroController {
         service.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping
+public ResponseEntity<GeneroMusical> criar(@RequestBody GeneroMusical genero) {
+    GeneroMusical generoSalvo = service.criar(genero);
+    return ResponseEntity.ok(generoSalvo);
+}
+
 }

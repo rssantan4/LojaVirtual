@@ -50,4 +50,10 @@ public class GeneroService {
         return repository.findById(id)
              .orElseThrow(() -> new IllegalArgumentException("Gênero não encontrado."));
     }
+
+    public GeneroMusical criar(GeneroMusical genero) {
+      genero.setId(null); // garante que é novo
+      return repository.save(genero);
+   }
+
 }
