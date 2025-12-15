@@ -7,6 +7,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClienteService } from '../Services/cliente/cliente-service';
 import { MatIcon } from "@angular/material/icon";
 import { CommonModule, TitleCasePipe } from '@angular/common';
+import { Alerts } from '../../shared/alerts/alerts';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-editar-minha-conta',
@@ -22,6 +24,7 @@ export class EditarMinhaConta implements OnInit{
   constructor(
     private usuarioService: ClienteService,
     private snack: MatSnackBar,
+    private dialog: MatDialog,
     private router: Router,
   ) {
     this.contaForm = new FormGroup({
@@ -56,22 +59,27 @@ toggleSenha() {
   this.hideSenha = !this.hideSenha;
 }
 
-  salvar() {
-    if(this.contaForm.invalid){
-      this.contaForm.markAllAsTouched();
-      return;
-    }
-
-    this.usuarioService.atualizarConta(this.contaForm.value).subscribe({
-      next: () => {
-        this.snack.open('Conta atualizada com sucesso!', 'OK', { duration: 3000 });
-      },
-      error: (err) => {
-        console.error(err);
-        this.snack.open('Erro ao atualizar conta', 'OK', { duration: 3000 });
-      }
-    });
+ salvar() {
+  if (this.contaForm.invalid) {
+    this.contaForm.markAllAsTouched();
+    return;
   }
+
+  this.usuarioService.atualizarConta(this.contaForm.value).subscribe({
+    next: () => {
+      this.dialog.open(Alerts, {
+        data: 'Conta atualizada com sucesso!'
+      });
+    },
+    error: (err) => {
+      console.error(err);
+      this.dialog.open(Alerts, {
+        data: 'Erro ao atualizar conta'
+      });
+    }
+  });
+}
+
 
   voltarParaMinhaConta() {
     this.router.navigate(['/cliente/minha-Conta']); // ajuste para a rota correta
