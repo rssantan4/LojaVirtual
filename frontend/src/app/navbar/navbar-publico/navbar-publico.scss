@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -22,12 +22,13 @@
   color: #f28444;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  flex-shrink: 0;
 }
 
-/* Botões do meio */
+/* Botões de navegação (desktop) */
 .button-escolha {
   display: flex;
-  justify-content: center; /* centraliza todos os botões */
+  justify-content: center;
   align-items: center;
   gap: 1rem;
   flex: 1;
@@ -61,7 +62,7 @@
   font-size: 1.5rem;
 }
 
-.persson:hover, .persson-item:hover, .cart:hover {
+.persson:hover, .persson-item:hover, .cart:hover, .logado:hover {
   color: #f28444;
 }
 
@@ -69,37 +70,16 @@
   color: black;
 }
 
-/* Apenas para desktop */
+/* Mobile e desktop */
 .desktop-only {
-  display: inline-block;
+  display: inline-flex;
 }
 
-/* Media query para mobile */
-@media (max-width: 768px) {
-  .title {
-    font-size: 1.4rem;
-  }
-
-  /* esconde os botões secundários no mobile */
-  .desktop-only {
-    display: none;
-  }
-
-  .persson, .cart {
-    font-size: 1.3rem;
-  }
+.mobile-only {
+  display: none;
 }
 
-.logado{
-  color: #f28444;
-
-}
-.logado:hover{
-  color: #ff5e01;
-}
-
-
-/* Container do usuário */
+/* Menu usuário */
 .menu-usuario {
   padding: 7px 16px;
   display: flex;
@@ -108,16 +88,61 @@
   background-color: #f5f5f5;
 }
 
-/* Texto "Bem-vindo" */
 .bem-vindo {
   font-size: 0.75rem;
   color: #666;
 }
 
-/* Nome do usuário */
 .nome-usuario {
   font-size: 0.95rem;
   font-weight: 200;
-  color: #f28444; /* laranja do site */
+  color: #f28444;
   text-transform: capitalize;
 }
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 1.6rem;
+  }
+  .button-escolha button {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: inline-flex;
+  }
+
+  .persson, .cart {
+    font-size: 1.3rem;
+  }
+
+  .logo {
+    width: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    width: 3rem;
+  }
+
+  .persson, .cart {
+    font-size: 1.1rem;
+  }
+}
+
