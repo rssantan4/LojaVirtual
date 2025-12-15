@@ -94,6 +94,7 @@ diminuir(item: ItemCarrinho) {
   this.carrinhoService.diminuir(Number(usuario.id), item).subscribe(() => {
     //this.carregarCarrinho();
     this.atualizarCarrinho();
+
   });
 }
 
@@ -159,11 +160,11 @@ finalizarPedido() {
         data: 'Pedido finalizado com sucesso!'
       });
 
-      // Limpar carrinho
-      // this.carrinhoService.limparCarrinho(Number(usuario.id)).subscribe(() => {
-      //  this.carrinho.itens = [];
-      //  this.carrinho.valorTotal = 0;
-      //});
+
+       this.carrinhoService.limparCarrinho(Number(usuario.id)).subscribe(() => {
+        this.carrinho.itens = [];
+        this.carrinho.valorTotal = 0;
+      });
 
       // Redireciona para a página Meus Pedidos
       this.router.navigate(['/cliente/meus-pedidos']);
