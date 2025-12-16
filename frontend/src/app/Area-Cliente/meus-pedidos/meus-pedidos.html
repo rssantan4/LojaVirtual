@@ -1,0 +1,101 @@
+<br>
+<!-- ===== Botão Voltar ===== -->
+<div class="voltar-container">
+  <button class="btn-voltar" (click)="voltarParaMinhaConta()">
+    ← Voltar para Minha Conta
+  </button>
+</div>
+
+<!-- ===== Abas de Status ===== -->
+<div class="order-tabs">
+<button (click)="filtrarPedidos('todos')" [class.active]="statusSelecionado==='todos'">Todos</button>
+<button (click)="filtrarPedidos('PENDENTE')" [class.active]="statusSelecionado==='PENDENTE'">Pendente</button>
+<button (click)="filtrarPedidos('PROCESSANDO')" [class.active]="statusSelecionado==='PROCESSANDO'">Processando</button>
+<button (click)="filtrarPedidos('ENVIADO')" [class.active]="statusSelecionado==='ENVIADO'">Enviado</button>
+<button (click)="filtrarPedidos('ENTREGUE')" [class.active]="statusSelecionado==='ENTREGUE'">Entregue</button>
+<button (click)="filtrarPedidos('CANCELADO')" [class.active]="statusSelecionado==='CANCELADO'">Cancelado</button>
+
+</div>
+
+<!-- ===== Lista de Pedidos ===== -->
+ <p class="aviso" *ngIf="pedidosFiltrados?.length === 0">
+  Você não possui nenhum pedido realizado nessa categoria ainda
+</p>
+
+<div *ngFor="let pedido of pedidosFiltrados" class="pedido-card">
+
+  <!-- Cabeçalho do Pedido -->
+  <div class="pedido-header">
+    <div>
+      <strong>Pedido nº {{ pedido.id }}</strong> -
+      {{ pedido.dataPedido | date:'shortDate' }} -
+      Total: {{ pedido.valorTotal | currency:'BRL':'symbol':'1.2-2' }}
+    </div>
+    <div class="status" [ngClass]="pedido.status">
+      {{ pedido.status | titlecase }}
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Itens do Pedido -->
+  <div class="itens-pedido">
+    <div *ngFor="let item of pedido.itens" class="item-card">
+      <img [src]="item.produto.imagemUrl" alt="{{ item.produto.nome }}">
+      <div class="item-info">
+        <div><strong>{{ item.produto.nome }}</strong></div>
+        <div>Quantidade: {{ item.qtdComprada }}</div>
+        <div>Subtotal: {{ (item.produto.preco * item.qtdComprada) | currency:'BRL':'symbol':'1.2-2' }}</div>
+      </div>
+    </div>
+     <div> <strong>Status: </strong>  <span [ngClass]="{
+        'status-pendente': pedido.status === 'PENDENTE',
+        'status-processamento': pedido.status === 'PROCESSANDO',
+        'status-enviado': pedido.status === 'ENVIADO',
+        'status-entregue': pedido.status === 'ENTREGUE',
+        'status-cancelado': pedido.status === 'CANCELADO'
+      }">{{pedido.status}}</span>
+      </div>
+<br>
+  </div>
+      <div class = "cancelarPedido" *ngIf="pedido.status === 'PENDENTE'">
+  <button type="button" (click)="abrirModal(pedido, 'cancelar')">Cancelar Pedido</button>
+</div>
+  <div class = "confirmarPedido" *ngIf="pedido.status === 'ENVIADO'">
+  <button type="button" (click)="abrirModal(pedido, 'confirmar')">Confirmar Entrega</button>
+</div>
+
+</div>
+
+
+
+
+<!-- ===== MODAL CONFIRMAÇÃO ===== -->
+<div class="modal-backdrop" *ngIf="pedidoSelecionado">
+
+  <div class="modal">
+    <h2>{{ acaoModal === 'cancelar' ? 'Cancelar Pedido' : 'Confirmar Entrega' }}</h2>
+
+    <p>
+      Tem certeza que deseja
+      <strong>
+        {{ acaoModal === 'cancelar' ? 'cancelar' : 'confirmar a entrega do' }}
+      </strong>
+      pedido nº <strong>{{ pedidoSelecionado.id }}</strong>?
+    </p>
+
+    <div class="modal-actions">
+      <button class="btn-cancelar" (click)="fecharModal()">Voltar</button>
+
+      <button
+        class="btn-confirmar"
+        (click)="confirmarAcao()">
+        Confirmar
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

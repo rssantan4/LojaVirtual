@@ -1,0 +1,278 @@
+/* ===== Abas de Status Bonitas ===== */
+.order-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.order-tabs button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 20px;        /* bordas arredondadas */
+  background: #f4f4f4;
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+.order-tabs button.active {
+  background: #ff6600;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255,102,0,0.5);
+}
+
+.order-tabs button:hover {
+  background: #ff6600;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255,102,0,0.4);
+}
+
+/* ===== Card de Pedido ===== */
+.pedido-card {
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pedido-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 16px;
+  color: #fff;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* cores por status */
+.status-pendente { background-color: #ffcc66; }      /* laranja suave */
+.status-processamento { background-color: #ff9933; }   /* laranja mais forte */
+.status-enviado { background-color: #4CAF50; }       /* verde */
+.status-entregue { background-color: #2196F3; }      /* azul */
+.status-cancelado { background-color: #f44336; }     /* vermelho */
+
+/* ===== Itens dentro do pedido ===== */
+.itens-pedido {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-card {
+  display: flex;
+  gap: 12px;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 10px;
+  align-items: center;
+  background-color: #fafafa;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.item-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #111;
+}
+
+
+.cancel-btn {
+  margin-left: 10px;
+  padding: 4px 8px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+/*estilos gerais para o botão de cancelar */
+.cancelarPedido button {
+  background-color: #f28444; /* laranja forte */
+  color: #fff;               /* texto branco */
+  border: none;              /* remove borda padrão */
+  padding: 8px 16px;         /* espaçamento interno */
+  border-radius: 5px;        /* cantos arredondados */
+  cursor: pointer;           /* cursor de mãozinha */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* efeito ao passar o mouse */
+.cancelarPedido button:hover {
+  background-color: #ee6237; /* laranja mais escuro */
+}
+
+/* efeito ao clicar */
+.cancelarPedido button:active {
+  transform: scale(0.98); /* leve redução ao clicar */
+}
+
+/* opcional: tamanho menor em telas pequenas */
+@media (max-width: 600px) {
+  .cancelarPedido button, .confirmarPedido button{
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+.aviso {
+  text-align: center;       /* centraliza o texto dentro do p */
+  margin: 20px 0;           /* dá um espaçamento em cima e embaixo */
+  font-size: 16px;          /* opcional, ajusta o tamanho da fonte */
+  color: #555;              /* opcional, muda a cor do texto */
+}
+
+
+
+
+/*estilos gerais para o botão de cancelar */
+.confirmarPedido button {
+  background-color: #f28444; /* laranja forte */
+  color: #fff;               /* texto branco */
+  border: none;              /* remove borda padrão */
+  padding: 8px 16px;         /* espaçamento interno */
+  border-radius: 5px;        /* cantos arredondados */
+  cursor: pointer;           /* cursor de mãozinha */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* efeito ao passar o mouse */
+.confirmarPedido button:hover {
+  background-color: #ee6237; /* laranja mais escuro */
+}
+
+/* efeito ao clicar */
+.confirmarPedido button:active {
+  transform: scale(0.98); /* leve redução ao clicar */
+}
+
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 24px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal h2 {
+  margin-bottom: 12px;
+}
+
+.modal p {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.btn-cancelar {
+  background: #ccc;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-confirmar {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-confirmar:hover {
+  background: #c62828;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== Botão Voltar ===== */
+.voltar-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.btn-voltar {
+  background: #111;       /* preto da paleta */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-voltar:hover {
+  background: #ff6600;    /* laranja da paleta */
+  transform: translateX(-2px);
+}

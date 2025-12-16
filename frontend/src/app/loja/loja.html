@@ -1,0 +1,96 @@
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+<div id="wrapper">
+
+
+<div id="sidebar">
+
+<h3>Buscar por álbum</h3>
+<input
+  type="text"
+  [(ngModel)]="termoBuscaAlbum"
+  (input)="filtrarPorAlbum()"
+  placeholder="Digite o nome do álbum..."
+  class="search-input"
+/>
+
+<h3>Buscar por artista</h3>
+<input
+  type="text"
+  [(ngModel)]="termoBuscaArtista"
+  (input)="filtrarPorArtista()"
+  placeholder="Digite o nome do artista..."
+  class="search-input"
+/>
+
+
+<h3>CATEGORIAS</h3>
+
+<div class="categoria-chips">
+  <button
+    *ngFor="let c of generos"
+    class="chip"
+    (click)="filtrarPorCategoria(c.nome)"
+  >
+    {{ c.nome }}
+  </button>
+  <button class="chip" (click)="limparFiltros()">
+  Mostrar Todos
+</button>
+
+</div>
+
+
+
+
+    <h3>Filtrar por preço</h3>
+<div class="price-filter">
+  <div class="price-field">
+    <span>Min</span>
+    <input
+      type="number"
+      [(ngModel)]="precoMin"
+      (input)="filtrarPorPreco()"
+      placeholder="0.00"
+    />
+  </div>
+
+  <span class="separator"></span>
+
+  <div class="price-field">
+    <span>Max</span>
+    <input
+      type="number"
+      [(ngModel)]="precoMax"
+      (input)="filtrarPorPreco()"
+      placeholder="999.99"
+    />
+  </div>
+</div>
+
+</div>
+
+
+<div id="grid-selector">
+       <p>Mostrando 1 - {{produtos.length}}</p>
+
+   <div class="produtos-lista">
+  <ng-container *ngIf="!loading; else loadingTemplate">
+    <ng-container *ngFor="let p of produtos">
+      <app-card-produto-loja [produto]="p"></app-card-produto-loja>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loadingTemplate>
+    <div class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</div>
+
+</div>
+
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="menu.js"></script>
+

@@ -1,0 +1,102 @@
+/* Toolbar principal */
+.toolbar {
+  background-color: black;
+  display: flex;
+  align-items: center;           /* centraliza verticalmente logo e título */
+  justify-content: space-between; /* logo+título à esquerda, ícones à direita */
+  padding: 0 1rem;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+/* Container logo + título */
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.05rem;                 /* título bem próximo da logo */
+}
+
+/* Logo */
+.logo {
+  width: 4rem;
+  height: auto;
+  flex-shrink: 0;               /* não encolhe em telas pequenas */
+  margin: 0;                     /* sem margem para colar título */
+}
+
+/* Título */
+.title {
+  font-family: 'Arial', sans-serif;
+  font-size: 2rem;
+  color: #f28444;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  white-space: nowrap;
+}
+
+/* Ícones à direita */
+.icones-escolha {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.icones-escolha mat-icon,
+.icones-escolha .persson {
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.icones-escolha mat-icon:hover,
+.icones-escolha .persson:hover {
+  color: #f28444;
+}
+
+/* Container do usuário */
+.menu-usuario {
+  padding: 7px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background-color: #f5f5f5;
+}
+
+.bem-vindo {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.nome-usuario {
+  font-size: 0.95rem;
+  font-weight: 200;
+  color: #f28444;
+  text-transform: capitalize;
+}
+
+/* ===== Responsividade ===== */
+
+/* Laptops médios e tablets grandes */
+@media (max-width: 1024px) {
+  .logo { width: 3.5rem; }
+  .title { font-size: 1.8rem; }
+}
+
+/* Tablets pequenos e celulares grandes */
+@media (max-width: 768px) {
+  .logo { width: 3rem; }
+  .title { font-size: 1.5rem; }
+  .icones-escolha { gap: 0.5rem; }
+  .toolbar { padding: 0.5rem 0.5rem; }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+  .logo { width: 2.5rem; }
+  .title { font-size: 1.3rem; }
+  .icones-escolha { gap: 0.4rem; }
+  .toolbar { padding: 0.3rem 0.2rem; }
+}

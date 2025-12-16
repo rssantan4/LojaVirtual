@@ -1,0 +1,178 @@
+<div class="cart-wrapper">
+<div class="card">
+<div *ngIf="loading" class="loading-spinner">
+  <mat-progress-spinner
+      mode="indeterminate"
+      diameter="50"
+      color="primary">
+  </mat-progress-spinner>
+</div>
+
+<div class="cart" *ngIf="!loading" >
+
+        <div class="title">
+            <h4><b>Carrinho </b></h4>
+            <span class="text-muted">{{ carrinho?.itens?.length }} items</span>
+        </div>
+        <p *ngIf="!carrinho?.itens?.length">
+                Você não adicionou nenhum produto no seu carrinho ainda!
+        </p>
+
+<div *ngFor="let item of carrinho?.itens">
+
+  <div class="row main" [class.inativo]="!item.produto.ativo">
+
+    <img [src]="item.produto.imagemUrl" />
+
+    <div class="col">
+      <div class="text-muted">{{ item.produto.nome }}</div>
+
+      <!-- aviso -->
+      <small *ngIf="!item.produto.ativo" class="aviso-inativo">
+        ⚠ Produto indisponível no momento
+      </small>
+    </div>
+
+    <!-- quantidade -->
+    <div class="col">
+      <ng-container *ngIf="item.produto.ativo; else bloqueado">
+        <a class = "dimiMax" (click)="diminuir(item)">-</a>
+        <a class="border">{{ item.quantidade }}</a>
+        <a class = "dimiMax" (click)="aumentar(item)">+</a>
+      </ng-container>
+
+      <ng-template #bloqueado>
+        <span class="bloqueado">—</span>
+      </ng-template>
+    </div>
+
+    <!-- preço -->
+    <div class="col preco">
+      <ng-container *ngIf="item.produto.ativo; else indisponivel">
+        {{ item.produto.preco | currency:'BRL' }}
+        <span class="close" (click)="remover(item)">&#10005;</span>
+      </ng-container>
+
+      <ng-template #indisponivel>
+  <span class="indisponivel">Indisponível</span>
+  <span
+    class="close"
+    (click)="remover(item)">
+    &#10005;
+  </span>
+</ng-template>
+
+    </div>
+
+  </div>
+</div>
+
+        <div class="back-to-shop">
+            <a href="/loja">&leftarrow;
+            <span class="text-muted">Voltar para loja</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="summary" *ngIf="!loading">
+      <!-- Endereço do usuário -->
+    <div class="user-address" *ngIf="usuario?.endereco">
+        <b>Endereço:</b> <br> {{ usuario?.endereco }}
+    </div>
+    <br> <br>
+
+        <hr>
+<div class="row">
+  <span>ITEMS {{ itensAtivos.length }}</span>
+  <span>{{ valorTotalAtivo | currency:'BRL' }}</span>
+</div>
+
+        <br>
+
+  <form>
+  <form *ngIf="temItensNoCarrinho()">
+  <p>Frete</p>
+  <select (change)="selecionarFrete($event)">
+    <option value="50">Receba em 7 dias via Sedex – R$50,00</option>
+    <option value="25">Receba em 15 dias via Entrega Padrão – R$25,00</option>
+  </select>
+</form>
+</form>
+
+<div class="row total-row">
+  <span>TOTAL</span>
+  <span>R$ {{ totalComFrete | number:'1.2-2' }}</span>
+</div>
+
+
+        <br>
+
+        <button class="btn" (click)="toggleCheckout()" [disabled]="!carrinho?.itens?.length">Pagamento</button>
+
+    </div>
+
+ <!-- Modal de pagamento -->
+<!-- Modal de pagamento -->
+<div class="modal" *ngIf="checkoutAtivo">
+  <div class="modal-overlay" (click)="toggleCheckout()"></div>
+
+  <div class="modal-content">
+    <button class="btn-close" (click)="toggleCheckout()">×</button>
+
+    <h3 class="modal-title">Escolha a forma de pagamento</h3>
+
+<div class="pagamento-options">
+  <button
+    type="button"
+    class="pag-btn"
+    [class.selecionado]="formaPagamentoSelecionada === 'debito'"
+    (click)="selecionarPagamento('debito')">
+    Débito
+  </button>
+
+  <button
+    type="button"
+    class="pag-btn"
+    [class.selecionado]="formaPagamentoSelecionada === 'credito'"
+    (click)="selecionarPagamento('credito')">
+    Crédito
+  </button>
+
+  <button
+    type="button"
+    class="pag-btn"
+    [class.selecionado]="formaPagamentoSelecionada === 'pix'"
+    (click)="selecionarPagamento('pix')">
+    PIX
+  </button>
+</div>
+
+
+    <div class="resumo">
+  <h4>Resumo do Pedido</h4>
+
+  <div class="resumo-item">
+    <span>Itens</span>
+    <span>{{ quantidadeItensAtivos }}</span>
+  </div>
+
+  <div class="resumo-item total">
+    <span>Total</span>
+    <span>{{ valorTotalAtivo | currency:'BRL' }}</span>
+  </div>
+</div>
+
+
+    <button
+  class="btn-confirm"
+  [disabled]="!formaPagamentoSelecionada"
+  (click)="finalizarPedido()">
+  CONFIRMAR PAGAMENTO
+</button>
+
+  </div>
+</div>
+
+
+</div>
+</div>

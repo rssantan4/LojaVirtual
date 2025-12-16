@@ -1,0 +1,61 @@
+<app-navbar-interno-adm></app-navbar-interno-adm>
+
+<div class="container">
+  <h1>Cadastrar Produto</h1>
+
+  <form #formProduto="ngForm" class="form" (ngSubmit)="onSalvarProduto()">
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Nome do produto</mat-label>
+      <input matInput [(ngModel)]="produto.nome" name="nome" required>
+    </mat-form-field>
+
+     <!-- NOVO CAMPO: ARTISTA -->
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Artista</mat-label>
+      <input matInput [(ngModel)]="produto.artista" name="artista" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Preço</mat-label>
+      <input matInput type="number" min="0" step="1" [(ngModel)]="produto.preco" name="preco" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput rows="4" [(ngModel)]="produto.descricao" name="descricao" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Gênero Musical</mat-label>
+      <mat-select  (selectionChange)="onSelecionarGenero($event.value)" [value]="produto.generoMusical" required>
+        <mat-option class = "color" *ngFor="let genero of generos$ | async" [value]="genero" >
+          {{ genero.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Estoque</mat-label>
+      <input matInput type="number" min="0" step="1" [(ngModel)]="produto.estoque" name="estoque" required>
+    </mat-form-field>
+
+<div class="upload">
+  <label class="label-upload">
+    <mat-icon>photo_camera</mat-icon>
+    Selecionar imagem
+    <input type="file" hidden (change)="onFileSelected($event)">
+  </label>
+</div>
+
+<!-- Preview da imagem -->
+<div class="preview-imagem" *ngIf="imagemPreview">
+  <img [src]="imagemPreview" alt="Preview da Imagem">
+</div>
+
+<button mat-raised-button class = "button-color" color="primary" type="button" (click)="onSalvarProduto()">
+  Salvar Produto
+</button>
+
+  </form>
+</div>
+

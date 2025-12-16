@@ -1,0 +1,60 @@
+<app-navbar-adm></app-navbar-adm>
+<div class="adm-body">
+  <h2>Área de Administração</h2>
+  <p class="text-principal">
+    Escolha uma das opções abaixo para gerenciar as informações do sistema.
+  </p>
+
+  <div class="admin-grid">
+    <!-- Cadastrar Produto -->
+    <div class="admin-card" id="cadastrarProduto">
+      <h3>Cadastrar Produto</h3>
+      <p>Adicione novos produtos informando: nome, preço, descrição, categoria, imagem e estoque.</p>
+      <button routerLink="cadastrarProduto">Cadastrar</button>
+    </div>
+
+    <!-- Editar Produto -->
+    <div class="admin-card" id="editarProduto">
+      <h3>Editar Produto</h3>
+      <p>Atualize dados do produto ou ajuste estoque dos produtos.</p>
+      <button routerLink="editarProduto">Editar</button>
+    </div>
+
+    <!-- Remover Produto -->
+    <div class="admin-card" id="removerProduto">
+      <h3>Remover Produto</h3>
+      <p>Remova produtos que não estão mais disponíveis.</p>
+      <button routerLink="removerProduto">Remover</button>
+    </div>
+
+     <!-- Visualizar Produtos -->
+    <div class="admin-card" id="listarProduto">
+      <h3>Visualizar Produtos</h3>
+      <p>Lista de produtos que estão disponíveis.</p>
+      <button routerLink="visualizarProdutos">Visualizar Produtos</button>
+    </div>
+
+    <!-- Gerenciar Gênero -->
+    <div class="admin-card" id="gerenciarGeneroMusical">
+      <h3>Gerenciar Gênero Musical</h3>
+      <p>Crie, edite ou remova algum gênero musical.</p>
+      <button routerLink="gerenciarGeneroMusical">Gerenciar</button>
+    </div>
+
+    <!-- Visualizar Pedidos -->
+    <div class="admin-card" id="visualizarPedidos">
+      <h3>Visualizar Pedidos</h3>
+      <p>Visualize pedidos pendentes, processando, enviados ou cancelados.</p>
+      <button routerLink="visualizarPedidos">Ver Pedidos</button>
+    </div>
+
+    <!-- Atualizar Status -->
+    <div class="admin-card" id="atualizarStatusPedido">
+      <h3>Atualizar Status</h3>
+      <p>Atualize o status de cada pedido.</p>
+      <button routerLink="atualizarStatusPedido">Atualizar</button>
+    </div>
+  </div>
+
+</div>
+

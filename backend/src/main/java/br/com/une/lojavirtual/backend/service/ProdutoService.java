@@ -1,0 +1,89 @@
+package br.com.une.lojavirtual.backend.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+
+import br.com.une.lojavirtual.backend.model.Pedido;
+import br.com.une.lojavirtual.backend.model.Produto;
+import br.com.une.lojavirtual.backend.model.StatusPedido;
+import br.com.une.lojavirtual.backend.repository.ProdutoRepository;
+
+@Service // Indica ao Spring que aqui tem Regra de Negócio
+public class ProdutoService {
+
+    @Autowired
+    private ProdutoRepository repository;
+
+    // Listar tudo
+    public List<Produto> listarTodos() {
+        return repository.findAll();
+    }
+
+    // Buscar por ID
+    public Optional<Produto> buscarPorId(Long id) {
+        return repository.findById(id);
+    }
+
+    // Buscar por parte do nome (Busca)
+    public List<Produto> buscarPorNome(String nome) {
+        return repository.findByNomeContainingIgnoreCase(nome);
+    }
+
+    // Buscar por categoria exata (Filtro)
+    public List<Produto> buscarPorCategoria(String nomeGenero) {
+        return repository.buscarPorNomeDoGenero(nomeGenero);
+    }
+
+    // Atualizar Produto Existente
+    public Produto atualizar(Long id, Produto produtoAtualizado) {
+        Produto produtoExistente = buscarPorId(id)
+                .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado."));
+
+        // Atualizamos apenas os campos permitidos
+        produtoExistente.setNome(produtoAtualizado.getNome());
+        produtoExistente.setArtista(produtoAtualizado.getArtista());
+        produtoExistente.setDescricao(produtoAtualizado.getDescricao());
+        produtoExistente.setPreco(produtoAtualizado.getPreco());
+        produtoExistente.setEstoque(produtoAtualizado.getEstoque());
+        produtoExistente.setImagemUrl(produtoAtualizado.getImagemUrl());
+        produtoExistente.setGeneroMusical(produtoAtualizado.getGeneroMusical());
+        produtoExistente.setGeneroMusical(produtoAtualizado.getGeneroMusical());
+        return repository.save(produtoExistente);
+    }
+
+    @Autowired
+    private br.com.une.lojavirtual.backend.repository.ItemPedidoRepository itemPedidoRepository;
+    public List<Produto> buscarMaisVendidos() {
+        // Cria um objeto de paginação: Página 0 (primeira), com 6 itens
+        Pageable limite = PageRequest.of(0, 6);
+        return itemPedidoRepository.findTopSellingProducts(limite);
+    }
+
+    // Salvar ou Atualizar
+    public Produto salvar(Produto produto) {
+        // Validação simples (depois podemos melhorar)
+        if (produto.getPreco() != null && produto.getPreco().doubleValue() < 0) {
+            throw new IllegalArgumentException("O preço não pode ser negativo.");
+        }
+        return repository.save(produto);
+    }
+
+    // Deletar
+    public void deletar(Long id) {
+        repository.deleteById(id);
+    }
+
+    //Desativar produto
+    public Produto desativar(Long id)
+    {
+        Produto produto = buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("Produto não encontrado."));
+
+        produto.setAtivo(false);
+        return repository.save(produto);
+    }
+}

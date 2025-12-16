@@ -1,0 +1,84 @@
+.container-pedidos {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.filtro-status {
+  width: 250px;
+  display: block;
+  margin: 0 auto 25px auto;
+}
+
+.lista-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card-pedido {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.info-pedido h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #222;
+}
+
+.info-pedido p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 16px;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+}
+
+.status.PENDENTE {
+  background: #ffd966;
+  color: #8a6d00;
+}
+
+.status.PROCESSANDO {
+  background: #a6d8ff;
+  color: #005b9a;
+}
+
+.status.ENVIADO {
+  background: #a4f5a4;
+  color: #006400;
+}
+
+.status.ENTREGUE {
+  background: #c3f5ff;
+  color: #004d4d;
+}
+
+.status.CANCELADO {
+  background: #ffb3b3;
+  color: #8a0000;
+}
+
+.button-color {
+  color: #f28444 !important;
+  border: 1px, solid, #ccc;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+
+}

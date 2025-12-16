@@ -1,0 +1,222 @@
+/* ===========================
+   WRAPPER PRINCIPAL
+   =========================== */
+#wrapper {
+    width: 100%;
+    min-height: 100vh;      /* pelo menos a altura da tela */
+    display: flex;           /* sidebar + grid lado a lado */
+    flex-wrap: wrap;         /* permite quebrar linha no mobile */
+    overflow-x: hidden;      /* evita scroll horizontal */
+    background: #fff;
+    box-sizing: border-box;
+}
+
+/* ===========================
+   SIDEBAR
+   =========================== */
+#sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    padding: 1rem 1.5rem;
+    border-right: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+#sidebar h3 {
+    color: #262626;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 1.5rem 0 0.5rem 0;
+    letter-spacing: 1px;
+}
+
+.checklist ul li {
+    font-size: 0.9rem;
+    font-weight: 400;
+    list-style: none;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.checklist li span {
+    float: left;
+    width: 11px;
+    height: 11px;
+    margin-left: -1.5rem;
+    margin-top: 4px;
+    border: 1px solid #d1d3d7;
+    position: relative;
+}
+
+.checklist li a {
+    color: #676a74;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+
+.checklist li a:hover {
+    color: #222;
+}
+
+.checklist a:hover span {
+    border-color: #a6aab3;
+}
+
+/* ===========================
+   FILTROS DE CATEGORIA E PREÇO
+   =========================== */
+.categoria-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.chip {
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #eee;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.chip:hover {
+    background: #dcdcdc;
+}
+
+.reset {
+    background: #1976d2;
+    color: white;
+}
+
+.reset:hover {
+    background: #125a9c;
+}
+
+/* Price filter */
+.price-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 10px 0 15px 0;
+    flex-wrap: wrap;
+}
+
+.price-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.price-field span {
+    font-size: 12px;
+    color: #666;
+}
+
+.price-field input {
+    width: 90px;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.price-field input:focus {
+    outline: none;
+    border-color: #1282ff;
+}
+
+/* Separator */
+.separator {
+    font-size: 18px;
+    font-weight: bold;
+    color: #888;
+}
+
+/* Search inputs */
+.search-input {
+   width: 100%;
+    padding: 6px 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #1282ff;
+    box-shadow: 0 0 4px rgba(18,130,255,0.4);
+}
+
+/* ===========================
+   GRID DE PRODUTOS
+   =========================== */
+#grid-selector {
+    flex: 1;
+    padding: 2rem;
+    color: #5d5f68;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+.produtos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.produtos-lista-wrapper {
+    width: 100%;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+}
+
+::ng-deep mat-spinner circle {
+    stroke: #f28444;
+}
+
+/* ===========================
+   MEDIA QUERY MOBILE
+   =========================== */
+@media (max-width: 768px) {
+    #wrapper {
+        flex-direction: column; /* sidebar em cima, grid embaixo */
+    }
+
+    #sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding: 1rem;
+    }
+
+    #grid-selector {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .produtos-lista {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .search-input,
+    .price-field input {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+

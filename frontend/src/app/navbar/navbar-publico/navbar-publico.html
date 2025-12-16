@@ -1,0 +1,76 @@
+<mat-toolbar class="toolbar">
+  <!-- Logo -->
+  <img src="assets/img/fotos-do-site/logo.png" alt="Logo" class="logo">
+
+  <!-- Título -->
+  <span class="title">Onda</span>
+
+  <!-- Botões de navegação (desktop) -->
+  <div class="button-escolha desktop-only">
+    <button routerLink="/home"><span>HOME</span></button>
+    <button routerLink="/loja"><span>LOJA</span></button>
+    <button routerLink="/sobre"><span>SOBRE</span></button>
+    <button routerLink="/contato"><span>CONTATO</span></button>
+  </div>
+
+  <!-- Ícone menu mobile -->
+  <button
+    mat-icon-button
+    class="mobile-only"
+    [matMenuTriggerFor]="menuMobile"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Menu mobile -->
+  <mat-menu #menuMobile="matMenu">
+    <button mat-menu-item routerLink="/home">Home</button>
+    <button mat-menu-item routerLink="/loja">Loja</button>
+    <button mat-menu-item routerLink="/sobre">Sobre</button>
+    <button mat-menu-item routerLink="/contato">Contato</button>
+  </mat-menu>
+
+  <!-- Ícones se NÃO estiver logado -->
+  <div class="icones-escolha" *ngIf="!(validarService.estaLogado())">
+    <button mat-icon-button [matMenuTriggerFor]="menuPublico">
+      <mat-icon class="persson">account_circle</mat-icon>
+    </button>
+
+    <mat-menu #menuPublico="matMenu">
+      <button mat-menu-item routerLink="/login">Login</button>
+      <button mat-menu-item routerLink="/cadastro">Cadastrar</button>
+    </mat-menu>
+  </div>
+
+  <!-- Ícones se ESTIVER logado -->
+  <div class="icones-escolha" *ngIf="validarService.estaLogado()">
+    <button mat-icon-button [matMenuTriggerFor]="menuCliente">
+      <mat-icon class="logado">account_circle</mat-icon>
+    </button>
+
+    <mat-menu #menuCliente="matMenu">
+      <div class="menu-usuario">
+        <span class="bem-vindo">Bem-vindo</span>
+        <span class="nome-usuario">{{ validarService.getUsuario()?.nome }}</span>
+      </div>
+
+      <button mat-menu-item routerLink="/cliente/minha-Conta">
+        <mat-icon>person</mat-icon>
+        <span>Minha Conta</span>
+      </button>
+      <button mat-menu-item routerLink="/cliente/meus-pedidos">
+        <mat-icon>shopping_cart</mat-icon>
+        <span>Meus Pedidos</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+
+  <!-- Ícone carrinho -->
+  <button mat-icon-button routerLink="/cliente/carrinho">
+    <mat-icon class="cart">shopping_cart</mat-icon>
+  </button>
+</mat-toolbar>

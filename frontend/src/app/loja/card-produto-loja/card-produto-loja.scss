@@ -1,0 +1,146 @@
+/* ===== Card ===== */
+.wrapper {
+  width: 180px;
+  height: 300px;
+  background: white;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transform: scale(0.96);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.wrapper:hover {
+  transform: scale(1);
+  box-shadow: 3px 10px 15px rgba(0,0,0,0.2);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== Imagem ===== */
+.top {
+  height: 68%; /* reduzido um pouco para ganhar espaço para texto */
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.top img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.clickable-img {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.clickable-img:hover {
+  transform: scale(1.05);
+}
+
+
+/* ===== Parte inferior ===== */
+.bottom {
+  height: 28%;
+  background: #f4f4f4;
+  padding: 7px 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  overflow: hidden; /* impede overflow vertical */
+}
+
+/* ===== Textos ===== */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.details h2,
+.details p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.1;
+
+  /* impede quebrar o layout com textos enormes */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Título um pouco maior */
+.details h2 {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* ===== Botão flutuante ===== */
+.buy-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #111;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.buy-btn i {
+  font-size: 16px;
+}
+
+.buy-btn:hover {
+  transform: scale(1.12);
+  background: #f28444;
+}
+
+/* ===== Textos com quebra ===== */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+
+  /* limita a área para tudo caber sem sumir */
+  max-height: 100%;
+}
+
+.details h2,
+.details p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.15;
+
+  /* agora quebra a linha automático */
+  white-space: normal;
+  overflow-wrap: break-word;   /* quebra palavras muito grandes */
+  word-break: break-word;
+
+  /* se tiver texto demais, ativa scrollzinho interno */
+  max-height: 40px;
+  overflow-y: auto;
+}
+
+/* Título um pouco maior */
+.details h2 {
+  font-size: 13px;
+  font-weight: bold;
+  max-height: 32px;
+}

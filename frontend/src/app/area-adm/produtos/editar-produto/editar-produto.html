@@ -1,0 +1,141 @@
+<app-navbar-interno-adm></app-navbar-interno-adm>
+<div class="container-editar">
+
+  <h2>Editar Produto</h2>
+
+  <!-- Campo para buscar produto -->
+  <mat-form-field appearance="outline" class="campo-busca">
+    <mat-label>Buscar produto</mat-label>
+    <input matInput placeholder="Digite o nome do produto" [(ngModel)]="buscaProduto"
+      (input)="filtrarProdutos()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <!-- Spinner enquanto carrega os produtos -->
+<div *ngIf="loadingProdutos" class="loading-spinner">
+  <mat-spinner></mat-spinner>
+</div>
+
+  <!-- Lista de produtos filtrados -->
+  <div class="lista-produtos" *ngIf="!loadingProdutos && produtosFiltrados.length > 0">
+    <div class="produto-item" *ngFor="let produto of produtosFiltrados">
+
+      <img [src]="produto.imagemUrl" alt="Imagem" class="produto-img">
+
+      <div class="produto-info">
+        <h3>{{ produto.nome }}</h3>
+        <p><strong>Artista:</strong> {{ produto.artista }}</p>
+        <p><strong>Preço:</strong> R$ {{ produto.preco | number:'1.2-2' }}</p>
+        <p>
+  <strong>
+    Gênero Musical:
+    {{ produto.generoMusical?.nome || 'Não informado' }}
+  </strong>
+</p>
+
+        <p><strong>Estoque:</strong> {{ produto.estoque }}</p>
+        <p><strong>Descrição: </strong>{{produto.descricao}}</p>
+      </div>
+
+      <button mat-raised-button color="primary" class="button-color" (click)="abrirConfirmacao(produto)">
+        Editar
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Nenhum resultado -->
+  <p class="nenhum" *ngIf="buscaProduto && !loadingProdutos && produtosFiltrados.length === 0">
+    Nenhum produto encontrado.
+  </p>
+
+  <!-- Modal de edição -->
+  <div class="modal-bg" *ngIf="produtoSelecionado">
+    <div class="modal">
+
+    <!-- Spinner ao salvar -->
+    <div *ngIf="loadingSalvar" class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+      <h3>Editar Produto</h3>
+
+<mat-form-field appearance="outline">
+  <mat-label>Nome</mat-label>
+  <input matInput [(ngModel)]="produtoSelecionado!.nome" name="nome" required>
+  <mat-error *ngIf="!produtoSelecionado!.nome || produtoSelecionado!.nome.trim() === ''">
+    Nome é obrigatório
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Artista</mat-label>
+  <input matInput [(ngModel)]="produtoSelecionado!.artista" artista="artista" required>
+  <mat-error *ngIf="!produtoSelecionado!.artista || produtoSelecionado!.artista.trim() === ''">
+    Nome do artista é obrigatório
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Preço</mat-label>
+  <input matInput type="number" [(ngModel)]="produtoSelecionado!.preco" name="preco" required min="0">
+  <mat-error *ngIf="produtoSelecionado!.preco == null || produtoSelecionado!.preco < 0">
+    Preço deve ser maior ou igual a 0
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Gênero Musical</mat-label>
+  <mat-select [(ngModel)]="produtoSelecionado!.generoMusical" name="genero" required>
+    <mat-option *ngFor="let genero of generosMusicais" [value]="genero">
+      {{ genero.nome }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="!produtoSelecionado!.generoMusical?.id">
+    Selecione um gênero musical
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Estoque</mat-label>
+  <input matInput type="number" [(ngModel)]="produtoSelecionado!.estoque" name="estoque" required min="0">
+  <mat-error *ngIf="produtoSelecionado!.estoque == null || produtoSelecionado!.estoque < 0">
+    Estoque deve ser maior ou igual a 0
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Descrição</mat-label>
+  <input matInput [(ngModel)]="produtoSelecionado!.descricao" name="descricao" required>
+  <mat-error *ngIf="!produtoSelecionado!.descricao || produtoSelecionado!.descricao.trim() === ''">
+    Descrição é obrigatória
+  </mat-error>
+</mat-form-field>
+
+
+<div class="upload">
+  <label class="label-upload">
+    <mat-icon>photo_camera</mat-icon>
+    Selecionar outra imagem
+    <input type="file" hidden (change)="onFileSelected($event)">
+  </label>
+</div>
+
+<!-- Preview da imagem -->
+<div class="preview-imagem" *ngIf="produtoSelecionado">
+  <img
+    [src]="imagemPreview ? imagemPreview : produtoSelecionado.imagemUrl"
+    alt="Preview da Imagem"
+    class="imagem-produto"
+  >
+</div>
+
+
+      <div class="botoes-modal">
+        <button class="button-color" mat-raised-button (click)="produtoSelecionado = null">Cancelar</button>
+        <button class="button-color" mat-raised-button color="primary" (click)="EditarProduto()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <br> <br> <br> <br> <br> <br>  <br><br><br><br><br>
+</div>

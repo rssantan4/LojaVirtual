@@ -1,0 +1,399 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.cart-wrapper {
+    width: 100%;
+    min-height: 100vh; /* ocupa a tela toda */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.total-row {
+    margin: 0 !important;
+    padding: 0.3rem 0; /* pequeno espaçamento só pra não colar */
+}
+
+
+
+
+/* Card principal */
+.card {
+    display: flex;
+    max-width: 950px;
+    width: 90%; /* antes era 100% */
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+.inativo {
+  opacity: 0.5;
+}
+
+.inativo .close {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+
+.aviso-inativo {
+  color: #c62828;
+  font-size: 12px;
+}
+
+.indisponivel {
+  color: #c62828;
+  font-weight: bold;
+}
+
+.bloqueado {
+  color: #999;
+}
+
+
+/* Carrinho */
+.cart {
+    flex: 2;
+    padding: 2rem;
+    border-right: 1px solid #ddd;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.title h4 {
+    font-size: 1.5rem;
+}
+
+/* Produtos */
+.row.main {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.row.main:last-child {
+    border-bottom: none;
+}
+
+.row.main img {
+    width: 80px;
+    border-radius: 70px;
+}
+
+.row.main .col {
+    flex: 1;
+    padding: 0 0.5rem;
+}
+
+.row.main .col a {
+    padding: 0 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+}
+
+.row.main .col a.border {
+    border: 1px solid #ccc;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.close {
+    cursor: pointer;
+    color: red;
+    margin-left: 1rem;
+}
+
+/* Back to shop */
+.back-to-shop {
+    margin-top: 2rem;
+}
+
+.back-to-shop a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* Resumo */
+.summary {
+    flex: 1;
+    background: #f9f9f9;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.summary h5 {
+    margin-bottom: 1rem;
+}
+
+.summary hr {
+    margin-bottom: 1rem;
+}
+
+.summary .row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0; /* zera tudo */
+    padding: 0.2rem 0; /* bem leve pra não colar demais */
+}
+
+
+.summary select,
+.summary input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#code {
+    background-image: url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 1.5rem;
+}
+
+.btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 0.8rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: auto; /* força ficar no final do resumo */
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #333;
+}
+
+/* Responsivo */
+@media(max-width: 400px) {
+     .card {
+        flex-direction: column;
+        width: 100%;
+    }
+    .cart {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    .summary {
+        padding-top: 1rem;
+    }
+    .preco{
+    display: block;
+    max-width: 100%;
+    min-width: 0;          /* ESSENCIAL em flex */
+    white-space: normal;
+    word-break: keep-all; /* não quebra no meio */
+    overflow-wrap: break-word;
+    text-align: center;
+
+    }
+}
+
+/* Responsivo */
+@media(min-width: 401px) and (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        width: 100%;
+    }
+    .cart {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    .summary {
+        padding-top: 1rem;
+    }
+}
+
+//Modal do pagamento
+/* Fundo escuro */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Overlay */
+.modal-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7); /* mais escuro para contraste */
+  backdrop-filter: blur(2px);
+}
+
+/* Conteúdo central */
+.modal-content {
+  position: relative;
+  background-color: #111; /* preto */
+  padding: 2rem;
+  border-radius: 12px;
+  width: 450px;
+  max-width: 90%;
+  z-index: 1001;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.8);
+  animation: modalFade 0.3s ease-out;
+  color: #fff; /* texto branco */
+}
+
+/* Animação de aparecimento */
+@keyframes modalFade {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Botão de fechar */
+.btn-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #222; /* preto mais claro */
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #fff;
+}
+.btn-close:hover { background: #ff8c42; } /* laranja ao passar o mouse */
+
+/* Título do modal */
+.modal-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ff8c42; /* laranja */
+}
+
+/* Botões de pagamento */
+.pagamento-options {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+}
+
+/* botão selecionado */
+.pag-btn.selecionado {
+  background-color: #111; /* preto para destacar */
+  color: #ff8c42; /* texto laranja */
+  border: 2px solid #ff8c42;
+}
+
+
+.pag-btn {
+  flex: 1;
+  margin: 0 5px;
+  padding: 0.8rem 0;
+  border: none;
+  border-radius: 8px;
+  background: #ff8c42; /* laranja */
+  color: #111; /* texto preto */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.pag-btn:hover {
+  background: #ff7000; /* laranja mais escuro */
+  transform: translateY(-2px);
+}
+
+/* Resumo do pedido */
+.resumo {
+  background: #222; /* preto mais claro */
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+.resumo-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.resumo-item.total {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #ff8c42; /* total destacado em laranja */
+}
+
+/* Botão de confirmar pagamento */
+.btn-confirm {
+  width: 100%;
+  padding: 0.8rem 0;
+  border: none;
+  border-radius: 8px;
+  background: #ff8c42; /* laranja */
+  color: #111; /* texto preto */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-confirm:disabled {
+  background-color: #555; /* cinza escuro */
+  color: #ccc; /* texto claro */
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+.btn-confirm:hover {
+  background: #ff7000; /* laranja mais escuro */
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  background-color: #555; /* cinza escuro */
+  color: #ccc; /* texto claro */
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+}
+
+::ng-deep mat-progress-spinner circle {
+    stroke: #f28444;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+.dimiMax{
+  cursor: pointer;
+}

@@ -1,0 +1,56 @@
+<app-navbar-interno-adm></app-navbar-interno-adm>
+<div class="container-pedidos">
+
+  <h2>Visualizar Pedidos</h2>
+
+  <!-- Filtro de Status -->
+  <mat-form-field appearance="outline" class="filtro-status">
+  <mat-label>Status do Pedido</mat-label>
+  <mat-select [(ngModel)]="statusSelecionado" (selectionChange)="filtrarStatus()">
+    <mat-option value="TODOS">Todos</mat-option>
+    <mat-option value="PENDENTE">Pendente</mat-option>
+    <mat-option value="PROCESSANDO">Processando</mat-option>
+    <mat-option value="ENVIADO">Enviado</mat-option>
+    <mat-option value="ENTREGUE">Entregue</mat-option>
+    <mat-option value="CANCELADO">Cancelado</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+  <!-- Lista de pedidos -->
+  <div class="lista-cards" *ngIf="pedidosFiltrados.length > 0">
+    <mat-card class="card-pedido" *ngFor="let p of pedidosFiltrados">
+
+      <div class="info-pedido">
+       <h3>Cliente: {{p.usuario.nome }}</h3>
+        <p><strong>Total:</strong> R$ {{ p.valorTotal | number:'1.2-2' }}</p>
+        <p><strong>Data:</strong> {{ p.dataPedido | date:'dd/MM/yyyy HH:mm' }}</p>
+        <p><strong>Status:</strong>
+          <span class="status {{ p.status }}">
+            {{ p.status }}
+          </span>
+        </p>
+      </div>
+
+<button class = "button-color" mat-button color="primary" (click)="abrirDetalhes(p)">
+        Ver Detalhes
+      </button>
+    </mat-card>
+  </div>
+
+  <!-- Modal -->
+  <app-visualizar-detalhes-pedido
+    *ngIf="pedidoSelecionado"
+    [pedido]="pedidoSelecionado"
+    (fecharModal)="fecharModal()">
+  </app-visualizar-detalhes-pedido>
+
+  <!-- Caso não haja pedidos -->
+  <p class="nenhum" *ngIf="pedidosFiltrados.length === 0">
+    Nenhum pedido encontrado.
+  </p>
+  <br> <br> <br> <br> <br> <br>  <br><br><br> <br>
+</div>
+
+
+

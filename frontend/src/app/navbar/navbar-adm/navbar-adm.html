@@ -1,0 +1,20 @@
+<mat-toolbar class="toolbar">
+  <div class="logo-title">
+    <img src="assets/img/fotos-do-site/logo.png" alt="Mix&Play Logo" class="logo">
+    <span class="title">Onda</span>
+  </div>
+
+  <div class="icones-escolha">
+    <button class="persson-button" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="persson">account_circle</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <div class="menu-usuario">
+        <span class="bem-vindo">Bem-vindo</span>
+        <span class="nome-usuario">{{ usuarioNome }}</span>
+      </div>
+      <button class="persson-item" mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

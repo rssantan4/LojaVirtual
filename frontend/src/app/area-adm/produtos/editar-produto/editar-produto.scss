@@ -1,0 +1,197 @@
+/* Container principal */
+.container-editar {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Título */
+.container-editar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Campo de busca */
+.campo-busca {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.campo-busca mat-icon {
+  color: #f28444; /* ícone laranja */
+}
+
+/* Lista de produtos */
+.lista-produtos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Item de produto */
+.produto-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fafafa;
+}
+
+.produto-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.produto-info {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.produto-info h3 {
+  margin: 0 0 5px 0;
+}
+
+.produto-info p {
+  margin: 2px 0;
+}
+
+/* Botão de editar */
+.button-color {
+  color: #f28444 !important;
+}
+
+/* Nenhum resultado */
+.nenhum {
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
+}
+
+/* Modal de edição */
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 10px; /* garante espaço em telas pequenas */
+  overflow-y: auto; /* permite rolar se for maior que a tela */
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px; /* largura máxima do modal */
+  max-height: 90vh; /* altura máxima: 90% da tela */
+  overflow-y: auto; /* scroll interno se passar da altura máxima */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Campos dentro do modal */
+.modal mat-form-field {
+  width: 100%;
+}
+
+/* Preview da imagem dentro do modal */
+.preview-imagem {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.preview-imagem img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #f28444;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.preview-imagem img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(242, 132, 68, 0.5);
+}
+
+/* Botões do modal */
+.botoes-modal {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.botoes-modal button {
+  min-width: 100px;
+}
+
+/* Spinner ao salvar */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+}
+
+::ng-deep mat-spinner circle {
+  stroke: #f28444;
+}
+
+
+
+/* Container do upload de imagem */
+.upload {
+  display: flex;
+  justify-content: center; /* centraliza o botão de upload */
+  margin: 10px 0;
+}
+
+.label-upload {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: #f28444;
+  font-weight: 500;
+}
+
+/* Preview da imagem */
+.preview-imagem {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.preview-imagem img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #f28444;
+  cursor: pointer; /* indica que pode clicar para trocar */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.preview-imagem img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(242, 132, 68, 0.5);
+}
+
+
+

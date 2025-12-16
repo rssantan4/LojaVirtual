@@ -1,0 +1,57 @@
+<main>
+  <!-- Spinner enquanto carrega -->
+  <div *ngIf="loading" class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div *ngIf="!loading && produto" class="container">
+    <div class="grid product">
+      <!-- Galeria de imagens -->
+      <div class="column-xs-12 column-md-7">
+        <div class="product-gallery">
+          <div class="product-images">
+            <img class="back left" [src]="produto.imagemUrl" [alt]="produto.nome" />
+            <img class="back right" [src]="produto.imagemUrl" [alt]="produto.nome" />
+            <img class="main" [src]="produto.imagemUrl" [alt]="produto.nome" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Informações do produto -->
+      <div class="column-xs-12 column-md-5">
+        <h1>{{ produto.nome }}</h1>
+
+        <h2>{{ produto.artista}}</h2>
+        <br><br>
+        <h2>R$ {{ produto.preco?.toFixed(2) || '0.00' }}</h2>
+        <div class="description">
+          <p>{{ produto.descricao }}</p>
+        </div>
+        <button class="add-to-cart" (click)="adicionarAoCarrinho(produto)">Adicionar no carrinho</button>
+      </div>
+    </div>
+
+    <!-- Produtos relacionados -->
+    <!--
+<app-produtos-relacionados [categoria]="categoriaProdutosRelacionados"></app-produtos-relacionados>
+ -->
+<app-produtos-relacionados
+  [produtos]="produtosRelacionados">
+</app-produtos-relacionados>
+</div>
+
+  <!-- Produto não encontrado -->
+  <div *ngIf="!loading && !produto">
+    <p>Produto não encontrado.</p>
+  </div>
+</main>
+
+
+
+
+
+
+
+
+

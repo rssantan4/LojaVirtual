@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="top">
+      <img [src]="produto.imagemUrl" [alt]="produto.nome" (click)="irParaProduto(produto.id)" class="clickable-img">
+
+      <!-- BOTÃO FLUTUANTE -->
+      <button class="buy-btn" (click)="adicionarAoCarrinho(produto)">
+        <i class="material-icons">add_shopping_cart</i>
+      </button>
+    </div>
+
+    <div class="bottom">
+      <div class="details">
+        <h2>{{ produto.nome }}</h2>
+        <p>Artista: {{ produto.artista }}</p>
+        <p>R$ {{ produto.preco.toFixed(2) }}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
