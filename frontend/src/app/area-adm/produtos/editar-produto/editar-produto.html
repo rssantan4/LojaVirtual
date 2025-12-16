@@ -112,6 +112,24 @@
 </mat-form-field>
 
 
+<div class="upload">
+  <label class="label-upload">
+    <mat-icon>photo_camera</mat-icon>
+    Selecionar outra imagem
+    <input type="file" hidden (change)="onFileSelected($event)">
+  </label>
+</div>
+
+<!-- Preview da imagem -->
+<div class="preview-imagem" *ngIf="produtoSelecionado">
+  <img
+    [src]="imagemPreview ? imagemPreview : produtoSelecionado.imagemUrl"
+    alt="Preview da Imagem"
+    class="imagem-produto"
+  >
+</div>
+
+
       <div class="botoes-modal">
         <button class="button-color" mat-raised-button (click)="produtoSelecionado = null">Cancelar</button>
         <button class="button-color" mat-raised-button color="primary" (click)="EditarProduto()">Salvar</button>

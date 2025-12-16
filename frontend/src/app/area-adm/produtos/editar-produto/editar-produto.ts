@@ -32,6 +32,8 @@ export class EditarProduto {
   loadingProdutos = true;
   loadingSalvar = false;
   modal = false;
+  imagemSelecionada: File | null = null;
+  imagemPreview: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -90,7 +92,8 @@ export class EditarProduto {
     !this.produtoSelecionado.artista?.trim() ||
         !this.produtoSelecionado.generoMusical?.id ||
         this.produtoSelecionado.preco === null ||
-        this.produtoSelecionado.estoque === null) {
+        this.produtoSelecionado.estoque === null  ||
+    !this.produtoSelecionado.imagemUrl) {
       this.dialog.open(Alerts, { data: 'Preencha todos os campos obrigatórios antes de salvar.' });
       return;
     }
@@ -134,4 +137,21 @@ export class EditarProduto {
     if (!value) return '';
     return value.charAt(0).toUpperCase() + value.slice(1);
   }
+
+
+ onFileSelected(event: Event) {
+  const input = event.target as HTMLInputElement;
+  if (!input.files || input.files.length === 0) return;
+
+  this.imagemSelecionada = input.files[0];
+
+  // Preview instantâneo ⚡
+  this.imagemPreview = URL.createObjectURL(this.imagemSelecionada);
+
+  // Atualiza o produto selecionado
+  if (this.produtoSelecionado) {
+    this.produtoSelecionado.imagemUrl = `assets/img/Novos-produtos/${this.imagemSelecionada.name}`;
+  }
+
+}
 }

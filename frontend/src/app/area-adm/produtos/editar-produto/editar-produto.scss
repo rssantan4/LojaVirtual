@@ -84,23 +84,49 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: 10px; /* garante espaço em telas pequenas */
+  overflow-y: auto; /* permite rolar se for maior que a tela */
 }
 
 .modal {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: 90%;
-  max-width: 400px;
+  width: 100%;
+  max-width: 400px; /* largura máxima do modal */
+  max-height: 90vh; /* altura máxima: 90% da tela */
+  overflow-y: auto; /* scroll interno se passar da altura máxima */
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 /* Campos dentro do modal */
 .modal mat-form-field {
   width: 100%;
+}
+
+/* Preview da imagem dentro do modal */
+.preview-imagem {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.preview-imagem img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #f28444;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.preview-imagem img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(242, 132, 68, 0.5);
 }
 
 /* Botões do modal */
@@ -114,21 +140,55 @@
   min-width: 100px;
 }
 
-
-
-
-
- .loading-spinner {
+/* Spinner ao salvar */
+.loading-spinner {
   display: flex;
-  justify-content: center;  /* centraliza horizontalmente */
-  align-items: center;      /* centraliza verticalmente */
-  width: 100%;              /* ocupa toda a largura disponível */
-  height: 200px;            /* altura desejada */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
 }
 
 ::ng-deep mat-spinner circle {
-  stroke: #f28444;  // Força a cor laranja
+  stroke: #f28444;
 }
 
 
 
+/* Container do upload de imagem */
+.upload {
+  display: flex;
+  justify-content: center; /* centraliza o botão de upload */
+  margin: 10px 0;
+}
+
+.label-upload {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: #f28444;
+  font-weight: 500;
+}
+
+/* Preview da imagem */
+.preview-imagem {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.preview-imagem img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #f28444;
+  cursor: pointer; /* indica que pode clicar para trocar */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.preview-imagem img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(242, 132, 68, 0.5);
+}
