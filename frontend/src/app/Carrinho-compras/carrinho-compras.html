@@ -36,9 +36,9 @@
     <!-- quantidade -->
     <div class="col">
       <ng-container *ngIf="item.produto.ativo; else bloqueado">
-        <a (click)="diminuir(item)">-</a>
+        <a class = "dimiMax" (click)="diminuir(item)">-</a>
         <a class="border">{{ item.quantidade }}</a>
-        <a (click)="aumentar(item)">+</a>
+        <a class = "dimiMax" (click)="aumentar(item)">+</a>
       </ng-container>
 
       <ng-template #bloqueado>

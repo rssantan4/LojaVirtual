@@ -77,24 +77,33 @@ export class CarrinhoCompras implements OnInit{
     });
   }*/
 
-  aumentar(item: ItemCarrinho) {
+ aumentar(item: ItemCarrinho) {
+  item.quantidade += 1; // atualiza imediatamente no front
+
   const usuario = this.authService.getUsuario();
   if (!usuario) return;
 
-  this.carrinhoService.aumentar(Number(usuario.id), item).subscribe(() => {
-    //this.carregarCarrinho();
-    this.atualizarCarrinho();
+  this.carrinhoService.aumentar(Number(usuario.id), item).subscribe({
+    error: () => {
+      alert('Erro ao atualizar quantidade no servidor.');
+      item.quantidade -= 1; // reverte em caso de erro
+    }
   });
 }
 
 diminuir(item: ItemCarrinho) {
+  if (item.quantidade <= 1) return; // não deixa ir para 0
+
+  item.quantidade -= 1; // atualiza imediatamente no front
+
   const usuario = this.authService.getUsuario();
   if (!usuario) return;
 
-  this.carrinhoService.diminuir(Number(usuario.id), item).subscribe(() => {
-    //this.carregarCarrinho();
-    this.atualizarCarrinho();
-
+  this.carrinhoService.diminuir(Number(usuario.id), item).subscribe({
+    error: () => {
+      alert('Erro ao atualizar quantidade no servidor.');
+      item.quantidade += 1; // reverte em caso de erro
+    }
   });
 }
 
