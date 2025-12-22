@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule,NgFor } from '@angular/common';
 import { ProdutoCard } from '../produto-card/produto-card';
 import { Produto } from '../models/produto-model';
-import { ProdutoService } from '../Area-Adm/produtos/services/produto-service';
+import { ProdutoService } from '../area-adm/produtos/services/produto-service';
 import { Observable } from 'rxjs';
 import { ValidarService } from '../login/services/validar-service';
 import { Router, RouterModule } from '@angular/router';

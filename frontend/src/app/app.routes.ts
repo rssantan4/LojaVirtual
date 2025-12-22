@@ -6,13 +6,13 @@ import { Contato } from './contato/contato'
 
 import { Login } from './login/login';
 import { Cadastro } from './cadastro/cadastro';
-import { AreaAdmModule } from './Area-Adm/areaAdm-module';
+import { AreaAdmModule } from './area-adm/areaAdm-module';
 
 import { ProdutoInfo } from './produto-info/produto-info';
 
 import { LoginAdm } from './login-Adm/login-adm/login-adm';
 import { Loja } from './loja/loja';
-import { CarrinhoCompras } from './Carrinho-compras/carrinho-compras';
+import { CarrinhoCompras } from './carrinho-compras/carrinho-compras';
 
 import { LayoutPublico } from './layout-publico/layout-publico';
 import { produtoResolver } from './resolvers/produto-resolver';
@@ -69,7 +69,7 @@ export const routes: Routes = [
   {
     path: 'areaAdm',
     loadChildren: () =>
-      import('./Area-Adm/areaAdm-module').then(m => m.AreaAdmModule),
+      import('./area-adm/areaAdm-module').then(m => m.AreaAdmModule),
     canActivate: [AdminGuard]
   },
 
