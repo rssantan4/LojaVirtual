@@ -5,7 +5,7 @@ import { CarrinhoService } from './services/service-carrinho';
 import { Observable } from 'rxjs';
 import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
 import { Produto } from '../models/produto-model';
-import { ProdutoService } from '../Area-Adm/produtos/services/produto-service';
+import { ProdutoService } from '../area-adm/produtos/services/produto-service';
 import { AuthGuard } from '../Services/AuthUser-guard/auth-guard';
 import { ValidarService } from '../login/services/validar-service';
 import { Carrinho, ItemCarrinho } from '../models/carrinho';

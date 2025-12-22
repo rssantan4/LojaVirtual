@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, Router } from '@angular/router';
-import { ProdutoService } from '../../Area-Adm/produtos/services/produto-service';
+import { ProdutoService } from '../../area-adm/produtos/services/produto-service';
 import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({

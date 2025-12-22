@@ -1,5 +1,5 @@
 import { ResolveFn } from '@angular/router';
-import { ProdutoService } from '../Area-Adm/produtos/services/produto-service';
+import { ProdutoService } from '../area-adm/produtos/services/produto-service';
 import { inject } from '@angular/core';
 import { Produto } from '../models/produto-model';
 import { take } from 'rxjs';

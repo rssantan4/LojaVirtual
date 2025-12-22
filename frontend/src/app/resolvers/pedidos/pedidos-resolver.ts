@@ -3,7 +3,7 @@ import { Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Pedido } from '../../models/pedido-model';
-import { PedidoService } from '../../Area-Adm/pedidos/services/pedido-service';
+import { PedidoService } from '../../area-adm/pedidos/services/pedido-service';
 
 @Injectable({ providedIn: 'root' })
 export class PedidoResolver implements Resolve<Pedido[]> {
