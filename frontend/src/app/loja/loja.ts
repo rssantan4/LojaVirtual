@@ -1,11 +1,11 @@
 import { CardProdutoLoja } from './card-produto-loja/card-produto-loja';
-import { ProdutoService } from './../Area-Adm/produtos/services/produto-service';
+import { ProdutoService } from './../area-adm/produtos/services/produto-service';
 import { Component } from '@angular/core';
 import { Produto } from '../models/produto-model';
 import { CommonModule, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
-import { GeneroMusicalService } from '../Area-Adm/genero-musical/services/genero-musical-service';
+import { GeneroMusicalService } from '../area-adm/genero-musical/services/genero-musical-service';
 import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatSelect, MatOption } from "@angular/material/select";
 import { MatCheckboxModule } from '@angular/material/checkbox';

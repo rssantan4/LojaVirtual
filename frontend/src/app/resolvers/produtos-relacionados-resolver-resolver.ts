@@ -1,6 +1,6 @@
 import { ResolveFn } from '@angular/router';
 import { inject } from '@angular/core';
-import { ProdutoService } from '../Area-Adm/produtos/services/produto-service';
+import { ProdutoService } from '../area-adm/produtos/services/produto-service';
 import { Produto } from '../models/produto-model';
 import { map, of, switchMap } from 'rxjs';
 

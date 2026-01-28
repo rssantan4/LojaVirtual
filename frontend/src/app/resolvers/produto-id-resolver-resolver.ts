@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
-import { ProdutoService } from '../Area-Adm/produtos/services/produto-service';
+import { ProdutoService } from '../area-adm/produtos/services/produto-service';
 import { Produto } from '../models/produto-model';
 
 @Injectable({

@@ -1,13 +1,13 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProdutoService } from '../Area-Adm/produtos/services/produto-service';
+import { ProdutoService } from '../area-adm/produtos/services/produto-service';
 import { Produto } from '../models/produto-model';
 import { CardProdutoLoja } from '../loja/card-produto-loja/card-produto-loja';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinner } from "@angular/material/progress-spinner";
 import { ProdutosRelacionados } from "../produtos-relacionados/produtos-relacionados";
 import { ValidarService } from '../login/services/validar-service';
-import { CarrinhoService } from '../Carrinho-compras/services/service-carrinho';
+import { CarrinhoService } from '../carrinho-compras/services/service-carrinho';
 import { MatDialog } from '@angular/material/dialog';
 import { Alerts } from '../shared/alerts/alerts';
 

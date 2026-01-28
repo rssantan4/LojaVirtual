@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Produto } from '../../models/produto-model';
 import { Router } from '@angular/router';
 import { ValidarService } from '../../login/services/validar-service';
-import { CarrinhoService } from '../../Carrinho-compras/services/service-carrinho';
+import { CarrinhoService } from '../../carrinho-compras/services/service-carrinho';
 import { MatDialog } from '@angular/material/dialog';
 import { Alerts } from '../../shared/alerts/alerts';
 
@@ -10,6 +10,7 @@ import { Alerts } from '../../shared/alerts/alerts';
   selector: 'app-card-produto-loja',
   imports: [],
   templateUrl: './card-produto-loja.html',
+  standalone: true,
   styleUrl: './card-produto-loja.scss',
 })
 export class CardProdutoLoja {
